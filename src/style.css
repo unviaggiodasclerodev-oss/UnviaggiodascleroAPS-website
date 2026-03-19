@@ -10,7 +10,7 @@
   html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
   body {
     font-family: Inter, system-ui, sans-serif;
-    background-color: #FAFAF9;
+    background-color: #FFFFFF;
     color: #1C1917;
     font-size: clamp(15px, 1vw + 0.5rem, 17px);
     line-height: 1.75;
@@ -28,7 +28,7 @@
 @layer utilities {
   .section-light { background-color: #FFFFFF; }
   html.dark .section-light { background-color: #0D0D0D; }
-  .section-muted { background-color: #FBF7F3; }
+  .section-muted { background-color: #F7F7F7; }
   html.dark .section-muted { background-color: #111111; }
   .section-pad {
     padding-left: clamp(1rem, 5vw, 5rem);

@@ -65,7 +65,7 @@ const tappe = [
           class="card-solid overflow-hidden group reveal"
           :style="{ transitionDelay: (i % 6) * 60 + 'ms' }">
           <!-- City photo -->
-          <div class="relative h-36 overflow-hidden bg-stone-100 dark:bg-stone-800">
+          <div class="relative aspect-[16/10] overflow-hidden bg-stone-100 dark:bg-stone-800">
             <img :src="tappa.img" :alt="tappa.luogo" loading="lazy"
               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
             <div class="absolute inset-0 bg-gradient-to-t from-black/65 to-transparent"></div>

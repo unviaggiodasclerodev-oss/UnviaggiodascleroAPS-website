@@ -14,14 +14,11 @@ const faqs = [
   { q: "Posso far parte dell'Associazione?",
     a: "Stiamo lavorando per creare il tesseramento che ti permetterà di entrare a far parte di Un Viaggio da Sclero e ottenere dei benefici. Stay tuned!" },
 ]
-
-const spesOpen = ref(false)
-const sociOpen = ref(false)
 </script>
 
 <template>
   <!-- Statuto APS -->
-  <section class="section-light py-24 md:py-32">
+  <section class="section-muted py-24 md:py-32">
     <div class="section-pad">
       <div class="grid md:grid-cols-2 gap-16 items-start">
 
@@ -45,52 +42,24 @@ const sociOpen = ref(false)
           </a>
         </div>
 
-        <!-- Right: accordions — solid background, never transparent -->
-        <div class="space-y-4 reveal" style="transition-delay:0.15s">
-
-          <!-- Denominazione e spese -->
-          <div class="card-solid overflow-hidden">
-            <button @click="spesOpen = !spesOpen"
-              class="w-full flex items-center justify-between p-6 text-left gap-4 transition-colors"
-              :class="spesOpen ? 'accordion-open' : 'hover:bg-stone-50 dark:hover:bg-stone-800'">
-              <span class="text-stone-900 dark:text-white font-semibold text-sm">Denominazione e spese sostenute</span>
-              <svg :class="['w-5 h-5 text-accent shrink-0 transition-transform duration-300', spesOpen ? 'rotate-180' : '']"
-                fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-              </svg>
-            </button>
-            <Transition name="accordion">
-              <div v-if="spesOpen" class="border-t border-stone-100 dark:border-white/10">
-                <div class="px-6 py-5 space-y-4 text-stone-600 dark:text-stone-400 text-sm leading-relaxed">
-                  <p>Un Viaggio da Sclero – APS è un&#39;associazione di promozione sociale, indipendente e senza fini di lucro.</p>
-                  <p>Sosteniamo i nostri progetti attraverso quote associative, donazioni, contributi pubblici e privati, sponsorizzazioni e attività coerenti con le finalità dell&#39;associazione.</p>
-                  <p>Le cariche associative sono svolte principalmente in forma gratuita. Eventuali compensi o rimborsi, quando previsti, vengono riconosciuti in modo trasparente e nel rispetto della normativa vigente.</p>
-                  <p>L&#39;associazione promuove il cammino come strumento di resilienza, inclusione e consapevolezza. Attraverso progetti, eventi e collaborazioni, sostiene iniziative sociali, valorizza i territori e dà visibilità a temi legati alla disabilità e alle patologie invalidanti.</p>
-                </div>
-              </div>
-            </Transition>
+        <!-- Right: static info cards (no accordion) -->
+        <div class="space-y-5 reveal" style="transition-delay:0.15s">
+          <div class="card-solid p-7">
+            <h3 class="text-stone-900 dark:text-white font-semibold text-sm mb-4">Denominazione e spese sostenute</h3>
+            <div class="space-y-3 text-stone-600 dark:text-stone-400 text-sm leading-relaxed">
+              <p>Un Viaggio da Sclero – APS è un&#39;associazione di promozione sociale, indipendente e senza fini di lucro.</p>
+              <p>Sosteniamo i nostri progetti attraverso quote associative, donazioni, contributi pubblici e privati, sponsorizzazioni e attività coerenti con le finalità dell&#39;associazione.</p>
+              <p>Le cariche associative sono svolte principalmente in forma gratuita. Eventuali compensi o rimborsi, quando previsti, vengono riconosciuti in modo trasparente e nel rispetto della normativa vigente.</p>
+            </div>
           </div>
 
-          <!-- Soci ed Associati -->
-          <div class="card-solid overflow-hidden">
-            <button @click="sociOpen = !sociOpen"
-              class="w-full flex items-center justify-between p-6 text-left gap-4 transition-colors"
-              :class="sociOpen ? 'accordion-open' : 'hover:bg-stone-50 dark:hover:bg-stone-800'">
-              <span class="text-stone-900 dark:text-white font-semibold text-sm">Soci ed Associati</span>
-              <svg :class="['w-5 h-5 text-accent shrink-0 transition-transform duration-300', sociOpen ? 'rotate-180' : '']"
-                fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-              </svg>
-            </button>
-            <Transition name="accordion">
-              <div v-if="sociOpen" class="border-t border-stone-100 dark:border-white/10">
-                <div class="px-6 py-5 space-y-4 text-stone-600 dark:text-stone-400 text-sm leading-relaxed">
-                  <p>Chiunque condivida i valori e le finalità dell&#39;associazione può diventare parte di Un Viaggio da Sclero – APS.</p>
-                  <p>Essere soci significa partecipare alle attività, contribuire alle scelte dell&#39;associazione e far parte attivamente del suo percorso, con diritto di voto in assemblea.</p>
-                  <p>L&#39;adesione avviene tramite una semplice richiesta, valutata dal Consiglio Direttivo. Il rapporto associativo è basato su rispetto e partecipazione: può interrompersi in qualsiasi momento per scelta personale o, nei casi previsti, secondo quanto stabilito dallo statuto.</p>
-                </div>
-              </div>
-            </Transition>
+          <div class="card-solid p-7">
+            <h3 class="text-stone-900 dark:text-white font-semibold text-sm mb-4">Soci ed Associati</h3>
+            <div class="space-y-3 text-stone-600 dark:text-stone-400 text-sm leading-relaxed">
+              <p>Chiunque condivida i valori e le finalità dell&#39;associazione può diventare parte di Un Viaggio da Sclero – APS.</p>
+              <p>Essere soci significa partecipare alle attività, contribuire alle scelte dell&#39;associazione e far parte attivamente del suo percorso, con diritto di voto in assemblea.</p>
+              <p>L&#39;adesione avviene tramite una semplice richiesta, valutata dal Consiglio Direttivo.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -98,7 +67,7 @@ const sociOpen = ref(false)
   </section>
 
   <!-- Contatti -->
-  <section id="contatti" class="section-muted py-24 md:py-32">
+  <section id="contatti" class="section-light py-24 md:py-32">
     <div class="section-pad">
       <div class="grid md:grid-cols-2 gap-16 items-start">
 
@@ -187,7 +156,7 @@ const sociOpen = ref(false)
   </section>
 
   <!-- FAQ -->
-  <section id="faq" class="section-light py-24 md:py-32">
+  <section id="faq" class="section-muted py-24 md:py-32">
     <div class="section-pad">
       <div class="text-center mb-14 reveal">
         <p class="text-accent text-xs font-semibold tracking-widest uppercase mb-4">FAQ</p>

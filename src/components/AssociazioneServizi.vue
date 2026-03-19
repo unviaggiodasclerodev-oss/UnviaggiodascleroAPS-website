@@ -22,7 +22,7 @@ const servizi = [
 </script>
 
 <template>
-  <section id="associazione" class="section-muted py-24 md:py-32">
+  <section id="associazione" class="section-light py-24 md:py-32">
     <div class="section-pad">
 
       <!-- Associazione info -->
@@ -33,17 +33,14 @@ const servizi = [
           <p class="text-accent text-xs font-semibold tracking-widest uppercase mb-4">L&#39;Associazione APS</p>
           <h2 class="text-4xl md:text-5xl font-bold text-stone-900 dark:text-white leading-tight mb-8">
             Un Viaggio da Sclero diventa<br>
-            <span class="text-accent">Associazione di<br>Promozione Sociale</span>
+            <span class="text-accent">Associazione di Promozione Sociale</span>
           </h2>
           <div class="space-y-5 text-stone-700 dark:text-stone-300 leading-relaxed text-base">
             <p>
-              Un Viaggio da Sclero – Associazione di Promozione Sociale (APS) nasce per dare continuità
-              a un&#39;esperienza reale e trasformarla in un progetto collettivo, strutturato e accessibile.
-            </p>
-            <p>
-              Siamo un&#39;associazione <strong class="text-stone-900 dark:text-white font-semibold">indipendente e apolitica</strong>
-              che utilizza il cammino, il tempo e la presenza sui territori come strumenti di racconto,
-              consapevolezza e relazione.
+              <strong class="text-stone-900 dark:text-white font-semibold">Un Viaggio da Sclero – Associazione di Promozione Sociale</strong>
+              (APS) nasce per dare continuità a un&#39;esperienza reale e trasformarla in un progetto collettivo, strutturato e accessibile.
+              Siamo un&#39;associazione indipendente e apolitica che utilizza il cammino, il tempo e la
+              presenza sui territori come strumenti di racconto, consapevolezza e relazione.
             </p>
             <p>
               Crediamo che la disabilità, soprattutto quando è invisibile, non vada spiegata con slogan
@@ -52,51 +49,38 @@ const servizi = [
               e rispetto profondo per le persone e i luoghi coinvolti.
             </p>
             <p>
-              Un Viaggio da Sclero APS è iscritta al <strong class="text-stone-900 dark:text-white font-semibold">RUNTS</strong>,
+              <strong class="text-stone-900 dark:text-white font-semibold">Un Viaggio da Sclero APS</strong> è una associazione iscritta al
+              <strong class="text-stone-900 dark:text-white font-semibold">RUNTS</strong>,
               il Registro Unico Nazionale del Terzo Settore, l&#39;elenco ufficiale gestito dal Ministero
               del Lavoro che raccoglie e certifica tutte le realtà del Terzo Settore.
             </p>
-            <p>
+            <p class="text-stone-500 dark:text-stone-400">
               L&#39;associazione opera in modo trasparente, con una governance chiara e una visione di lungo
               periodo: costruire valore sociale attraverso percorsi reali, capaci di lasciare segni duraturi
               nel tempo, nei territori e nelle comunità.
             </p>
           </div>
-          <div class="mt-8 inline-flex items-center gap-3 bg-white dark:bg-white/5 border border-stone-200 dark:border-white/10 rounded-xl px-5 py-3 shadow-sm">
-            <svg class="w-5 h-5 text-accent shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
-            </svg>
-            <div>
-              <p class="text-stone-900 dark:text-white text-xs font-semibold">Iscritta al RUNTS</p>
-              <p class="text-stone-500 dark:text-stone-400 text-xs">Registro Unico Nazionale del Terzo Settore</p>
-            </div>
-          </div>
+          <p class="mt-10 text-stone-900 dark:text-white italic font-display text-lg">
+            Michele Agostinetto, presidente Un Viaggio da Sclero APS
+          </p>
         </div>
 
-        <!-- Photo + Quote column -->
-        <div class="flex flex-col gap-5 reveal" style="transition-delay:0.15s">
-          <div class="rounded-2xl overflow-hidden shadow-md">
-            <img src="/images/IMG_2440.JPG" alt="Michele Agostinetto"
-              class="w-full h-72 object-cover object-top" />
-          </div>
-          <div class="card-solid p-7">
-            <svg class="w-8 h-8 text-accent/40 mb-5" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
-            </svg>
-            <p class="text-stone-800 dark:text-stone-200 text-xl leading-relaxed italic mb-3">
-              Nessuno potrà mai dire che nella tua vita non avrai fatto abbastanza strada.
-            </p>
-            <p class="text-stone-500 dark:text-stone-400 text-sm italic mb-6">
-              Non hai bisogno di una scusa per aver voglia di stare meglio.
-            </p>
-            <div class="flex items-center gap-3 pt-4 border-t border-stone-100 dark:border-white/10">
-              <img src="/images/IMG_1301.JPG" alt="Michele Agostinetto"
-                class="w-10 h-10 rounded-full object-cover object-top border-2 border-accent/30" />
-              <div>
-                <p class="text-stone-900 dark:text-white font-semibold text-sm">Michele Agostinetto, presidente</p>
-                <p class="text-stone-500 dark:text-stone-400 text-xs">Un Viaggio da Sclero APS</p>
-              </div>
+        <!-- Photo + Quote overlay column -->
+        <div class="reveal" style="transition-delay:0.15s">
+          <div class="relative rounded-2xl overflow-hidden shadow-lg">
+            <img src="/images/IMG_1301.JPG" alt="Michele Agostinetto"
+              class="w-full aspect-[3/4] object-cover object-top" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-7 md:p-9">
+              <svg class="w-10 h-10 text-accent mb-4" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+              </svg>
+              <p class="text-white text-xl md:text-2xl leading-snug font-bold font-display mb-3">
+                Nessuno potrà mai dire che nella tua vita non avrai fatto abbastanza strada.
+              </p>
+              <p class="text-white/70 text-sm">
+                Non hai bisogno di una scusa per aver voglia di stare meglio
+              </p>
             </div>
           </div>
         </div>

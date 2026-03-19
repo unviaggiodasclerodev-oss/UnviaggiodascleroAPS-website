@@ -83,7 +83,7 @@ const doubled = [...mediaItems, ...mediaItems, ...mediaItems]
     </div>
 
     <!-- Media ticker -->
-    <div class="mt-20 border-t border-b border-stone-100 dark:border-white/10 py-6 overflow-hidden bg-stone-50 dark:bg-stone-900/20">
+    <div class="mt-20 border-t border-b border-stone-200 dark:border-white/10 py-6 overflow-hidden bg-stone-50 dark:bg-stone-900/20">
       <p class="text-center text-stone-400 text-[10px] tracking-widest uppercase mb-5">Come ci hanno raccontato</p>
       <div class="flex gap-14 animate-ticker whitespace-nowrap items-center px-6">
         <a v-for="(item, i) in doubled" :key="i" :href="item.href"
