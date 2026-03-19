@@ -110,7 +110,7 @@ const doubled = [...mediaItems, ...mediaItems]
             class="inline-flex items-center justify-center shrink-0 px-14 hover:opacity-100 transition-opacity duration-300"
             style="height: 156px; min-width: 360px">
             <img :src="item.logo" :alt="item.label"
-              class="media-logo" style="height:110px; width:300px; object-fit:contain" />
+              class="media-logo" style="height:110px; width:300px; object-fit:cover" />
           </a>
         </div>
       </div>
