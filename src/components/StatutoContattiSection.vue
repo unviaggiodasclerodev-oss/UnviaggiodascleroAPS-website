@@ -90,7 +90,7 @@ const faqs = [
   <section id="contatti" class="relative py-24 md:py-32 overflow-hidden">
     <!-- Background photo with overlay -->
     <div class="absolute inset-0 z-0">
-      <img src="/images/IMG_3212.JPG" alt="" class="w-full h-full object-cover" />
+      <img src="/images/spiaggia.jpg" alt="" class="w-full h-full object-cover" />
       <div class="absolute inset-0" style="background: linear-gradient(135deg, rgba(240,80,34,0.85) 0%, rgba(10,10,10,0.92) 60%)"></div>
     </div>
 

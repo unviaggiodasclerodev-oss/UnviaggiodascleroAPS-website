@@ -10,6 +10,7 @@ import AssociazioneServizi from './components/AssociazioneServizi.vue'
 import StatutoContattiSection from './components/StatutoContattiSection.vue'
 import FooterSection from './components/FooterSection.vue'
 import BackToTop from './components/BackToTop.vue'
+import JourneyLine from './components/JourneyLine.vue'
 
 useScrollReveal()
 </script>
@@ -24,12 +25,16 @@ useScrollReveal()
     <NavBar />
     <main id="main-content">
       <HeroSection />
-      <ChiSiamo />
-      <NumeriChiave />
-      <VideoSection />
-      <Viaggio2027 />
-      <AssociazioneServizi />
-      <StatutoContattiSection />
+      <!-- Journey line host: relative wrapper so the SVG line can span all sections -->
+      <div class="journey-host">
+        <JourneyLine />
+        <ChiSiamo />
+        <NumeriChiave />
+        <VideoSection />
+        <Viaggio2027 />
+        <AssociazioneServizi />
+        <StatutoContattiSection />
+      </div>
     </main>
     <FooterSection />
     <BackToTop />

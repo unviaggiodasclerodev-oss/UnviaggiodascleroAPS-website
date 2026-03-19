@@ -37,7 +37,7 @@ onMounted(() => {
     <div class="section-pad">
       <!-- Header with background photo accent -->
       <div class="relative rounded-2xl overflow-hidden mb-16 reveal">
-        <img src="/images/IMG_9624.JPG" alt="Il viaggio" class="absolute inset-0 w-full h-full object-cover opacity-20" />
+        <img src="/images/staystrog.jpg" alt="Il viaggio" class="absolute inset-0 w-full h-full object-cover opacity-20" />
         <div class="relative z-10 p-10 md:p-16">
           <span class="accent-bar"></span>
           <p class="text-xs font-semibold tracking-widest uppercase mb-4" style="color:#F05022">I numeri raccolti</p>
@@ -112,18 +112,8 @@ onMounted(() => {
           <!-- Badge side — Official Attempt badge -->
           <div class="flex items-center justify-center p-8 md:p-12 bg-white/5 md:border-l border-white/10 min-w-[200px]">
             <div class="flex flex-col items-center text-center">
-              <!-- Circle emblem -->
-              <div class="w-24 h-24 rounded-full flex items-center justify-center mb-4 relative"
-                style="background:#0C2B5E; border: 4px solid #fef700;">
-                <div class="absolute inset-1 rounded-full border border-white/30"></div>
-                <svg class="w-10 h-10 relative z-10" style="color:#fef700" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                </svg>
-              </div>
-              <p class="text-white font-bold text-xs tracking-[0.15em] uppercase leading-relaxed">
-                GUINNESS<br>WORLD RECORDS
-              </p>
-              <div class="mt-3 px-4 py-1.5 rounded-full" style="background:#fef700;">
+              <img src="/images/lg.png" alt="Guinness World Records" class="w-36 h-auto mb-4" style="filter: brightness(0) invert(1);" />
+              <div class="mt-2 px-4 py-1.5 rounded-full" style="background:#fef700;">
                 <p class="font-black text-xs tracking-[0.2em] uppercase" style="color:#0C2B5E">OFFICIAL ATTEMPT</p>
               </div>
             </div>

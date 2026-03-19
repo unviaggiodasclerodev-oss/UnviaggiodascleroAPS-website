@@ -14,9 +14,9 @@ function play() {
     <div class="section-pad">
       <div class="text-center mb-14 reveal">
         <span class="accent-bar accent-bar-center"></span>
-        <p class="text-xs font-semibold tracking-widest uppercase mb-4" style="color:#F05022">Il Viaggio</p>
-        <h2 class="text-4xl md:text-5xl font-bold tx mb-4">
-          Guarda il <span style="color:#fef700; -webkit-text-stroke: 1px #F05022;">racconto</span>
+        <p class="text-xs font-semibold tracking-widest uppercase mb-4" style="color:#F05022">Il Viaggio 2027</p>
+        <h2 class="text-4xl md:text-5xl font-bold font-display tx mb-4">
+          Guarda il <span style="color:#F05022">racconto</span>
         </h2>
         <p class="tx2 max-w-xl mx-auto leading-relaxed">
           Quattro mesi, 2.000 chilometri, una storia che continua.
@@ -31,7 +31,7 @@ function play() {
           <div v-if="!playing"
             class="absolute inset-0 z-10 flex flex-col items-center justify-center cursor-pointer"
             @click="play">
-            <img src="/images/IMG_7974.jpg" alt="Video thumbnail"
+            <img src="/images/staystrog.jpg" alt="Video thumbnail"
               class="absolute inset-0 w-full h-full object-cover opacity-60" />
             <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/20"></div>
             <!-- Play button -->
@@ -65,8 +65,8 @@ function play() {
             <p class="tx2 text-xs mt-1 uppercase tracking-wide font-semibold">Chilometri</p>
           </div>
           <div class="card-solid p-5 text-center">
-            <p class="text-3xl font-bold font-display" style="color:#F05022">2022</p>
-            <p class="tx2 text-xs mt-1 uppercase tracking-wide font-semibold">Il primo Viaggio</p>
+            <p class="text-3xl font-bold font-display" style="color:#F05022">2027</p>
+            <p class="tx2 text-xs mt-1 uppercase tracking-wide font-semibold">Il prossimo Viaggio</p>
           </div>
         </div>
       </div>

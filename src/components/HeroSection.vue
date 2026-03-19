@@ -14,7 +14,7 @@ function scrollTo(href) {
     <!-- Photo background -->
     <div class="absolute inset-0 z-0">
       <img
-        src="/images/IMG_7974.jpg"
+        src="/images/michele.JPG"
         alt="Michele Agostinetto cammina lungo l'Italia"
         class="w-full h-full object-cover object-center"
         loading="eager"
