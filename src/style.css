@@ -230,6 +230,11 @@ html.dark {
     position: relative;
     overflow-x: clip;   /* prevent horizontal scroll from the wide SVG     */
   }
+  /* Lift every direct section child above the SVG overlay (z-index 0)     */
+  .journey-host > section {
+    position: relative;
+    z-index: 1;
+  }
 
   /* Absolute layer that fills the host and holds the SVG                  */
   .journey-line-layer {

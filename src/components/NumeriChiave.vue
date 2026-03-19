@@ -37,7 +37,7 @@ onMounted(() => {
     <div class="section-pad">
       <!-- Header with background photo accent -->
       <div class="relative rounded-2xl overflow-hidden mb-16 reveal">
-        <img src="/images/staystrog.jpg" alt="Il viaggio" class="absolute inset-0 w-full h-full object-cover opacity-20" />
+        <img src="/images/panhina.JPG" alt="Il viaggio" class="absolute inset-0 w-full h-full object-cover object-top opacity-25" />
         <div class="relative z-10 p-10 md:p-16">
           <span class="accent-bar"></span>
           <p class="text-xs font-semibold tracking-widest uppercase mb-4" style="color:#F05022">I numeri raccolti</p>
