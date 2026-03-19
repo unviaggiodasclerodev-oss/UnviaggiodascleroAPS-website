@@ -54,7 +54,7 @@ const servizi = [
               il Registro Unico Nazionale del Terzo Settore, l&#39;elenco ufficiale gestito dal Ministero
               del Lavoro che raccoglie e certifica tutte le realtà del Terzo Settore.
             </p>
-            <p class="text-stone-500 dark:text-stone-400">
+            <p class="text-stone-600 dark:text-stone-400">
               L&#39;associazione opera in modo trasparente, con una governance chiara e una visione di lungo
               periodo: costruire valore sociale attraverso percorsi reali, capaci di lasciare segni duraturi
               nel tempo, nei territori e nelle comunità.

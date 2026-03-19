@@ -57,7 +57,7 @@ const tappe = [
         <h2 class="text-4xl md:text-5xl font-bold text-stone-900 dark:text-white mb-3">
           Qui è dove potremo incontrarci
         </h2>
-        <p class="text-stone-500 dark:text-stone-400">durante il 2027</p>
+        <p class="text-stone-600 dark:text-stone-400">durante il 2027</p>
       </div>
 
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -76,7 +76,7 @@ const tappe = [
           </div>
           <!-- Content -->
           <div class="p-4">
-            <p class="text-stone-400 dark:text-stone-500 text-xs mb-1">{{ tappa.data }}</p>
+            <p class="text-stone-500 dark:text-stone-500 text-xs mb-1">{{ tappa.data }}</p>
             <p class="text-stone-700 dark:text-stone-300 text-sm leading-snug">{{ tappa.desc }}</p>
           </div>
         </div>

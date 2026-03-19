@@ -122,7 +122,7 @@ const faqs = [
               </div>
               <div>
                 <p class="text-stone-900 dark:text-white font-semibold text-sm">Instagram</p>
-                <p class="text-stone-500 dark:text-stone-400 text-xs">APS Un Viaggio da Sclero</p>
+                <p class="text-stone-600 dark:text-stone-400 text-xs">APS Un Viaggio da Sclero</p>
               </div>
             </a>
             <a href="https://www.facebook.com/profile.php?id=61587496840130" target="_blank" rel="noopener"
@@ -134,7 +134,7 @@ const faqs = [
               </div>
               <div>
                 <p class="text-stone-900 dark:text-white font-semibold text-sm">Facebook</p>
-                <p class="text-stone-500 dark:text-stone-400 text-xs">APS Un Viaggio da Sclero</p>
+                <p class="text-stone-600 dark:text-stone-400 text-xs">APS Un Viaggio da Sclero</p>
               </div>
             </a>
             <a href="https://www.linkedin.com/in/un-viaggio-da-sclero-aps-8875bb3ab/" target="_blank" rel="noopener"
@@ -146,7 +146,7 @@ const faqs = [
               </div>
               <div>
                 <p class="text-stone-900 dark:text-white font-semibold text-sm">LinkedIn</p>
-                <p class="text-stone-500 dark:text-stone-400 text-xs">APS Un Viaggio da Sclero</p>
+                <p class="text-stone-600 dark:text-stone-400 text-xs">APS Un Viaggio da Sclero</p>
               </div>
             </a>
           </div>
