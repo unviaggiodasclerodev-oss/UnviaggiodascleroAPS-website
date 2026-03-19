@@ -55,8 +55,8 @@ html.dark {
 @layer utilities {
   .section-light { background-color: #FFFFFF; }
   html.dark .section-light { background-color: #0D0D0D; }
-  .section-muted { background-color: #F5F5F4; }
-  html.dark .section-muted { background-color: #111111; }
+  .section-muted { background-color: #FFFFFF; }
+  html.dark .section-muted { background-color: #0D0D0D; }
   .section-pad {
     padding-left: clamp(1.25rem, 5vw, 5rem);
     padding-right: clamp(1.25rem, 5vw, 5rem);

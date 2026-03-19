@@ -112,7 +112,7 @@ onMounted(() => {
           <!-- Badge side — Official Attempt badge -->
           <div class="flex items-center justify-center p-8 md:p-12 bg-white/5 md:border-l border-white/10 min-w-[200px]">
             <div class="flex flex-col items-center text-center">
-              <img src="/images/lg.png" alt="Guinness World Records" class="w-36 h-auto mb-4" style="filter: brightness(0) invert(1);" />
+              <img src="/images/logoworldguinness.png" alt="Guinness World Records" class="w-36 h-auto mb-4" style="filter: brightness(0) invert(1);" />
               <div class="mt-2 px-4 py-1.5 rounded-full" style="background:#fef700;">
                 <p class="font-black text-xs tracking-[0.2em] uppercase" style="color:#0C2B5E">OFFICIAL ATTEMPT</p>
               </div>

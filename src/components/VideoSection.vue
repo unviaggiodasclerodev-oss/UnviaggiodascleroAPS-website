@@ -16,7 +16,7 @@ function play() {
         <span class="accent-bar accent-bar-center"></span>
         <p class="text-xs font-semibold tracking-widest uppercase mb-4" style="color:#F05022">Il Viaggio 2027</p>
         <h2 class="text-4xl md:text-5xl font-bold font-display tx mb-4">
-          Guarda il <span style="color:#F05022">racconto</span>
+          Un'anteprima del <span style="color:#F05022">Viaggio 2027</span>
         </h2>
         <p class="tx2 max-w-xl mx-auto leading-relaxed">
           Quattro mesi, 2.000 chilometri, una storia che continua.
@@ -31,8 +31,8 @@ function play() {
           <div v-if="!playing"
             class="absolute inset-0 z-10 flex flex-col items-center justify-center cursor-pointer"
             @click="play">
-            <img src="/images/staystrog.jpg" alt="Video thumbnail"
-              class="absolute inset-0 w-full h-full object-cover opacity-60" />
+            <img src="/images/panhina.JPG" alt="Video thumbnail"
+              class="absolute inset-0 w-full h-full object-cover object-top opacity-70" />
             <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/20"></div>
             <!-- Play button -->
             <button class="relative z-10 w-24 h-24 rounded-full flex items-center justify-center shadow-2xl transition-transform duration-300 group-hover:scale-110"
