@@ -48,22 +48,29 @@ const servizi = [
           </div>
         </div>
 
-        <!-- Quote -->
-        <div class="bg-white dark:bg-white/5 border border-stone-200 dark:border-white/10 rounded-2xl p-8">
-          <svg class="w-10 h-10 text-accent/30 mb-6" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
-          </svg>
-          <p class="text-stone-700 dark:text-white/70 text-xl leading-relaxed italic mb-8">
-            Nessuno potrà mai dire che nella tua vita non avrai fatto abbastanza strada.
-          </p>
-          <p class="text-stone-400 dark:text-white/40 text-sm italic mb-6">
-            Non hai bisogno di una scusa per aver voglia di stare meglio.
-          </p>
-          <div class="flex items-center gap-4">
-            <div class="w-10 h-10 rounded-full bg-accent/20 border border-accent/30 flex items-center justify-center text-accent text-sm font-bold">MA</div>
-            <div>
-              <p class="text-stone-900 dark:text-white font-semibold text-sm">Michele Agostinetto</p>
-              <p class="text-stone-400 dark:text-white/40 text-xs">Presidente, Un Viaggio da Sclero APS</p>
+        <!-- Photo + Quote -->
+        <div class="flex flex-col gap-6 reveal">
+          <div class="overflow-hidden rounded-2xl">
+            <img src="/images/IMG_2440.JPG" alt="Michele Agostinetto col Papa"
+              class="w-full h-72 object-cover object-top hover:scale-105 transition-transform duration-700" />
+          </div>
+          <div class="bg-white dark:bg-white/5 border border-stone-200 dark:border-white/10 rounded-2xl p-8">
+            <svg class="w-10 h-10 text-accent/30 mb-6" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+            </svg>
+            <p class="text-stone-700 dark:text-white/70 text-xl leading-relaxed italic mb-8">
+              Nessuno potrà mai dire che nella tua vita non avrai fatto abbastanza strada.
+            </p>
+            <p class="text-stone-400 dark:text-white/40 text-sm italic mb-6">
+              Non hai bisogno di una scusa per aver voglia di stare meglio.
+            </p>
+            <div class="flex items-center gap-4">
+              <img src="/images/IMG_1301.JPG" alt="Michele Agostinetto"
+                class="w-10 h-10 rounded-full object-cover object-top border-2 border-accent/30" />
+              <div>
+                <p class="text-stone-900 dark:text-white font-semibold text-sm">Michele Agostinetto</p>
+                <p class="text-stone-400 dark:text-white/40 text-xs">Presidente, Un Viaggio da Sclero APS</p>
+              </div>
             </div>
           </div>
         </div>
