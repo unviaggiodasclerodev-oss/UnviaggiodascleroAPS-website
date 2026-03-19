@@ -1,0 +1,84 @@
+@import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap");
+
+/* Brand token – consente text-accent, bg-accent, border-accent in Tailwind v4 */
+@theme {
+  --color-accent: #E8701A;
+  --color-accent-foreground: #FFFFFF;
+}
+
+@layer base {
+  html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+  body {
+    font-family: Inter, system-ui, sans-serif;
+    background-color: #FFFFFF;
+    color: #1C1917;
+    font-size: clamp(15px, 1vw + 0.5rem, 17px);
+    line-height: 1.7;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  html.dark body { background-color: #0A0A0A; color: #F5F5F4; }
+  h1 { font-size: clamp(2.5rem, 6vw + 1rem, 5.5rem); line-height: 1.05; }
+  h2 { font-size: clamp(1.9rem, 3vw + 0.5rem, 3.25rem); line-height: 1.1; }
+  h3 { font-size: clamp(1.1rem, 1.5vw + 0.25rem, 1.4rem); line-height: 1.25; }
+  h1, h2, h3, h4 { font-family: "DM Serif Display", Georgia, serif; letter-spacing: -0.01em; }
+  a { transition: color 0.2s ease; }
+  * { -webkit-tap-highlight-color: transparent; }
+}
+
+@layer utilities {
+  .section-light { background-color: #FFFFFF; }
+  html.dark .section-light { background-color: #0A0A0A; }
+  .section-muted { background-color: #F5F0EB; }
+  html.dark .section-muted { background-color: #111111; }
+  .text-body { color: #1C1917; }
+  html.dark .text-body { color: #F5F5F4; }
+  .text-muted { color: #78716C; }
+  html.dark .text-muted { color: #A8A29E; }
+  .text-subtle { color: #A8A29E; }
+  html.dark .text-subtle { color: #78716C; }
+  .border-base { border-color: #E7E5E4; }
+  html.dark .border-base { border-color: rgba(255,255,255,0.1); }
+  .card-bg { background-color: #F5F0EB; border: 1px solid #E7E5E4; }
+  html.dark .card-bg { background-color: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); }
+  .section-pad { padding-left: 1.5rem; padding-right: 1.5rem; }
+
+  /* Card hover lift */
+  .card-lift {
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .card-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.10);
+  }
+  html.dark .card-lift:hover {
+    box-shadow: 0 12px 32px rgba(0,0,0,0.40);
+  }
+
+  /* Scroll reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (min-width: 768px)  { .section-pad { padding-left: 4rem;  padding-right: 4rem; } }
+@media (min-width: 1280px) { .section-pad { padding-left: 6rem;  padding-right: 6rem; } }
+
+@keyframes ticker {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-ticker { animation: ticker 35s linear infinite; }
+.animate-ticker:hover { animation-play-state: paused; }
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in-up { animation: fadeInUp 0.75s ease forwards; }
