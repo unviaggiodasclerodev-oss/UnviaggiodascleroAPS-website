@@ -31,8 +31,8 @@ function play() {
           <div v-if="!playing"
             class="absolute inset-0 z-10 flex flex-col items-center justify-center cursor-pointer"
             @click="play">
-            <img src="/images/panhina.JPG" alt="Video thumbnail"
-              class="absolute inset-0 w-full h-full object-cover object-top opacity-70" />
+            <img src="/images/spiaggia.jpg" alt="Video thumbnail"
+              class="absolute inset-0 w-full h-full object-cover object-center opacity-75" />
             <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/20"></div>
             <!-- Play button -->
             <button class="relative z-10 w-24 h-24 rounded-full flex items-center justify-center shadow-2xl transition-transform duration-300 group-hover:scale-110"
