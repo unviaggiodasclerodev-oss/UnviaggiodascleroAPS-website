@@ -35,12 +35,13 @@ onMounted(() => {
   <!-- I numeri raccolti -->
   <section ref="section" class="section-muted py-24 md:py-32">
     <div class="section-pad">
-      <div class="mb-14 reveal">
+      <div class="mb-16 reveal">
+        <span class="accent-bar"></span>
         <p class="text-accent text-xs font-semibold tracking-widest uppercase mb-4">I numeri raccolti</p>
-        <h2 class="text-4xl md:text-5xl font-bold text-stone-900 dark:text-white mb-5 max-w-2xl">
+        <h2 class="text-4xl md:text-5xl font-bold tx mb-5 max-w-2xl">
           Dal 2021 al 2026<br>siamo apparsi ovunque.
         </h2>
-        <p class="text-stone-600 dark:text-stone-400 max-w-2xl leading-relaxed">
+        <p class="tx2 max-w-2xl leading-relaxed">
           Il Viaggio da Sclero è stato su Rai, Sky, Tv locali, Testate giornalistiche Nazionali.
           Siamo stati ospiti a Talk e presentazioni, in scuole e università.
           Siamo fieri di riuscire a far risuonare ancora il Viaggio del 2022 —
@@ -50,12 +51,12 @@ onMounted(() => {
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
         <div v-for="(stat, i) in stats" :key="i"
-          class="card-solid p-7 transition-all duration-700"
+          class="card-solid card-accent-top p-7 transition-all duration-700"
           :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'"
-          :style="{ transitionDelay: i * 80 + 'ms' }">
-          <p class="text-5xl font-bold text-accent mb-1 font-display">{{ stat.value }}</p>
-          <p class="text-stone-900 dark:text-white font-semibold text-sm mb-3">{{ stat.unit }}</p>
-          <p class="text-stone-600 dark:text-stone-400 text-sm leading-relaxed">{{ stat.desc }}</p>
+          :style="{ transitionDelay: i * 100 + 'ms' }">
+          <p class="text-5xl font-bold text-accent mb-2 font-display">{{ stat.value }}</p>
+          <p class="tx font-semibold text-sm mb-3">{{ stat.unit }}</p>
+          <p class="tx3 text-sm leading-relaxed">{{ stat.desc }}</p>
         </div>
       </div>
     </div>
@@ -64,40 +65,41 @@ onMounted(() => {
   <!-- La chiave del nuovo Viaggio -->
   <section class="section-light py-24 md:py-32">
     <div class="section-pad">
-      <div class="text-center mb-14 reveal">
+      <div class="text-center mb-16 reveal">
+        <span class="accent-bar accent-bar-center"></span>
         <p class="text-accent text-xs font-semibold tracking-widest uppercase mb-4">La chiave del nuovo viaggio</p>
-        <h2 class="text-4xl md:text-5xl font-bold text-stone-900 dark:text-white">
+        <h2 class="text-4xl md:text-5xl font-bold tx max-w-3xl mx-auto">
           Il Viaggio è solo la partenza,<br>l&#39;obiettivo è la condivisione
         </h2>
       </div>
 
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-10">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-12">
         <div v-for="(item, i) in chiavi" :key="i"
-          class="card-warm p-7 reveal"
+          class="card-warm p-7 reveal group"
           :style="{ transitionDelay: i * 80 + 'ms' }">
-          <div class="w-10 h-10 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center mb-5">
+          <div class="w-11 h-11 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center mb-5 group-hover:bg-accent/20 group-hover:scale-110 transition-all duration-300">
             <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" :d="item.icon"/>
             </svg>
           </div>
-          <h3 class="text-stone-900 dark:text-white font-semibold text-sm mb-2">{{ item.title }}</h3>
-          <p class="text-stone-600 dark:text-stone-400 text-sm leading-relaxed">{{ item.desc }}</p>
+          <h3 class="tx font-semibold text-sm mb-2">{{ item.title }}</h3>
+          <p class="tx2 text-sm leading-relaxed">{{ item.desc }}</p>
         </div>
       </div>
 
       <!-- World Record banner -->
-      <div class="bg-accent/5 border border-accent/25 rounded-2xl p-7 flex flex-col md:flex-row items-center gap-6 reveal">
-        <div class="w-14 h-14 rounded-2xl bg-accent/10 border border-accent/30 flex items-center justify-center shrink-0">
-          <svg class="w-7 h-7 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <div class="bg-gradient-to-r from-accent/5 via-accent/8 to-accent/5 border border-accent/20 rounded-2xl p-8 md:p-10 flex flex-col md:flex-row items-center gap-7 reveal">
+        <div class="w-16 h-16 rounded-2xl bg-accent/10 border border-accent/25 flex items-center justify-center shrink-0">
+          <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
               d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
           </svg>
         </div>
         <div>
-          <p class="text-accent font-semibold text-sm tracking-wide uppercase mb-2">World Record</p>
-          <p class="text-stone-700 dark:text-stone-300 leading-relaxed">
+          <p class="text-accent font-bold text-sm tracking-wide uppercase mb-2">World Record</p>
+          <p class="tx2 leading-relaxed text-base">
             Per il cammino 2027 è stata inoltrata la richiesta ufficiale a
-            <strong class="text-stone-900 dark:text-white">Guinness World Records</strong>
+            <strong class="tx">Guinness World Records</strong>
             per il riconoscimento come il cammino più lungo mai percorso da una persona con sclerosi multipla.
           </p>
         </div>

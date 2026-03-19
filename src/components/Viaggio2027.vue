@@ -33,17 +33,21 @@ const tappe = [
   <!-- Viaggio 2027 -->
   <section id="viaggio-2027" class="section-muted py-24 md:py-32">
     <div class="section-pad">
-      <div class="text-center mb-14 reveal">
+      <div class="text-center mb-16 reveal">
+        <span class="accent-bar accent-bar-center"></span>
         <p class="text-accent text-xs font-semibold tracking-widest uppercase mb-4">Affinare ciò che è già successo nel 2022</p>
-        <h2 class="text-4xl md:text-5xl font-bold text-stone-900 dark:text-white mb-4">Un Viaggio da Sclero 2027</h2>
+        <h2 class="text-4xl md:text-5xl font-bold tx mb-4">Un Viaggio da Sclero 2027</h2>
       </div>
 
       <div class="grid md:grid-cols-2 gap-5">
         <div v-for="(item, i) in perche" :key="i"
-          class="card-solid p-7 reveal"
+          class="card-solid p-8 reveal group"
           :style="{ transitionDelay: i * 80 + 'ms' }">
-          <h3 class="text-stone-900 dark:text-white font-semibold mb-3">{{ item.title }}</h3>
-          <p class="text-stone-600 dark:text-stone-400 text-sm leading-relaxed">{{ item.desc }}</p>
+          <div class="flex items-center gap-3 mb-4">
+            <span class="w-8 h-8 rounded-full bg-accent/10 text-accent text-xs font-bold flex items-center justify-center shrink-0">{{ String(i + 1).padStart(2, '0') }}</span>
+            <h3 class="tx font-semibold">{{ item.title }}</h3>
+          </div>
+          <p class="tx2 text-sm leading-relaxed pl-11">{{ item.desc }}</p>
         </div>
       </div>
     </div>
@@ -52,32 +56,33 @@ const tappe = [
   <!-- Le Tappe -->
   <section class="section-light py-24 md:py-32">
     <div class="section-pad">
-      <div class="text-center mb-14 reveal">
+      <div class="text-center mb-16 reveal">
+        <span class="accent-bar accent-bar-center"></span>
         <p class="text-accent text-xs font-semibold tracking-widest uppercase mb-4">Le Tappe</p>
-        <h2 class="text-4xl md:text-5xl font-bold text-stone-900 dark:text-white mb-3">
+        <h2 class="text-4xl md:text-5xl font-bold tx mb-3">
           Qui è dove potremo incontrarci
         </h2>
-        <p class="text-stone-600 dark:text-stone-400">durante il 2027</p>
+        <p class="tx3 text-lg">durante il 2027</p>
       </div>
 
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
         <div v-for="(tappa, i) in tappe" :key="i"
           class="card-solid overflow-hidden group reveal"
           :style="{ transitionDelay: (i % 6) * 60 + 'ms' }">
           <!-- City photo -->
-          <div class="relative aspect-[16/10] overflow-hidden bg-stone-100 dark:bg-stone-800">
+          <div class="relative aspect-[16/10] overflow-hidden bg-muted">
             <img :src="tappa.img" :alt="tappa.luogo" loading="lazy"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/65 to-transparent"></div>
-            <span class="absolute bottom-2 left-3 text-white font-bold text-sm tracking-wide font-display">{{ tappa.luogo }}</span>
-            <span class="absolute top-2 right-2 bg-accent text-white text-[10px] font-bold px-2 py-0.5 rounded-full">
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+            <span class="absolute bottom-3 left-4 text-white font-bold text-base tracking-wide font-display drop-shadow-md">{{ tappa.luogo }}</span>
+            <span class="absolute top-3 right-3 bg-accent/90 backdrop-blur-sm text-white text-[10px] font-bold px-2.5 py-1 rounded-full shadow-sm">
               {{ String(i + 1).padStart(2, '0') }}
             </span>
           </div>
           <!-- Content -->
-          <div class="p-4">
-            <p class="text-stone-500 dark:text-stone-500 text-xs mb-1">{{ tappa.data }}</p>
-            <p class="text-stone-700 dark:text-stone-300 text-sm leading-snug">{{ tappa.desc }}</p>
+          <div class="p-5">
+            <p class="text-accent font-medium text-xs mb-1.5 tracking-wide">{{ tappa.data }}</p>
+            <p class="tx2 text-sm leading-snug">{{ tappa.desc }}</p>
           </div>
         </div>
       </div>

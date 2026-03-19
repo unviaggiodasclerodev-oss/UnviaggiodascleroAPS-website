@@ -26,18 +26,19 @@ const servizi = [
     <div class="section-pad">
 
       <!-- Associazione info -->
-      <div class="grid md:grid-cols-2 gap-16 items-start mb-24">
+      <div class="grid md:grid-cols-2 gap-16 items-start mb-28">
 
         <!-- Text column -->
         <div class="reveal">
+          <span class="accent-bar"></span>
           <p class="text-accent text-xs font-semibold tracking-widest uppercase mb-4">L&#39;Associazione APS</p>
-          <h2 class="text-4xl md:text-5xl font-bold text-stone-900 dark:text-white leading-tight mb-8">
+          <h2 class="text-4xl md:text-5xl font-bold tx leading-tight mb-8">
             Un Viaggio da Sclero diventa<br>
             <span class="text-accent">Associazione di Promozione Sociale</span>
           </h2>
-          <div class="space-y-5 text-stone-700 dark:text-stone-300 leading-relaxed text-base">
+          <div class="space-y-5 tx2 leading-relaxed text-base">
             <p>
-              <strong class="text-stone-900 dark:text-white font-semibold">Un Viaggio da Sclero – Associazione di Promozione Sociale</strong>
+              <strong class="tx font-semibold">Un Viaggio da Sclero – Associazione di Promozione Sociale</strong>
               (APS) nasce per dare continuità a un&#39;esperienza reale e trasformarla in un progetto collettivo, strutturato e accessibile.
               Siamo un&#39;associazione indipendente e apolitica che utilizza il cammino, il tempo e la
               presenza sui territori come strumenti di racconto, consapevolezza e relazione.
@@ -49,36 +50,38 @@ const servizi = [
               e rispetto profondo per le persone e i luoghi coinvolti.
             </p>
             <p>
-              <strong class="text-stone-900 dark:text-white font-semibold">Un Viaggio da Sclero APS</strong> è una associazione iscritta al
-              <strong class="text-stone-900 dark:text-white font-semibold">RUNTS</strong>,
+              <strong class="tx font-semibold">Un Viaggio da Sclero APS</strong> è una associazione iscritta al
+              <strong class="tx font-semibold">RUNTS</strong>,
               il Registro Unico Nazionale del Terzo Settore, l&#39;elenco ufficiale gestito dal Ministero
               del Lavoro che raccoglie e certifica tutte le realtà del Terzo Settore.
             </p>
-            <p class="text-stone-600 dark:text-stone-400">
+            <p class="tx3">
               L&#39;associazione opera in modo trasparente, con una governance chiara e una visione di lungo
               periodo: costruire valore sociale attraverso percorsi reali, capaci di lasciare segni duraturi
               nel tempo, nei territori e nelle comunità.
             </p>
           </div>
-          <p class="mt-10 text-stone-900 dark:text-white italic font-display text-lg">
-            Michele Agostinetto, presidente Un Viaggio da Sclero APS
-          </p>
+          <div class="mt-10 pt-8 border-t edge">
+            <p class="tx italic font-display text-lg leading-relaxed">
+              Michele Agostinetto, presidente Un Viaggio da Sclero APS
+            </p>
+          </div>
         </div>
 
         <!-- Photo + Quote overlay column -->
         <div class="reveal" style="transition-delay:0.15s">
-          <div class="relative rounded-2xl overflow-hidden shadow-lg">
+          <div class="relative rounded-2xl overflow-hidden shadow-xl">
             <img src="/images/IMG_1301.JPG" alt="Michele Agostinetto"
               class="w-full aspect-[3/4] object-cover object-top" />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
-            <div class="absolute bottom-0 left-0 right-0 p-7 md:p-9">
-              <svg class="w-10 h-10 text-accent mb-4" fill="currentColor" viewBox="0 0 24 24">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-transparent"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-8 md:p-10">
+              <svg class="w-10 h-10 text-accent/80 mb-4" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
               </svg>
               <p class="text-white text-xl md:text-2xl leading-snug font-bold font-display mb-3">
                 Nessuno potrà mai dire che nella tua vita non avrai fatto abbastanza strada.
               </p>
-              <p class="text-white/70 text-sm">
+              <p class="text-white/60 text-sm">
                 Non hai bisogno di una scusa per aver voglia di stare meglio
               </p>
             </div>
@@ -86,25 +89,29 @@ const servizi = [
         </div>
       </div>
 
+      <!-- Section divider -->
+      <div class="section-divider mb-20"></div>
+
       <!-- Servizi -->
-      <div class="border-t border-stone-200 dark:border-white/10 pt-20">
-        <div class="text-center mb-12 reveal">
+      <div>
+        <div class="text-center mb-14 reveal">
+          <span class="accent-bar accent-bar-center"></span>
           <p class="text-accent text-xs font-semibold tracking-widest uppercase mb-4">Cosa facciamo per te</p>
-          <h2 class="text-4xl font-bold text-stone-900 dark:text-white">
+          <h2 class="text-4xl font-bold tx max-w-2xl mx-auto">
             Vogliamo farti vivere l&#39;esperienza<br>che tutti dovrebbero provare
           </h2>
         </div>
-        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           <div v-for="(item, i) in servizi" :key="i"
-            class="card-solid p-6 group reveal"
+            class="card-solid p-7 group reveal"
             :style="{ transitionDelay: (i % 3) * 80 + 'ms' }">
-            <div class="w-10 h-10 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center mb-4 group-hover:bg-accent/20 transition-colors">
-              <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="w-11 h-11 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center mb-5 group-hover:bg-accent group-hover:border-accent group-hover:scale-110 transition-all duration-300">
+              <svg class="w-5 h-5 text-accent group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" :d="item.icon"/>
               </svg>
             </div>
-            <h3 class="text-stone-900 dark:text-white font-semibold text-sm mb-2">{{ item.title }}</h3>
-            <p class="text-stone-600 dark:text-stone-400 text-sm leading-relaxed">{{ item.desc }}</p>
+            <h3 class="tx font-semibold text-sm mb-2">{{ item.title }}</h3>
+            <p class="tx2 text-sm leading-relaxed">{{ item.desc }}</p>
           </div>
         </div>
       </div>
