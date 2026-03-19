@@ -25,7 +25,7 @@ const servizi = [
   <section id="associazione" class="relative py-24 md:py-32 overflow-hidden">
     <!-- Faint photo background -->
     <div class="absolute inset-0 z-0">
-      <img src="/images/staystrog.jpg" alt="" class="w-full h-full object-cover opacity-20" />
+      <img src="/images/cammin.jpg" alt="" class="w-full h-full object-cover opacity-18" />
       <div class="absolute inset-0 section-light opacity-80"></div>
     </div>
     <div class="relative z-10 section-pad">

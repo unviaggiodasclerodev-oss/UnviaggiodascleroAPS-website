@@ -11,14 +11,14 @@ const mediaItems = [
   { label: 'TV2000',               logo: '/emittenti/tv2000.png',        href: '#' },
   { label: 'Rai',                  logo: '/emittenti/rai.png',           href: '#' },
 ]
-const doubled = [...mediaItems, ...mediaItems, ...mediaItems]
+const doubled = [...mediaItems, ...mediaItems]
 </script>
 
 <template>
   <section id="chi-siamo" class="relative py-24 md:py-32 overflow-hidden">
     <!-- Background photo -->
     <div class="absolute inset-0 z-0">
-      <img src="/images/cammin.jpg" alt="" class="w-full h-full object-cover object-center" />
+      <img src="/images/lumaca.JPG" alt="" class="w-full h-full object-cover object-center" />
       <div class="absolute inset-0 bg-overlay backdrop-blur-sm"></div>
     </div>
 
@@ -104,15 +104,13 @@ const doubled = [...mediaItems, ...mediaItems, ...mediaItems]
         <p class="text-center tx3 text-xs tracking-[0.15em] uppercase mb-8 font-semibold">Come ci hanno raccontato</p>
       </div>
       <div class="overflow-hidden">
-        <div class="flex gap-20 animate-ticker whitespace-nowrap items-center px-8">
+        <div class="flex animate-ticker" style="width: max-content">
           <a v-for="(item, i) in doubled" :key="i" :href="item.href"
             target="_blank" rel="noopener"
-            class="inline-flex items-center shrink-0 opacity-60 hover:opacity-100 transition-opacity duration-300">
+            class="inline-flex items-center justify-center shrink-0 px-10 hover:opacity-100 transition-opacity duration-300"
+            style="height: 56px">
             <img :src="item.logo" :alt="item.label"
-              class="h-14 w-auto object-contain"
-              style="filter: grayscale(100%) contrast(1.2);"
-              @mouseover="e => e.target.style.filter = 'grayscale(0%)'"
-              @mouseleave="e => e.target.style.filter = 'grayscale(100%) contrast(1.2)'" />
+              class="media-logo h-9 w-32 object-contain" />
           </a>
         </div>
       </div>

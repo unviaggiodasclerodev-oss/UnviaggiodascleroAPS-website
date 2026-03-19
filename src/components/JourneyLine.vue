@@ -99,38 +99,38 @@ function connX(p)  { return p.x + (lx(p) - p.x) * 0.45 }
       </defs>
 
       <!-- Soft glow behind dots line -->
-      <path :d="pathD" fill="none" stroke="#F05022" stroke-width="12"
+      <path :d="pathD" fill="none" stroke="#F05022" stroke-width="10"
         stroke-dasharray="3 14" stroke-linecap="round"
-        opacity="0.07" mask="url(#jl-mask)" />
+        opacity="0.05" mask="url(#jl-mask)" />
 
       <!-- Main dotted line -->
       <path :d="pathD" fill="none" stroke="#F05022" stroke-width="2"
         stroke-dasharray="3 14" stroke-linecap="round"
-        opacity="0.45" mask="url(#jl-mask)" />
+        opacity="0.36" mask="url(#jl-mask)" />
 
       <!-- Tappa markers + edge labels -->
       <g v-for="(p, i) in tappePoints" :key="i">
         <!-- Outer pulse ring -->
         <circle :cx="p.x" :cy="p.y" r="13" fill="none"
-          stroke="#F05022" stroke-width="0.7" opacity="0.18" />
+          stroke="#F05022" stroke-width="0.7" opacity="0.13" />
         <!-- Inner ring -->
         <circle :cx="p.x" :cy="p.y" r="6.5" fill="none"
-          stroke="#F05022" stroke-width="1.5" opacity="0.50" />
+          stroke="#F05022" stroke-width="1.5" opacity="0.40" />
         <!-- Filled dot -->
-        <circle :cx="p.x" :cy="p.y" r="3.5" fill="#F05022" opacity="0.65" />
+        <circle :cx="p.x" :cy="p.y" r="3.5" fill="#F05022" opacity="0.55" />
 
         <!-- Short dashed connector from dot to the label at the edge -->
         <line :x1="p.x" :y1="p.y" :x2="connX(p)" :y2="p.y"
           stroke="#F05022" stroke-width="0.7"
-          stroke-dasharray="2 4" opacity="0.30" />
+          stroke-dasharray="2 4" opacity="0.20" />
 
         <!-- City name — in the viewport margin area -->
         <text
           :x="lx(p)" :y="p.y - 5"
           :text-anchor="anchor(p)"
           font-family="'Barlow Condensed', sans-serif"
-          font-size="10" font-weight="700" letter-spacing="2"
-          fill="#F05022" opacity="0.40"
+          font-size="9" font-weight="700" letter-spacing="2"
+          fill="#F05022" opacity="0.28"
         >{{ p.name.toUpperCase() }}</text>
 
         <!-- Tappa number -->
@@ -139,7 +139,7 @@ function connX(p)  { return p.x + (lx(p) - p.x) * 0.45 }
           :text-anchor="anchor(p)"
           font-family="'Barlow Condensed', sans-serif"
           font-size="8" letter-spacing="1"
-          fill="#F05022" opacity="0.25"
+          fill="#F05022" opacity="0.18"
         >{{ p.idx + 1 }} / 15</text>
       </g>
     </svg>

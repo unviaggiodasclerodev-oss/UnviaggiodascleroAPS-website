@@ -41,7 +41,7 @@ function scrollTo(href) {
       :style="{ width: scrollProgress + '%' }" />
     <div class="section-pad flex items-center justify-between">
       <a href="#hero" @click.prevent="scrollTo('#hero')">
-        <img :src="(!isScrolled || isDark) ? '/logo.png' : '/logo-light.jpg'" alt="Un Viaggio da Sclero APS" class="h-14 w-auto object-contain" />
+        <img :src="(!isScrolled || isDark) ? '/logo.png' : '/logo-light.jpg'" alt="Un Viaggio da Sclero APS" class="h-20 w-auto object-contain" />
       </a>
 
       <nav class="hidden md:flex items-center gap-8">
