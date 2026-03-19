@@ -26,7 +26,7 @@ const servizi = [
     <div class="section-pad">
 
       <!-- Associazione info -->
-      <div class="grid md:grid-cols-2 gap-16 items-start mb-28">
+      <div class="grid md:grid-cols-2 gap-16 items-center mb-28">
 
         <!-- Text column -->
         <div class="reveal">
@@ -94,23 +94,23 @@ const servizi = [
 
       <!-- Servizi -->
       <div>
-        <div class="text-center mb-14 reveal">
-          <span class="accent-bar accent-bar-center"></span>
-          <p class="text-accent text-xs font-semibold tracking-widest uppercase mb-4">Cosa facciamo per te</p>
-          <h2 class="text-4xl font-bold tx max-w-2xl mx-auto">
-            Vogliamo farti vivere l&#39;esperienza<br>che tutti dovrebbero provare
+        <div class="text-center mb-16 reveal">
+          <p class="tx font-semibold text-sm tracking-wide mb-5">Cosa facciamo per te</p>
+          <h2 class="text-4xl md:text-5xl font-bold max-w-3xl mx-auto leading-tight">
+            <span class="text-accent">Vogliamo farti</span> <span class="tx">vivere l&#39;esperienza</span><br>
+            <span class="tx">che tutti</span> <span class="text-accent">dovrebbero provare</span>
           </h2>
         </div>
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           <div v-for="(item, i) in servizi" :key="i"
-            class="card-solid p-7 group reveal"
+            class="card-solid p-8 md:p-10 group reveal"
             :style="{ transitionDelay: (i % 3) * 80 + 'ms' }">
-            <div class="w-11 h-11 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center mb-5 group-hover:bg-accent group-hover:border-accent group-hover:scale-110 transition-all duration-300">
-              <svg class="w-5 h-5 text-accent group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" :d="item.icon"/>
+            <div class="mb-8">
+              <svg class="w-10 h-10 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :d="item.icon"/>
               </svg>
             </div>
-            <h3 class="tx font-semibold text-sm mb-2">{{ item.title }}</h3>
+            <h3 class="tx font-bold text-base mb-3">{{ item.title }}</h3>
             <p class="tx2 text-sm leading-relaxed">{{ item.desc }}</p>
           </div>
         </div>

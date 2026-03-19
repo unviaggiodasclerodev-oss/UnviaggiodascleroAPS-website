@@ -18,12 +18,12 @@ const doubled = [...mediaItems, ...mediaItems, ...mediaItems]
   <section id="chi-siamo" class="relative py-24 md:py-32 overflow-hidden">
     <!-- Background photo -->
     <div class="absolute inset-0 z-0">
-      <img src="/images/foto prova.png" alt="" class="w-full h-full object-cover" />
+      <img src="/images/IMG_2751.JPG" alt="" class="w-full h-full object-cover" />
       <div class="absolute inset-0 bg-overlay backdrop-blur-sm"></div>
     </div>
 
     <div class="relative z-10 section-pad">
-      <div class="grid md:grid-cols-2 gap-16 items-start">
+      <div class="grid md:grid-cols-2 gap-16 items-center">
 
         <!-- Text -->
         <div class="reveal">
@@ -98,18 +98,23 @@ const doubled = [...mediaItems, ...mediaItems, ...mediaItems]
     </div>  <!-- end .section-pad -->
 
     <!-- Media ticker -->
-    <div class="relative z-10 mt-24 py-8 overflow-hidden bg-overlay-lt backdrop-blur-sm">
-      <p class="text-center tx3 text-[10px] tracking-[0.2em] uppercase mb-6 font-medium">Come ci hanno raccontato</p>
-      <div class="flex gap-16 animate-ticker whitespace-nowrap items-center px-6">
-        <a v-for="(item, i) in doubled" :key="i" :href="item.href"
-          target="_blank" rel="noopener"
-          class="inline-flex items-center shrink-0 opacity-40 hover:opacity-100 transition-opacity duration-300">
-          <img :src="item.logo" :alt="item.label"
-            class="h-10 w-auto object-contain"
-            style="filter: grayscale(100%);"
-            @mouseover="e => e.target.style.filter = 'grayscale(0%)'"
-            @mouseleave="e => e.target.style.filter = 'grayscale(100%)'" />
-        </a>
+    <!-- Media logos — bottom of section, clearly visible in both themes -->
+    <div class="relative z-10 mt-20 pt-12 pb-4">
+      <div class="section-pad">
+        <p class="text-center tx3 text-xs tracking-[0.15em] uppercase mb-8 font-semibold">Come ci hanno raccontato</p>
+      </div>
+      <div class="overflow-hidden">
+        <div class="flex gap-20 animate-ticker whitespace-nowrap items-center px-8">
+          <a v-for="(item, i) in doubled" :key="i" :href="item.href"
+            target="_blank" rel="noopener"
+            class="inline-flex items-center shrink-0 opacity-60 hover:opacity-100 transition-opacity duration-300">
+            <img :src="item.logo" :alt="item.label"
+              class="h-14 w-auto object-contain"
+              style="filter: grayscale(100%) contrast(1.2);"
+              @mouseover="e => e.target.style.filter = 'grayscale(0%)'"
+              @mouseleave="e => e.target.style.filter = 'grayscale(100%) contrast(1.2)'" />
+          </a>
+        </div>
       </div>
     </div>
   </section>

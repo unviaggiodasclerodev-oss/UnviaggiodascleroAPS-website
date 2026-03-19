@@ -35,18 +35,20 @@ onMounted(() => {
   <!-- I numeri raccolti -->
   <section ref="section" class="section-muted py-24 md:py-32">
     <div class="section-pad">
-      <div class="mb-16 reveal">
-        <span class="accent-bar"></span>
-        <p class="text-accent text-xs font-semibold tracking-widest uppercase mb-4">I numeri raccolti</p>
-        <h2 class="text-4xl md:text-5xl font-bold tx mb-5 max-w-2xl">
-          Dal 2021 al 2026<br>siamo apparsi ovunque.
-        </h2>
-        <p class="tx2 max-w-2xl leading-relaxed">
-          Il Viaggio da Sclero è stato su Rai, Sky, Tv locali, Testate giornalistiche Nazionali.
-          Siamo stati ospiti a Talk e presentazioni, in scuole e università.
-          Siamo fieri di riuscire a far risuonare ancora il Viaggio del 2022 —
-          che ha dimostrato così fortemente cosa sia realmente la voglia di vivere.
-        </p>
+      <!-- Header with background photo accent -->
+      <div class="relative rounded-2xl overflow-hidden mb-16 reveal">
+        <img src="/images/IMG_9624.JPG" alt="Il viaggio" class="absolute inset-0 w-full h-full object-cover opacity-20" />
+        <div class="relative z-10 p-10 md:p-16">
+          <span class="accent-bar"></span>
+          <p class="text-xs font-semibold tracking-widest uppercase mb-4" style="color:#F05022">I numeri raccolti</p>
+          <h2 class="text-4xl md:text-5xl font-bold tx mb-5 max-w-2xl">
+            Dal 2021 al 2026<br>siamo apparsi ovunque.
+          </h2>
+          <p class="tx2 max-w-2xl leading-relaxed">
+            Il Viaggio da Sclero è stato su Rai, Sky, Tv locali, Testate giornalistiche Nazionali.
+            Siamo stati ospiti a Talk e presentazioni, in scuole e università.
+          </p>
+        </div>
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -54,8 +56,8 @@ onMounted(() => {
           class="card-solid card-accent-top p-7 transition-all duration-700"
           :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'"
           :style="{ transitionDelay: i * 100 + 'ms' }">
-          <p class="text-5xl font-bold text-accent mb-2 font-display">{{ stat.value }}</p>
-          <p class="tx font-semibold text-sm mb-3">{{ stat.unit }}</p>
+          <p class="text-5xl font-bold mb-2 font-display" style="color:#F05022">{{ stat.value }}</p>
+          <p class="tx font-semibold text-sm mb-3 uppercase tracking-wide">{{ stat.unit }}</p>
           <p class="tx3 text-sm leading-relaxed">{{ stat.desc }}</p>
         </div>
       </div>
@@ -67,7 +69,7 @@ onMounted(() => {
     <div class="section-pad">
       <div class="text-center mb-16 reveal">
         <span class="accent-bar accent-bar-center"></span>
-        <p class="text-accent text-xs font-semibold tracking-widest uppercase mb-4">La chiave del nuovo viaggio</p>
+        <p class="text-xs font-semibold tracking-widest uppercase mb-4" style="color:#F05022">La chiave del nuovo viaggio</p>
         <h2 class="text-4xl md:text-5xl font-bold tx max-w-3xl mx-auto">
           Il Viaggio è solo la partenza,<br>l&#39;obiettivo è la condivisione
         </h2>
@@ -77,33 +79,58 @@ onMounted(() => {
         <div v-for="(item, i) in chiavi" :key="i"
           class="card-warm p-7 reveal group"
           :style="{ transitionDelay: i * 80 + 'ms' }">
-          <div class="w-11 h-11 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center mb-5 group-hover:bg-accent/20 group-hover:scale-110 transition-all duration-300">
-            <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="w-11 h-11 rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-all duration-300"
+            style="background:rgba(240,80,34,0.12); border:1px solid rgba(240,80,34,0.25);">
+            <svg class="w-5 h-5" style="color:#F05022" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" :d="item.icon"/>
             </svg>
           </div>
-          <h3 class="tx font-semibold text-sm mb-2">{{ item.title }}</h3>
+          <h3 class="tx font-bold text-sm mb-2 uppercase tracking-wide">{{ item.title }}</h3>
           <p class="tx2 text-sm leading-relaxed">{{ item.desc }}</p>
         </div>
       </div>
 
-      <!-- World Record banner -->
-      <div class="bg-gradient-to-r from-accent/5 via-accent/8 to-accent/5 border border-accent/20 rounded-2xl p-8 md:p-10 flex flex-col md:flex-row items-center gap-7 reveal">
-        <div class="w-16 h-16 rounded-2xl bg-accent/10 border border-accent/25 flex items-center justify-center shrink-0">
-          <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
-          </svg>
-        </div>
-        <div>
-          <p class="text-accent font-bold text-sm tracking-wide uppercase mb-2">World Record</p>
-          <p class="tx2 leading-relaxed text-base">
-            Per il cammino 2027 è stata inoltrata la richiesta ufficiale a
-            <strong class="tx">Guinness World Records</strong>
-            per il riconoscimento come il cammino più lungo mai percorso da una persona con sclerosi multipla.
-          </p>
+      <!-- ── Guinness World Record banner ────────────────────────────────── -->
+      <div class="reveal rounded-2xl overflow-hidden" style="background: linear-gradient(135deg, #0C2B5E 0%, #0d3572 60%, #0C2B5E 100%);">
+        <div class="grid md:grid-cols-[1fr_auto] items-center gap-0">
+          <!-- Text side -->
+          <div class="p-8 md:p-12">
+            <div class="flex items-center gap-3 mb-5">
+              <span class="text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-full"
+                style="background:#fef700; color:#0C2B5E;">World Record</span>
+            </div>
+            <h3 class="text-white text-2xl md:text-3xl font-bold font-display uppercase leading-tight mb-4">
+              Official Attempt —<br>
+              <span style="color:#fef700">Guinness World Records</span>
+            </h3>
+            <p class="text-white/75 leading-relaxed max-w-xl">
+              Per il cammino 2027 è stata inoltrata la richiesta ufficiale a
+              <strong class="text-white">Guinness World Records</strong>
+              per il riconoscimento come il cammino più lungo mai percorso da una persona con sclerosi multipla.
+            </p>
+          </div>
+          <!-- Badge side — Official Attempt badge -->
+          <div class="flex items-center justify-center p-8 md:p-12 bg-white/5 md:border-l border-white/10 min-w-[200px]">
+            <div class="flex flex-col items-center text-center">
+              <!-- Circle emblem -->
+              <div class="w-24 h-24 rounded-full flex items-center justify-center mb-4 relative"
+                style="background:#0C2B5E; border: 4px solid #fef700;">
+                <div class="absolute inset-1 rounded-full border border-white/30"></div>
+                <svg class="w-10 h-10 relative z-10" style="color:#fef700" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+              </div>
+              <p class="text-white font-bold text-xs tracking-[0.15em] uppercase leading-relaxed">
+                GUINNESS<br>WORLD RECORDS
+              </p>
+              <div class="mt-3 px-4 py-1.5 rounded-full" style="background:#fef700;">
+                <p class="font-black text-xs tracking-[0.2em] uppercase" style="color:#0C2B5E">OFFICIAL ATTEMPT</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+
     </div>
   </section>
 </template>

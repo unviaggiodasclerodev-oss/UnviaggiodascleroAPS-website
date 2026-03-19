@@ -20,7 +20,7 @@ const faqs = [
   <!-- Statuto APS -->
   <section class="section-muted py-24 md:py-32">
     <div class="section-pad">
-      <div class="grid md:grid-cols-2 gap-16 items-start">
+      <div class="grid md:grid-cols-2 gap-16 items-center">
 
         <!-- Left: heading + download -->
         <div class="reveal">
@@ -85,7 +85,7 @@ const faqs = [
   <!-- Contatti -->
   <section id="contatti" class="section-light py-24 md:py-32">
     <div class="section-pad">
-      <div class="grid md:grid-cols-2 gap-16 items-start">
+      <div class="grid md:grid-cols-2 gap-16 items-center">
 
         <!-- Left: contact details -->
         <div class="reveal">
