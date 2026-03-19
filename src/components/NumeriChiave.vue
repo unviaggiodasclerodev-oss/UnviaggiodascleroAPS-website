@@ -53,9 +53,9 @@ onMounted(() => {
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
         <div v-for="(stat, i) in stats" :key="i"
-          class="card-solid card-accent-top p-7 transition-all duration-700"
-          :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'"
-          :style="{ transitionDelay: i * 100 + 'ms' }">
+          class="card-solid card-accent-top p-7 transition-all duration-[800ms] ease-[cubic-bezier(.4,0,.2,1)]"
+          :class="visible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-6 scale-[0.96]'"
+          :style="{ transitionDelay: i * 110 + 'ms' }">
           <p class="text-5xl font-bold mb-2 font-display" style="color:#F05022">{{ stat.value }}</p>
           <p class="tx font-semibold text-sm mb-3 uppercase tracking-wide">{{ stat.unit }}</p>
           <p class="tx3 text-sm leading-relaxed">{{ stat.desc }}</p>
@@ -77,8 +77,8 @@ onMounted(() => {
 
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-12">
         <div v-for="(item, i) in chiavi" :key="i"
-          class="card-warm p-7 reveal group"
-          :style="{ transitionDelay: i * 80 + 'ms' }">
+          class="card-warm p-7 reveal-scale group"
+          :style="{ transitionDelay: i * 90 + 'ms' }">
           <div class="w-11 h-11 rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-all duration-300"
             style="background:rgba(240,80,34,0.12); border:1px solid rgba(240,80,34,0.25);">
             <svg class="w-5 h-5" style="color:#F05022" fill="none" stroke="currentColor" viewBox="0 0 24 24">

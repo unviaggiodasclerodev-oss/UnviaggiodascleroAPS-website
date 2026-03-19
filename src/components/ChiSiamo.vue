@@ -26,7 +26,7 @@ const doubled = [...mediaItems, ...mediaItems]
       <div class="grid md:grid-cols-2 gap-16 items-center">
 
         <!-- Text -->
-        <div class="reveal">
+        <div class="reveal-left">
           <span class="accent-bar"></span>
           <p class="text-accent text-xs font-semibold tracking-widest uppercase mb-4">Chi siamo</p>
           <h2 class="text-4xl md:text-5xl font-bold tx leading-tight mb-8">
