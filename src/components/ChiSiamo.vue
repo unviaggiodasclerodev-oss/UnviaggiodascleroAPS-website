@@ -108,9 +108,9 @@ const doubled = [...mediaItems, ...mediaItems]
           <a v-for="(item, i) in doubled" :key="i" :href="item.href"
             target="_blank" rel="noopener"
             class="inline-flex items-center justify-center shrink-0 px-10 hover:opacity-100 transition-opacity duration-300"
-            style="height: 56px">
+            style="height: 72px; min-width: 160px">
             <img :src="item.logo" :alt="item.label"
-              class="media-logo h-9 w-32 object-contain" />
+              class="media-logo" style="height:44px; width:140px; object-fit:contain" />
           </a>
         </div>
       </div>

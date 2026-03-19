@@ -35,9 +35,9 @@ onMounted(() => {
   <!-- I numeri raccolti -->
   <section ref="section" class="section-muted py-24 md:py-32">
     <div class="section-pad">
-      <!-- Header with background photo accent -->
-      <div class="relative rounded-2xl overflow-hidden mb-16 reveal">
-        <img src="/images/michele.JPG" alt="Il viaggio" class="absolute inset-0 w-full h-full object-cover object-top opacity-20" />
+      <!-- Header box — no photo, clean text on bg -->
+      <div class="relative rounded-2xl overflow-hidden mb-16 reveal border edge"
+        style="background: linear-gradient(135deg, rgba(240,80,34,0.06) 0%, transparent 60%)">
         <div class="relative z-10 p-10 md:p-16">
           <span class="accent-bar"></span>
           <p class="text-xs font-semibold tracking-widest uppercase mb-4" style="color:#F05022">I numeri raccolti</p>
@@ -109,11 +109,13 @@ onMounted(() => {
               per il riconoscimento come il cammino più lungo mai percorso da una persona con sclerosi multipla.
             </p>
           </div>
-          <!-- Badge side — Official Attempt badge -->
-          <div class="flex items-center justify-center p-8 md:p-12 bg-white/5 md:border-l border-white/10 min-w-[200px]">
-            <div class="flex flex-col items-center text-center">
-              <img src="/images/logoworldguinness.png" alt="Guinness World Records" class="w-36 h-auto mb-4" style="filter: brightness(0) invert(1);" />
-              <div class="mt-2 px-4 py-1.5 rounded-full" style="background:#fef700;">
+          <!-- Badge side — Guinness logo -->
+          <div class="flex items-center justify-center p-8 md:p-12 bg-white/5 md:border-l border-white/10 min-w-[220px]">
+            <div class="flex flex-col items-center text-center gap-4">
+              <div class="bg-white rounded-xl px-5 py-4">
+                <img src="/images/logoworldguinness.png" alt="Guinness World Records" class="h-20 w-auto" />
+              </div>
+              <div class="px-4 py-1.5 rounded-full" style="background:#fef700;">
                 <p class="font-black text-xs tracking-[0.2em] uppercase" style="color:#0C2B5E">OFFICIAL ATTEMPT</p>
               </div>
             </div>
