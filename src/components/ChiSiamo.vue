@@ -107,10 +107,9 @@ const doubled = [...mediaItems, ...mediaItems]
         <div class="flex animate-ticker" style="width: max-content">
           <a v-for="(item, i) in doubled" :key="i" :href="item.href"
             target="_blank" rel="noopener"
-            class="inline-flex items-center justify-center shrink-0 px-14 hover:opacity-100 transition-opacity duration-300"
-            style="height: 156px; min-width: 360px">
+            class="inline-flex items-center justify-center shrink-0 px-8 md:px-14 hover:opacity-100 transition-opacity duration-300 h-[100px] min-w-[260px] md:h-[170px] md:min-w-[400px]">
             <img :src="item.logo" :alt="item.label"
-              class="media-logo" style="height:110px; width:300px; object-fit:cover" />
+              class="media-logo h-[70px] w-[200px] md:h-[120px] md:w-[340px]" style="object-fit:contain" />
           </a>
         </div>
       </div>
