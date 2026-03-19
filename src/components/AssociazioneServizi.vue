@@ -22,8 +22,13 @@ const servizi = [
 </script>
 
 <template>
-  <section id="associazione" class="section-light py-24 md:py-32">
-    <div class="section-pad">
+  <section id="associazione" class="relative py-24 md:py-32 overflow-hidden">
+    <!-- Faint photo background -->
+    <div class="absolute inset-0 z-0">
+      <img src="/images/IMG_7979.jpg" alt="" class="w-full h-full object-cover opacity-20" />
+      <div class="absolute inset-0 section-light opacity-80"></div>
+    </div>
+    <div class="relative z-10 section-pad">
 
       <!-- Associazione info -->
       <div class="grid md:grid-cols-2 gap-16 items-center mb-28">
@@ -71,8 +76,8 @@ const servizi = [
         <!-- Photo + Quote overlay column -->
         <div class="reveal" style="transition-delay:0.15s">
           <div class="relative rounded-2xl overflow-hidden shadow-xl">
-            <img src="/images/IMG_1301.JPG" alt="Michele Agostinetto"
-              class="w-full aspect-[3/4] object-cover object-top" />
+            <img src="/images/IMG_3212.JPG" alt="Un Viaggio da Sclero — Associazione"
+              class="w-full aspect-[3/4] object-cover object-center" />
             <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-transparent"></div>
             <div class="absolute bottom-0 left-0 right-0 p-8 md:p-10">
               <svg class="w-10 h-10 text-accent/80 mb-4" fill="currentColor" viewBox="0 0 24 24">
