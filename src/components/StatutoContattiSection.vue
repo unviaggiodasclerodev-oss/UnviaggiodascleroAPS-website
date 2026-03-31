@@ -4,6 +4,45 @@ import { ref } from 'vue'
 const openFaq = ref(null)
 function toggleFaq(i) { openFaq.value = openFaq.value === i ? null : i }
 
+function onBeforeEnter(el) {
+  el.style.height = '0'
+  el.style.opacity = '0'
+  el.style.overflow = 'hidden'
+}
+function onEnter(el, done) {
+  el.style.transition = 'height 0.28s cubic-bezier(0.4,0,0.2,1), opacity 0.2s ease'
+  requestAnimationFrame(() => {
+    el.style.height = el.scrollHeight + 'px'
+    el.style.opacity = '1'
+    el.addEventListener('transitionend', done, { once: true })
+  })
+}
+function onAfterEnter(el) {
+  el.style.height = 'auto'
+  el.style.overflow = ''
+  el.style.transition = ''
+  el.style.opacity = ''
+}
+function onBeforeLeave(el) {
+  el.style.height = el.scrollHeight + 'px'
+  el.style.overflow = 'hidden'
+  el.style.opacity = '1'
+}
+function onLeave(el, done) {
+  el.style.transition = 'height 0.22s cubic-bezier(0.4,0,0.2,1), opacity 0.15s ease'
+  requestAnimationFrame(() => {
+    el.style.height = '0'
+    el.style.opacity = '0'
+    el.addEventListener('transitionend', done, { once: true })
+  })
+}
+function onAfterLeave(el) {
+  el.style.height = ''
+  el.style.overflow = ''
+  el.style.opacity = ''
+  el.style.transition = ''
+}
+
 const faqs = [
   { q: 'Come posso partecipare ad un viaggio?',
     a: 'Dal 2028 saremmo pronti per seguirti e per personalizzare il tuo viaggio. Nel frattempo puoi scriverci per avere maggiori informazioni e descrivere la tua idea.' },
@@ -204,7 +243,14 @@ const faqs = [
               </svg>
             </div>
           </button>
-          <Transition name="accordion">
+          <Transition
+            @before-enter="onBeforeEnter"
+            @enter="onEnter"
+            @after-enter="onAfterEnter"
+            @before-leave="onBeforeLeave"
+            @leave="onLeave"
+            @after-leave="onAfterLeave"
+          >
             <div v-if="openFaq === i" class="border-t edge">
               <p class="px-6 py-5 tx2 text-sm leading-relaxed">{{ faq.a }}</p>
             </div>
