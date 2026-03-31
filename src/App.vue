@@ -34,7 +34,7 @@ useScrollReveal()
         <VideoSection />
         <Viaggio2027 />
         <AssociazioneServizi />
-        <SponsorPatrocini />
+        <!-- <SponsorPatrocini /> -->
         <StatutoContattiSection />
       </div>
     </main>
