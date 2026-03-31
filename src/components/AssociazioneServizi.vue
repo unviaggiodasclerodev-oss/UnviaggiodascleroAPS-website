@@ -76,7 +76,7 @@ const servizi = [
         <!-- Photo + Quote overlay column -->
         <div class="reveal" style="transition-delay:0.15s">
           <div class="relative rounded-2xl overflow-hidden shadow-xl">
-            <img src="/images/cammin.jpg" alt="Un Viaggio da Sclero — Associazione"
+            <img src="/images/foto prova.png" alt="Un Viaggio da Sclero — Associazione"
               class="w-full aspect-[3/4] object-cover object-center" />
             <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-transparent"></div>
             <div class="absolute bottom-0 left-0 right-0 p-8 md:p-10">

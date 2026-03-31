@@ -35,6 +35,10 @@
           <ul class="space-y-2.5 text-stone-400 text-sm mb-6">
             <li><a href="mailto:info@unviaggiodascleroaps.org" class="hover:text-accent transition-colors duration-200">info@unviaggiodascleroaps.org</a></li>
             <li><a href="https://wa.me/393516200034" target="_blank" rel="noopener" class="hover:text-accent transition-colors duration-200">+39 351 620 0034</a></li>
+            <li class="pt-3 border-t border-stone-700">
+              <span class="text-stone-500 text-xs">CF/PI</span>
+              <p class="text-stone-300 font-semibold">05613580264</p>
+            </li>
           </ul>
           <div class="flex gap-3">
             <a href="https://www.instagram.com/unviaggiodascleroaps/" target="_blank" rel="noopener"

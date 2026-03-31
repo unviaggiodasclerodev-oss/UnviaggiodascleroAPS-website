@@ -7,6 +7,7 @@ import NumeriChiave from './components/NumeriChiave.vue'
 import VideoSection from './components/VideoSection.vue'
 import Viaggio2027 from './components/Viaggio2027.vue'
 import AssociazioneServizi from './components/AssociazioneServizi.vue'
+import SponsorPatrocini from './components/SponsorPatrocini.vue'
 import StatutoContattiSection from './components/StatutoContattiSection.vue'
 import FooterSection from './components/FooterSection.vue'
 import BackToTop from './components/BackToTop.vue'
@@ -33,6 +34,7 @@ useScrollReveal()
         <VideoSection />
         <Viaggio2027 />
         <AssociazioneServizi />
+        <SponsorPatrocini />
         <StatutoContattiSection />
       </div>
     </main>

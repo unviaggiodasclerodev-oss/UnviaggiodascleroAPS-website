@@ -36,7 +36,7 @@ const faqs = [
           <p class="tx2 leading-relaxed mb-8 text-base">
             Denominazione e spese sostenute
           </p>
-          <a href="https://onecdn.io/media/statuto-aps-viaggio-da-sclerodocx-bd60e7d7-1447-48e5-bdce-313ec151b334.pdf"
+          <a href="/statuto/Statuto Unviaggiodasclero.pdf"
             target="_blank" rel="noopener"
             class="group inline-flex items-center gap-3 bg-accent hover:bg-[#cf5e0e] text-white font-semibold px-8 py-4 rounded-full transition-all text-sm shadow-md shadow-accent/20 hover:shadow-accent/30">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

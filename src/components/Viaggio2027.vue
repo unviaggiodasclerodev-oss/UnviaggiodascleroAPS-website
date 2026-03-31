@@ -36,7 +36,7 @@ const tappe = [
   { data: 'Ven 7 mag',  luogo: 'Nizza Monferrato',   desc: 'Nelle Langhe piemontesi',
     img: 'https://images.unsplash.com/photo-1504279577054-acfeccf8fc52?w=600&q=75&fit=crop' },
   { data: 'Ven 14 mag', luogo: 'Torino',             desc: 'Inizia il rientro verso casa',
-    img: 'https://images.unsplash.com/photo-1583422409516-2895a77efded?w=600&q=75&fit=crop' },
+    img: '/images/torino1.jpg' },
   { data: 'Sab 22 mag', luogo: 'Milano',             desc: 'La capitale economica italiana',
     img: '/images/Milano.jpg' },
   { data: 'Dom 30 mag', luogo: 'Verona',             desc: 'La giornata mondiale della Sclerosi Multipla',
@@ -64,7 +64,7 @@ const tappe = [
               <p class="text-white font-bold text-2xl font-display uppercase leading-tight">
                 2.000 km<br><span style="color:#fef700">a piedi</span>
               </p>
-              <p class="text-white/70 text-sm mt-2">Da Taranto a Verona, primavera 2027</p>
+              <p class="text-white/70 text-sm mt-2">Da Santa Maria di Leuca a Verona, primavera 2027</p>
             </div>
           </div>
         </div>
