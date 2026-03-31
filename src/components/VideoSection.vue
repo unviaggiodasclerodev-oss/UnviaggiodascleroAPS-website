@@ -10,7 +10,7 @@ function play() {
 </script>
 
 <template>
-  <section class="section-muted py-24 md:py-32">
+  <section class="section-muted py-14 md:py-32">
     <div class="section-pad">
       <div class="text-center mb-14 reveal">
         <span class="accent-bar accent-bar-center"></span>

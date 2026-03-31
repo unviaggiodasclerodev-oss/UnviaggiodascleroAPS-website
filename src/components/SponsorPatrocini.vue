@@ -1,5 +1,5 @@
 <template>
-  <section v-if="showSection" id="sponsor-patrocini" class="section-light py-24 md:py-32">
+  <section v-if="showSection" id="sponsor-patrocini" class="section-light py-14 md:py-32">
     <div class="section-pad">
       <div class="text-center mb-16 reveal">
         <span class="accent-bar accent-bar-center"></span>

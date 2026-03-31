@@ -33,7 +33,7 @@ onMounted(() => {
 
 <template>
   <!-- I numeri raccolti -->
-  <section ref="section" class="section-muted py-24 md:py-32">
+  <section ref="section" class="section-muted py-14 md:py-32">
     <div class="section-pad">
       <!-- Header box — no photo, clean text on bg -->
       <div class="relative rounded-2xl overflow-hidden mb-16 reveal border edge"
@@ -65,7 +65,7 @@ onMounted(() => {
   </section>
 
   <!-- La chiave del nuovo Viaggio -->
-  <section class="section-light py-24 md:py-32">
+  <section class="section-light py-14 md:py-32">
     <div class="section-pad">
       <div class="text-center mb-16 reveal">
         <span class="accent-bar accent-bar-center"></span>

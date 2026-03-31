@@ -22,7 +22,7 @@ const servizi = [
 </script>
 
 <template>
-  <section id="associazione" class="relative py-24 md:py-32 overflow-hidden">
+  <section id="associazione" class="relative py-14 md:py-32 overflow-hidden">
     <!-- Faint photo background -->
     <div class="absolute inset-0 z-0">
       <img src="/images/cammin.jpg" alt="" class="w-full h-full object-cover opacity-18" />
