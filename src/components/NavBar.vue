@@ -11,6 +11,7 @@ const navLinks = [
   { label: 'Chi siamo', href: '#chi-siamo' },
   { label: '2027', href: '#viaggio-2027' },
   { label: 'Associazione', href: '#associazione' },
+  { label: 'I nostri sostenitori', href: '#sponsor' },
   { label: 'Contattaci', href: '#contatti' },
   { label: 'FAQ', href: '#faq' },
 ]
@@ -66,10 +67,14 @@ function scrollTo(href) {
           </svg>
         </button>
 
-        <a href="#contatti" @click.prevent="scrollTo('#contatti')"
-          class="bg-accent text-white text-sm font-semibold px-5 py-2 rounded-full hover:bg-[#cf5e0e] transition-colors">
+        <!-- <a href="#contatti" @click.prevent="scrollTo('#contatti')"
+          class="text-sm font-medium px-4 py-2 rounded-full hover:text-accent transition-colors">
           Scrivici
         </a>
+        <a href="#dona" @click.prevent="scrollTo('#dona')"
+          class="bg-accent text-white text-sm font-semibold px-5 py-2 rounded-full hover:bg-[#cf5e0e] transition-colors">
+          Dona Ora
+        </a> -->
       </nav>
 
       <div class="md:hidden flex items-center gap-3">
@@ -104,8 +109,12 @@ function scrollTo(href) {
           {{ link.label }}
         </a>
         <a href="#contatti" @click.prevent="scrollTo('#contatti')"
-          class="bg-accent text-white text-sm font-semibold px-5 py-3 rounded-full text-center">
+          class="text-base font-medium px-4 py-3 rounded-full text-center hover:text-accent transition-colors">
           Scrivici
+        </a>
+        <a href="#dona" @click.prevent="scrollTo('#dona')"
+          class="bg-accent text-white text-sm font-semibold px-5 py-3 rounded-full text-center">
+          Dona Ora
         </a>
       </div>
     </Transition>

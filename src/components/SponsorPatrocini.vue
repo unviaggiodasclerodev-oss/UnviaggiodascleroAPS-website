@@ -1,42 +1,63 @@
 <template>
-  <section v-if="showSection" id="sponsor-patrocini" class="section-light py-14 md:py-32">
+  <section id="sponsor" class="section-light py-14 md:py-32">
     <div class="section-pad">
-      <div class="text-center mb-16 reveal">
+      <!-- Header -->
+      <div class="text-center mb-12 reveal">
         <span class="accent-bar accent-bar-center"></span>
         <p class="text-accent text-xs font-semibold tracking-widest uppercase mb-4">Sponsor & Patrocini</p>
         <h2 class="text-4xl md:text-5xl font-bold tx mb-3">
           I nostri sostenitori
         </h2>
-        <p class="tx3 text-lg">Grazie a chi ci supporta e crede nel progetto</p>
+        <p class="tx3 text-lg max-w-2xl mx-auto">Grazie a chi crede nel nostro progetto e ci supporta quotidianamente</p>
       </div>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-        <div v-for="ente in enti" :key="ente.nome" class="card-solid p-8 flex flex-col items-center text-center">
-          <img :src="ente.logo" :alt="ente.nome" class="h-24 w-24 object-contain mb-4 rounded-lg shadow-md" />
-          <a :href="ente.link" target="_blank" rel="noopener" class="font-bold text-accent text-lg mb-1 hover:underline">{{ ente.nome }}</a>
-          <p class="text-sm text-stone-500 mb-2" v-if="ente.ringraziamento">{{ ente.ringraziamento }}</p>
-          <img v-if="ente.foto" :src="ente.foto" :alt="'Foto sponsor ' + ente.nome" class="h-16 w-16 object-cover rounded-full mx-auto mb-2" />
-          <p class="text-xs text-stone-400" v-if="ente.descrizione">{{ ente.descrizione }}</p>
+
+      <!-- Patrocini -->
+      <div v-if="patrocini.length" class="mb-12">
+        <h3 class="text-center text-xl font-semibold tx mb-6">Con il patrocinio di</h3>
+        <div class="flex flex-wrap justify-center items-center gap-8 md:gap-12">
+          <a v-for="patrocinio in patrocini" :key="patrocinio.nome"
+            :href="patrocinio.link" target="_blank" rel="noopener"
+            class="group flex flex-col items-center text-center p-6 rounded-2xl transition-all hover:bg-white/50 dark:hover:bg-white/5">
+            <img v-if="patrocinio.logo" :src="patrocinio.logo" :alt="patrocinio.nome"
+              class="h-20 w-auto object-contain mb-4" />
+            <span v-else class="text-3xl mb-2">🏛️</span>
+            <span class="font-semibold tx group-hover:text-accent transition-colors">{{ patrocinio.nome }}</span>
+            <span v-if="patrocinio.tipo" class="text-xs text-stone-500 mt-1">{{ patrocinio.tipo }}</span>
+          </a>
         </div>
       </div>
+
+      <!-- Sponsor -->
+      <!-- <div class="mb-12">
+        <h3 class="text-center text-xl font-semibold tx mb-6">Sponsor</h3>
+        <div v-if="sponsorList.length" class="flex flex-wrap justify-center items-center gap-6 md:gap-10">
+          <span v-for="s in sponsorList" :key="s" class="font-medium tx text-lg px-4 py-2">
+            {{ s }}
+          </span>
+        </div>
+        <div v-else class="text-center py-8">
+          <p class="tx3 text-lg">Sponsor in fase di definizione</p>
+        </div>
+      </div> -->
     </div>
   </section>
 </template>
 
 <script setup>
 import { ref } from 'vue'
-// Per ora la sezione è visibile, poi si potrà nascondere con showSection.value = false
-const showSection = ref(true)
-const enti = ref([
-  // Esempio placeholder
+
+// Patrocini (gratuito)
+const patrocini = ref([
   {
-    nome: 'Nome Ente',
-    logo: '/images/placeholder-logo.png',
-    link: '#',
-    ringraziamento: 'Grazie per il vostro sostegno!',
-    foto: '',
-    descrizione: 'Breve descrizione o messaggio di ringraziamento.'
+    nome: 'Comune di Valdobbiadene',
+    logo: '/patrocini/Stemma-di-Valdobbiadene.webp',
+    link: 'https://comune.valdobbiadene.tv.it',
+    tipo: 'Patrocinio'
   }
 ])
+
+// Sponsor - lista nomi (senza loghi per ora)
+const sponsorList = ref([])
 </script>
 
 <style scoped>
