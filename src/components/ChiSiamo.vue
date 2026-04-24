@@ -15,7 +15,7 @@ const doubled = [...mediaItems, ...mediaItems]
 </script>
 
 <template>
-  <section id="chi-siamo" class="relative py-14 md:py-32 overflow-hidden">
+  <section id="chi-siamo" class="relative py-10 md:py-20 overflow-hidden">
     <!-- Background photo -->
     <div class="absolute inset-0 z-0">
       <img src="/images/ssevero.jpg" alt="" class="w-full h-full object-cover object-center" />
@@ -99,7 +99,7 @@ const doubled = [...mediaItems, ...mediaItems]
 
     <!-- Media ticker -->
     <!-- Media logos — bottom of section, clearly visible in both themes -->
-    <div class="relative z-10 mt-20 pt-12 pb-4">
+    <div class="relative z-10 mt-16 pt-8 pb-2">
       <div class="section-pad">
         <p class="text-center tx3 text-xs tracking-[0.15em] uppercase mb-8 font-semibold">Hanno parlato di noi</p>
       </div>

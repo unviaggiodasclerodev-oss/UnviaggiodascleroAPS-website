@@ -22,7 +22,7 @@ const servizi = [
 </script>
 
 <template>
-  <section id="associazione" class="relative py-14 md:py-32 overflow-hidden">
+  <section id="associazione" class="relative py-10 md:py-20 overflow-hidden">
     <!-- Faint photo background -->
     <div class="absolute inset-0 z-0">
       <img src="/images/cammin.jpg" alt="" class="w-full h-full object-cover opacity-18" />
@@ -31,7 +31,7 @@ const servizi = [
     <div class="relative z-10 section-pad">
 
       <!-- Associazione info -->
-      <div class="grid md:grid-cols-2 gap-16 items-center mb-28">
+      <div class="grid md:grid-cols-2 gap-16 items-center mb-20 md:mb-24">
 
         <!-- Text column -->
         <div class="reveal">
@@ -95,7 +95,7 @@ const servizi = [
       </div>
 
       <!-- Section divider -->
-      <div class="section-divider mb-20"></div>
+      <div class="section-divider mb-16 md:mb-20"></div>
 
       <!-- Servizi -->
       <div>

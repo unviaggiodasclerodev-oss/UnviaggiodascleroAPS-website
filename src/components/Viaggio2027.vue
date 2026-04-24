@@ -46,7 +46,7 @@ const tappe = [
 
 <template>
   <!-- Viaggio 2027 -->
-  <section id="viaggio-2027" class="section-muted py-14 md:py-32 journey-line-wrap">
+  <section id="viaggio-2027" class="section-muted py-10 md:py-20 journey-line-wrap">
     <div class="relative z-10 section-pad">
       <div class="text-center mb-16 reveal">
         <span class="accent-bar accent-bar-center"></span>
@@ -85,7 +85,7 @@ const tappe = [
   </section>
 
   <!-- Le Tappe -->
-  <section class="section-light py-14 md:py-32">
+  <section class="section-light py-10 md:py-20">
     <div class="section-pad">
       <div class="text-center mb-16 reveal">
         <span class="accent-bar accent-bar-center"></span>

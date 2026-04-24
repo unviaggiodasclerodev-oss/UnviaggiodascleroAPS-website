@@ -57,7 +57,7 @@ const faqs = [
 
 <template>
   <!-- Statuto APS -->
-  <section class="relative py-14 md:py-32 overflow-hidden">
+  <section class="relative py-10 md:py-20 overflow-hidden">
     <div class="absolute inset-0 z-0">
       <img src="/images/IMG_2238.JPG" alt="" class="w-full h-full object-cover opacity-15" />
       <div class="absolute inset-0 section-muted opacity-85"></div>
@@ -126,7 +126,7 @@ const faqs = [
   </section>
 
   <!-- Contatti -->
-  <section id="contatti" class="relative py-14 md:py-32 overflow-hidden">
+  <section id="contatti" class="relative py-10 md:py-20 overflow-hidden">
     <!-- Background photo with overlay -->
     <div class="absolute inset-0 z-0">
       <img src="/images/spiaggia.jpg" alt="" class="w-full h-full object-cover" />
@@ -218,7 +218,7 @@ const faqs = [
   </section>
 
   <!-- FAQ -->
-  <section id="faq" class="section-muted py-14 md:py-32">
+  <section id="faq" class="section-muted py-10 md:py-20">
     <div class="section-pad">
       <div class="text-center mb-16 reveal">
         <span class="accent-bar accent-bar-center"></span>
