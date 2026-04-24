@@ -24,9 +24,9 @@ function play() {
       </div>
 
       <!-- Video box -->
-      <div class="max-w-4xl mx-auto reveal">
-        <div class="relative rounded-2xl overflow-hidden shadow-2xl border border-orange-200/30 group"
-          style="aspect-ratio: 16/9; background:#0A0A0A;">
+      <div class="w-full reveal">
+        <div class="relative rounded-2xl overflow-hidden shadow-2xl border border-orange-200/30 group aspect-[16/9] md:aspect-[21/8]"
+          style="background:#0A0A0A;">
           <!-- Thumbnail overlay when not playing -->
           <div v-if="!playing"
             class="absolute inset-0 z-10 flex flex-col items-center justify-center cursor-pointer"
@@ -55,18 +55,18 @@ function play() {
         </div>
 
         <!-- Stats below video -->
-        <div class="grid grid-cols-3 gap-4 mt-6">
-          <div class="card-solid p-5 text-center">
-            <p class="text-3xl font-bold font-display" style="color:#F05022">4</p>
-            <p class="tx2 text-xs mt-1 uppercase tracking-wide font-semibold">Mesi</p>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 md:gap-6 mt-7">
+          <div class="card-solid p-6 md:p-7 text-center">
+            <p class="text-4xl md:text-5xl font-bold font-display" style="color:#F05022">4</p>
+            <p class="tx2 text-xs mt-2 uppercase tracking-wide font-semibold">Mesi</p>
           </div>
-          <div class="card-solid p-5 text-center">
-            <p class="text-3xl font-bold font-display" style="color:#F05022">2.000+</p>
-            <p class="tx2 text-xs mt-1 uppercase tracking-wide font-semibold">Chilometri</p>
+          <div class="card-solid p-6 md:p-7 text-center">
+            <p class="text-4xl md:text-5xl font-bold font-display" style="color:#F05022">2.000+</p>
+            <p class="tx2 text-xs mt-2 uppercase tracking-wide font-semibold">Chilometri</p>
           </div>
-          <div class="card-solid p-5 text-center">
-            <p class="text-3xl font-bold font-display" style="color:#F05022">2027</p>
-            <p class="tx2 text-xs mt-1 uppercase tracking-wide font-semibold">Il prossimo Viaggio</p>
+          <div class="card-solid p-6 md:p-7 text-center">
+            <p class="text-4xl md:text-5xl font-bold font-display" style="color:#F05022">2027</p>
+            <p class="tx2 text-xs mt-2 uppercase tracking-wide font-semibold">Il prossimo Viaggio</p>
           </div>
         </div>
       </div>
