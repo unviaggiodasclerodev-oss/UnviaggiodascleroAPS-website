@@ -55,9 +55,9 @@ const tappe = [
       </div>
 
       <!-- Side-by-side: photo left, cards right -->
-      <div class="grid md:grid-cols-2 gap-12 items-center mb-16">
-        <div class="reveal">
-          <div class="relative rounded-2xl overflow-hidden shadow-2xl aspect-[4/5]">
+      <div class="grid md:grid-cols-2 gap-12 items-stretch mb-16">
+        <div class="reveal flex">
+          <div class="relative rounded-2xl overflow-hidden shadow-2xl w-full self-stretch">
             <img src="/images/cammin.jpg" alt="Il cammino" class="w-full h-full object-cover" />
             <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
             <div class="absolute bottom-0 left-0 right-0 p-8">
