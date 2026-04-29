@@ -18,13 +18,13 @@
           <p class="text-white font-semibold text-sm mb-5">Sito Web</p>
           <ul class="space-y-2.5">
             <li v-for="link in [
-              { label: 'Chi siamo', href: '#chi-siamo' },
-              { label: 'Il Viaggio 2027', href: '#viaggio-2027' },
-              { label: 'Associazione', href: '#associazione' },
-              { label: 'Contattaci', href: '#contatti' },
-              { label: 'FAQ', href: '#faq' },
+              { label: 'Chi siamo', to: '/chi-siamo' },
+              { label: 'Il Viaggio 2027', to: '/il-viaggio-2027' },
+              { label: 'Associazione', to: '/associazione' },
+              { label: 'Media', to: '/media' },
+              { label: 'Contatti', to: '/contatti' },
             ]" :key="link.label">
-              <a :href="link.href" class="text-stone-400 hover:text-accent text-sm transition-colors duration-200">{{ link.label }}</a>
+              <router-link :to="link.to" class="text-stone-400 hover:text-accent text-sm transition-colors duration-200">{{ link.label }}</router-link>
             </li>
           </ul>
         </div>

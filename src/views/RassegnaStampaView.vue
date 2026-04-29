@@ -46,7 +46,7 @@ function chiudiLightbox() {
         <div class="max-w-6xl mx-auto">
           <!-- Header -->
           <div class="text-center mb-12">
-            <h1 class="text-4xl md:text-5xl font-bold mb-4">Rassegna Stampa</h1>
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">Media</h1>
             <p class="text-lg text-stone-600 dark:text-stone-400">
               Tutti gli articoli, le news e le apparizioni sui media
             </p>

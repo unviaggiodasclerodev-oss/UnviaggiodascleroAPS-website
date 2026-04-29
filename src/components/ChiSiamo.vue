@@ -1,4 +1,15 @@
 <script setup>
+import { useRouter } from 'vue-router'
+
+const props = defineProps({
+  showJourneyCta: {
+    type: Boolean,
+    default: true,
+  },
+})
+
+const router = useRouter()
+
 const mediaItems = [
   { label: 'Fanpage Italia',       logo: '/emittenti/fanpage.png',       href: 'https://www.youtube.com/watch?v=5-BgiGPo_iY' },
   { label: 'Rai News 24',          logo: '/emittenti/rai news 24.png',   href: 'https://www.facebook.com/100063700728000/posts/pfbid029ngFYCebKbg2s6VKGceVwUqGVg4TzT6exfjWvhYYcGtRGEDn8f7cyP1XR2T2V4kal/?d=n' },
@@ -49,13 +60,13 @@ const doubled = [...mediaItems, ...mediaItems]
               Non come replica, ma come evoluzione: più consapevole, più strutturata, più responsabile.
             </p>
           </div>
-          <div class="mt-8 flex flex-col sm:flex-row items-start gap-4">
-            <a href="#viaggio-2027"
-              @click.prevent="$el.closest('section').parentElement.querySelector('#viaggio-2027')?.scrollIntoView({ behavior: 'smooth' })"
+          <div v-if="props.showJourneyCta" class="mt-8 flex flex-col sm:flex-row items-start gap-4">
+            <button
+              @click="router.push('/il-viaggio-2027')"
               class="group inline-flex items-center gap-2 bg-accent text-white font-semibold px-7 py-3.5 rounded-full hover:bg-[#cf5e0e] transition-all text-sm tracking-wide shadow-md shadow-accent/20">
               Il prossimo Viaggio
               <span class="inline-block group-hover:translate-x-1 transition-transform">&rarr;</span>
-            </a>
+            </button>
           </div>
           <div class="mt-8 pt-8 border-t edge">
             <p class="tx3 text-sm italic leading-relaxed">

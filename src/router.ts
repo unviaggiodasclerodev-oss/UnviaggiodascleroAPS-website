@@ -25,16 +25,16 @@ const routes: RouteRecordRaw[] = [
     meta: { title: 'Chi Siamo - Un Viaggio da Sclero APS' }
   },
   {
-    path: '/viaggio',
-    name: 'viaggio',
+    path: '/il-viaggio-2027',
+    name: 'il-progetto-2027',
     component: ViaggioView,
-    meta: { title: 'Viaggio 2027 - Un Viaggio da Sclero APS' }
+    meta: { title: 'Il Viaggio 2027 - Un Viaggio da Sclero APS' }
   },
   {
-    path: '/servizi',
-    name: 'servizi',
+    path: '/associazione',
+    name: 'associazione',
     component: ServiziView,
-    meta: { title: 'Servizi - Un Viaggio da Sclero APS' }
+    meta: { title: 'Associazione - Un Viaggio da Sclero APS' }
   },
   {
     path: '/contatti',
@@ -43,10 +43,10 @@ const routes: RouteRecordRaw[] = [
     meta: { title: 'Contatti - Un Viaggio da Sclero APS' }
   },
   {
-    path: '/rassegna-stampa',
-    name: 'rassegna-stampa',
+    path: '/media',
+    name: 'media',
     component: RassegnaStampaView,
-    meta: { title: 'Rassegna Stampa - Un Viaggio da Sclero APS' }
+    meta: { title: 'Media - Un Viaggio da Sclero APS' }
   }
 ]
 

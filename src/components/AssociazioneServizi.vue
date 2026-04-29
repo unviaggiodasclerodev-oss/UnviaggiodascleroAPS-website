@@ -1,4 +1,7 @@
 <script setup>
+import { useRouter } from 'vue-router'
+const router = useRouter()
+
 const props = defineProps({
   showAssociation: {
     type: Boolean,
@@ -11,6 +14,10 @@ const props = defineProps({
   sectionId: {
     type: String,
     default: 'associazione',
+  },
+  showPageLink: {
+    type: Boolean,
+    default: false,
   },
 })
 const servizi = [
@@ -90,6 +97,14 @@ const servizi = [
             <p class="tx italic font-display text-lg leading-relaxed">
               Michele Agostinetto, presidente Un Viaggio da Sclero APS
             </p>
+          </div>
+          <div v-if="props.showPageLink" class="mt-8">
+            <button
+              @click="router.push('/associazione')"
+              class="group inline-flex items-center gap-2 bg-accent text-white font-semibold px-7 py-3.5 rounded-full hover:bg-[#cf5e0e] transition-all text-sm tracking-wide shadow-md shadow-accent/20">
+              Scopri l'Associazione
+              <span class="inline-block group-hover:translate-x-1 transition-transform">&rarr;</span>
+            </button>
           </div>
         </div>
 

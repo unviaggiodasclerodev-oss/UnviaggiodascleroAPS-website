@@ -3,6 +3,7 @@ import { useScrollReveal } from '../composables/useScrollReveal.js'
 import HeroSection from '../components/HeroSection.vue'
 import ChiSiamo from '../components/ChiSiamo.vue'
 import Viaggio2027 from '../components/Viaggio2027.vue'
+import AssociazioneTeaser from '../components/AssociazioneTeaser.vue'
 import SponsorPatrocini from '../components/SponsorPatrocini.vue'
 
 useScrollReveal()
@@ -15,6 +16,7 @@ useScrollReveal()
       <div class="journey-host">
         <ChiSiamo />
         <Viaggio2027 />
+        <AssociazioneTeaser />
         <SponsorPatrocini />
       </div>
     </main>
