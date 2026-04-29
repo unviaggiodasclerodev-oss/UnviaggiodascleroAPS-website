@@ -1,19 +1,22 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
 import { useDarkMode } from '../composables/useDarkMode.js'
 
 const { isDark, toggle } = useDarkMode()
+const router = useRouter()
+const route = useRoute()
 const isScrolled = ref(false)
 const mobileOpen = ref(false)
 const scrollProgress = ref(0)
 
 const navLinks = [
-  { label: 'Chi siamo', href: '#chi-siamo' },
-  { label: '2027', href: '#viaggio-2027' },
-  { label: 'Associazione', href: '#associazione' },
-  { label: 'I nostri sostenitori', href: '#sponsor' },
-  { label: 'Contattaci', href: '#contatti' },
-  { label: 'FAQ', href: '#faq' },
+  { label: 'Home', to: '/' },
+  { label: 'Chi siamo', to: '/chi-siamo' },
+  { label: 'Viaggio 2027', to: '/viaggio' },
+  { label: 'Servizi', to: '/servizi' },
+  { label: 'Rassegna Stampa', to: '/rassegna-stampa' },
+  { label: 'Contatti', to: '/contatti' },
 ]
 
 function onScroll() {
@@ -24,9 +27,9 @@ function onScroll() {
 onMounted(() => window.addEventListener('scroll', onScroll))
 onUnmounted(() => window.removeEventListener('scroll', onScroll))
 
-function scrollTo(href) {
+function navigateTo(path) {
   mobileOpen.value = false
-  document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' })
+  router.push(path)
 }
 </script>
 
@@ -41,17 +44,17 @@ function scrollTo(href) {
     <div class="absolute top-0 left-0 h-[2px] bg-accent transition-all duration-100"
       :style="{ width: scrollProgress + '%' }" />
     <div class="section-pad flex items-center justify-between">
-      <a href="#hero" @click.prevent="scrollTo('#hero')">
+      <router-link to="/" @click.prevent="navigateTo('/')">
         <img :src="(!isScrolled || isDark) ? '/logo.png' : '/logo-light.jpg'" alt="Un Viaggio da Sclero APS" class="h-24 w-auto object-contain" />
-      </a>
+      </router-link>
 
       <nav class="hidden md:flex items-center gap-8">
-        <a v-for="link in navLinks" :key="link.label"
-          :href="link.href" @click.prevent="scrollTo(link.href)"
+        <router-link v-for="link in navLinks" :key="link.to"
+          :to="link.to"
           :class="['text-sm font-medium tracking-wide transition-colors hover:text-accent',
             isScrolled ? (isDark ? 'text-white/70' : 'text-stone-700') : 'text-white/80']">
           {{ link.label }}
-        </a>
+        </router-link>
 
         <button @click="toggle"
           :class="['w-9 h-9 rounded-full flex items-center justify-center border transition-all hover:border-accent cursor-pointer',
@@ -66,15 +69,6 @@ function scrollTo(href) {
               d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
           </svg>
         </button>
-
-        <!-- <a href="#contatti" @click.prevent="scrollTo('#contatti')"
-          class="text-sm font-medium px-4 py-2 rounded-full hover:text-accent transition-colors">
-          Scrivici
-        </a>
-        <a href="#dona" @click.prevent="scrollTo('#dona')"
-          class="bg-accent text-white text-sm font-semibold px-5 py-2 rounded-full hover:bg-[#cf5e0e] transition-colors">
-          Dona Ora
-        </a> -->
       </nav>
 
       <div class="md:hidden flex items-center gap-3">
@@ -103,19 +97,11 @@ function scrollTo(href) {
     <Transition name="slide">
       <div v-if="mobileOpen"
         :class="['md:hidden border-t section-pad py-6 flex flex-col gap-5', isDark ? 'bg-stone-900 border-white/10' : 'bg-white border-stone-200']">
-        <a v-for="link in navLinks" :key="link.label"
-          :href="link.href" @click.prevent="scrollTo(link.href)"
+        <router-link v-for="link in navLinks" :key="link.to"
+          :to="link.to" @click="mobileOpen = false"
           :class="['text-base font-medium hover:text-accent transition-colors', isDark ? 'text-white/80' : 'text-stone-800']">
           {{ link.label }}
-        </a>
-        <a href="#contatti" @click.prevent="scrollTo('#contatti')"
-          class="text-base font-medium px-4 py-3 rounded-full text-center hover:text-accent transition-colors">
-          Scrivici
-        </a>
-        <a href="#dona" @click.prevent="scrollTo('#dona')"
-          class="bg-accent text-white text-sm font-semibold px-5 py-3 rounded-full text-center">
-          Dona Ora
-        </a>
+        </router-link>
       </div>
     </Transition>
   </header>

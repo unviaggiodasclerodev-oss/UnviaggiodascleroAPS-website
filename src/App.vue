@@ -1,17 +1,8 @@
 <script setup>
 import { useScrollReveal } from './composables/useScrollReveal.js'
 import NavBar from './components/NavBar.vue'
-import HeroSection from './components/HeroSection.vue'
-import ChiSiamo from './components/ChiSiamo.vue'
-import NumeriChiave from './components/NumeriChiave.vue'
-import VideoSection from './components/VideoSection.vue'
-import Viaggio2027 from './components/Viaggio2027.vue'
-import AssociazioneServizi from './components/AssociazioneServizi.vue'
-import SponsorPatrocini from './components/SponsorPatrocini.vue'
-import StatutoContattiSection from './components/StatutoContattiSection.vue'
 import FooterSection from './components/FooterSection.vue'
 import BackToTop from './components/BackToTop.vue'
-import JourneyLine from './components/JourneyLine.vue'
 
 useScrollReveal()
 </script>
@@ -24,21 +15,7 @@ useScrollReveal()
 
   <div>
     <NavBar />
-    <main id="main-content">
-      <HeroSection />
-      <!-- Journey line host: relative wrapper so the SVG line can span all sections -->
-      <div class="journey-host">
-        <JourneyLine />
-        <ChiSiamo />
-        <NumeriChiave />
-        <VideoSection />
-        <Viaggio2027 />
-        <AssociazioneServizi />
-        <SponsorPatrocini />
-        <DonaOraSection />
-        <StatutoContattiSection />
-      </div>
-    </main>
+    <router-view />
     <FooterSection />
     <BackToTop />
   </div>
