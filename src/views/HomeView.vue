@@ -6,6 +6,7 @@ import Viaggio2027 from '../components/Viaggio2027.vue'
 import AssociazioneTeaser from '../components/AssociazioneTeaser.vue'
 import SponsorPatrocini from '../components/SponsorPatrocini.vue'
 import CtaBanner from '../components/CtaBanner.vue'
+import JourneyLine from '../components/JourneyLine.vue'
 
 useScrollReveal()
 </script>
@@ -15,6 +16,7 @@ useScrollReveal()
     <HeroSection />
     <main id="main-content">
       <div class="journey-host">
+        <JourneyLine />
         <ChiSiamo />
         <Viaggio2027 />
         <AssociazioneTeaser />

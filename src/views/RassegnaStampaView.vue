@@ -2,6 +2,7 @@
 import { ref, computed } from 'vue'
 import { articoli, type ArticoloRassegna, type CategoriaArticolo } from '../data/rassegna.ts'
 import { useScrollReveal } from '../composables/useScrollReveal.js'
+import JourneyLine from '../components/JourneyLine.vue'
 
 useScrollReveal()
 
@@ -42,6 +43,8 @@ function chiudiLightbox() {
 <template>
   <div>
     <main id="main-content" class="pt-32 pb-16">
+      <div class="journey-host">
+      <JourneyLine />
       <section class="section-pad">
         <div class="max-w-6xl mx-auto">
           <!-- Header -->
@@ -144,6 +147,7 @@ function chiudiLightbox() {
           </div>
         </div>
       </section>
+      </div>
     </main>
 
     <!-- Lightbox -->
