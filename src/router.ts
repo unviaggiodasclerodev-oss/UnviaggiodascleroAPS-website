@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router'
 import HomeView from './views/HomeView.vue'
 import ChiSiamoView from './views/ChiSiamoView.vue'
 import ViaggioView from './views/ViaggioView.vue'
@@ -6,7 +6,11 @@ import ServiziView from './views/ServiziView.vue'
 import ContattiView from './views/ContattiView.vue'
 import RassegnaStampaView from './views/RassegnaStampaView.vue'
 
-const routes = [
+interface RouteMeta {
+  title: string
+}
+
+const routes: RouteRecordRaw[] = [
   {
     path: '/',
     name: 'home',
@@ -48,7 +52,7 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(),
   routes,
-  scrollBehavior(to, from, savedPosition) {
+  scrollBehavior(_to, _from, savedPosition) {
     if (savedPosition) {
       return savedPosition
     } else {
@@ -57,9 +61,9 @@ const router = createRouter({
   }
 })
 
-router.beforeEach((to, from, next) => {
-  document.title = to.meta.title || 'Un Viaggio da Sclero APS'
-  next()
+router.beforeEach((to) => {
+  const title = to.meta?.title as string | undefined
+  document.title = title || 'Un Viaggio da Sclero APS'
 })
 
 export default router

@@ -15,8 +15,9 @@ watchEffect(() => {
 })
 
 export function useDarkMode() {
-  function toggle() {
+  function toggle(): void {
     isDark.value = !isDark.value
   }
+
   return { isDark, toggle }
 }
