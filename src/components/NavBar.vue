@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted, computed } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { useDarkMode } from '../composables/useDarkMode.js'
 
@@ -9,6 +9,9 @@ const route = useRoute()
 const isScrolled = ref(false)
 const mobileOpen = ref(false)
 const scrollProgress = ref(0)
+const isInternalPage = computed(() => route.path !== '/')
+const hasSolidHeader = computed(() => isScrolled.value || isInternalPage.value)
+const logoSrc = computed(() => (!hasSolidHeader.value || isDark.value) ? '/logo.png' : '/logo-light.jpg')
 
 const navLinks = [
   { label: 'Home', to: '/' },
@@ -36,7 +39,7 @@ function navigateTo(path) {
 <template>
   <header :class="[
     'fixed top-0 left-0 right-0 z-50 transition-all duration-500',
-    isScrolled
+    hasSolidHeader
       ? (isDark ? 'bg-stone-900/95 backdrop-blur-md border-b border-white/10 py-3' : 'bg-white/95 backdrop-blur-md border-b border-stone-200 py-3')
       : 'bg-transparent py-5'
   ]">
@@ -45,20 +48,20 @@ function navigateTo(path) {
       :style="{ width: scrollProgress + '%' }" />
     <div class="section-pad flex items-center justify-between">
       <router-link to="/" @click.prevent="navigateTo('/')">
-        <img :src="(!isScrolled || isDark) ? '/logo.png' : '/logo-light.jpg'" alt="Un Viaggio da Sclero APS" class="h-24 w-auto object-contain" />
+        <img :src="logoSrc" alt="Un Viaggio da Sclero APS" class="h-24 w-auto object-contain" />
       </router-link>
 
       <nav class="hidden md:flex items-center gap-8">
         <router-link v-for="link in navLinks" :key="link.to"
           :to="link.to"
           :class="['text-sm font-medium tracking-wide transition-colors hover:text-accent',
-            isScrolled ? (isDark ? 'text-white/70' : 'text-stone-700') : 'text-white/80']">
+            hasSolidHeader ? (isDark ? 'text-white/70' : 'text-stone-700') : 'text-white/80']">
           {{ link.label }}
         </router-link>
 
         <button @click="toggle"
           :class="['w-9 h-9 rounded-full flex items-center justify-center border transition-all hover:border-accent cursor-pointer',
-            isScrolled ? (isDark ? 'border-white/20 text-white/60' : 'border-stone-300 text-stone-600') : 'border-white/30 text-white/70']"
+            hasSolidHeader ? (isDark ? 'border-white/20 text-white/60' : 'border-stone-300 text-stone-600') : 'border-white/30 text-white/70']"
           :aria-label="isDark ? 'Passa a light mode' : 'Passa a dark mode'">
           <svg v-if="isDark" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -72,7 +75,7 @@ function navigateTo(path) {
       </nav>
 
       <div class="md:hidden flex items-center gap-3">
-        <button @click="toggle" :class="['p-1.5', isScrolled && !isDark ? 'text-stone-800' : 'text-white']">
+        <button @click="toggle" :class="['p-1.5', hasSolidHeader && !isDark ? 'text-stone-800' : 'text-white']">
           <svg v-if="isDark" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
               d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M17.657 17.657l-.707-.707M6.343 6.343l-.707-.707M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
@@ -82,7 +85,7 @@ function navigateTo(path) {
               d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
           </svg>
         </button>
-        <button :class="['p-2', isScrolled && !isDark ? 'text-stone-800' : 'text-white']"
+        <button :class="['p-2', hasSolidHeader && !isDark ? 'text-stone-800' : 'text-white']"
           @click="mobileOpen = !mobileOpen" aria-label="Menu">
           <svg v-if="!mobileOpen" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>

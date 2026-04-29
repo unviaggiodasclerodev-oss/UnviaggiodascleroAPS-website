@@ -5,9 +5,10 @@ import ViaggioView from './views/ViaggioView.vue'
 import ServiziView from './views/ServiziView.vue'
 import ContattiView from './views/ContattiView.vue'
 import RassegnaStampaView from './views/RassegnaStampaView.vue'
-
-interface RouteMeta {
-  title: string
+declare module 'vue-router' {
+  interface RouteMeta {
+    title?: string
+  }
 }
 
 const routes: RouteRecordRaw[] = [
@@ -62,8 +63,7 @@ const router = createRouter({
 })
 
 router.beforeEach((to) => {
-  const title = to.meta?.title as string | undefined
-  document.title = title || 'Un Viaggio da Sclero APS'
+  document.title = to.meta.title ?? 'Un Viaggio da Sclero APS'
 })
 
 export default router

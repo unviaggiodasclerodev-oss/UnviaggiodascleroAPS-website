@@ -78,7 +78,7 @@ function chiudiLightbox() {
               @click="apriLightbox(articolo)"
             >
               <!-- Immagine -->
-              <div v-if="articolo.immagina" class="aspect-video overflow-hidden bg-stone-200 dark:bg-stone-700">
+              <div v-if="articolo.immagine" class="aspect-video overflow-hidden bg-stone-200 dark:bg-stone-700">
                 <img 
                   :src="'/rassegna/' + articolo.immagine" 
                   :alt="articolo.titolo"
