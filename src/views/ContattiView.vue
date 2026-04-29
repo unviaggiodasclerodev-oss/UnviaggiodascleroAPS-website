@@ -8,7 +8,7 @@ useScrollReveal()
 <template>
   <div>
     <main id="main-content" class="pt-24">
-      <StatutoContattiSection />
+      <StatutoContattiSection :show-statuto="false" />
     </main>
   </div>
 </template>

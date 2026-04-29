@@ -1,6 +1,11 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 
+const props = defineProps({
+  showNumeri: { type: Boolean, default: true },
+  showChiave: { type: Boolean, default: true },
+})
+
 const stats = [
   { value: '60',   unit: 'Media TV',             desc: 'Oltre 60 tv in tutta Italia hanno trasmesso il Viaggio con oltre 6 milioni di Share certificato Auditel.' },
   { value: '130',  unit: 'Testate',              desc: 'Oltre 130 testate stampa e online con più di 8 milioni di letture certificate Audipress/Nielsen.' },
@@ -33,7 +38,7 @@ onMounted(() => {
 
 <template>
   <!-- I numeri raccolti -->
-  <section ref="section" class="section-muted py-10 md:py-20">
+  <section v-if="props.showNumeri" ref="section" class="section-muted py-10 md:py-20">
     <div class="section-pad">
       <!-- Header box — no photo, clean text on bg -->
       <div class="relative rounded-2xl overflow-hidden mb-16 reveal border edge"
@@ -65,7 +70,7 @@ onMounted(() => {
   </section>
 
   <!-- La chiave del nuovo Viaggio -->
-  <section class="section-light py-10 md:py-20">
+  <section v-if="props.showChiave" class="section-light py-10 md:py-20">
     <div class="section-pad">
       <div class="text-center mb-16 reveal">
         <span class="accent-bar accent-bar-center"></span>

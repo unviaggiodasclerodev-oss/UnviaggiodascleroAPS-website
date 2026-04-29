@@ -129,6 +129,19 @@ function chiudiLightbox() {
               visita la nostra pagina <router-link to="/contatti" class="text-accent hover:underline">Contatti</router-link>
             </p>
           </div>
+
+          <!-- CTA -->
+          <div class="mt-16 text-center">
+            <span class="accent-bar accent-bar-center mb-8 block"></span>
+            <h2 class="text-3xl md:text-4xl font-bold tx mb-4">Vuoi sapere di più sul viaggio?</h2>
+            <p class="tx2 text-lg mb-8">Scopri le tappe, il percorso e come partecipare.</p>
+            <router-link
+              to="/il-viaggio-2027"
+              class="group inline-flex items-center gap-2 bg-accent text-white font-semibold px-8 py-4 rounded-full hover:bg-[#cf5e0e] transition-all text-sm tracking-wide shadow-md shadow-accent/20">
+              Il Viaggio 2027
+              <span class="inline-block group-hover:translate-x-1 transition-transform">&rarr;</span>
+            </router-link>
+          </div>
         </div>
       </section>
     </main>
