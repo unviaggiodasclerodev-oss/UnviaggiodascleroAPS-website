@@ -10,13 +10,13 @@ const router = useRouter()
 
         <!-- Foto -->
         <div class="reveal-left order-2 md:order-1">
-          <div class="relative rounded-2xl overflow-hidden shadow-2xl aspect-[4/5]">
+          <div class="relative rounded-2xl overflow-hidden shadow-2xl aspect-square">
             <img
-              src="/images/papa.JPG"
+              src="/images/spiaggia.jpg"
               alt="Michele Agostinetto"
               class="w-full h-full object-cover object-center"
             />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
           </div>
         </div>
 
@@ -25,29 +25,34 @@ const router = useRouter()
           <span class="accent-bar"></span>
           <p class="text-accent text-xs font-semibold tracking-widest uppercase mb-4">L'Associazione APS</p>
           <h2 class="text-4xl md:text-5xl font-bold tx leading-tight mb-8">
-            Un Viaggio da Sclero diventa<br>
-            <span class="text-accent">Associazione di Promozione Sociale</span>
+            Un progetto collettivo<br>
+            <span class="text-accent">a cui puoi far parte</span>
           </h2>
-          <div class="space-y-4 tx2 leading-relaxed text-base">
-            <p>
-              <strong class="tx font-semibold">Un Viaggio da Sclero – APS</strong>
-              nasce per dare continuità a un'esperienza reale e trasformarla in un progetto collettivo,
-              strutturato e accessibile. Un'associazione indipendente e apolitica che utilizza il cammino,
-              il tempo e la presenza sui territori come strumenti di racconto, consapevolezza e relazione.
-            </p>
-            <p>
-              Iscritta al <strong class="tx font-semibold">RUNTS</strong>, il Registro Unico Nazionale
-              del Terzo Settore.
-            </p>
+          <p class="tx2 leading-relaxed text-base mb-8">
+            Un Viaggio da Sclero è diventata un'Associazione di Promozione Sociale:
+            un luogo aperto a chi vuole contribuire con il proprio tempo, le proprie competenze
+            o semplicemente la propria presenza.
+          </p>
+          <div class="flex flex-col gap-3 mb-10">
+            <div class="flex items-center gap-3">
+              <span class="w-1.5 h-1.5 rounded-full bg-accent shrink-0"></span>
+              <p class="tx2 text-sm">Indipendente e apolitica</p>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="w-1.5 h-1.5 rounded-full bg-accent shrink-0"></span>
+              <p class="tx2 text-sm">Iscritta al RUNTS — Registro Unico Nazionale del Terzo Settore</p>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="w-1.5 h-1.5 rounded-full bg-accent shrink-0"></span>
+              <p class="tx2 text-sm">Aperta a soci, volontari e sostenitori</p>
+            </div>
           </div>
-          <div class="mt-10">
-            <button
-              @click="router.push('/associazione')"
-              class="group inline-flex items-center gap-2 bg-accent text-white font-semibold px-7 py-3.5 rounded-full hover:bg-[#cf5e0e] transition-all text-sm tracking-wide shadow-md shadow-accent/20">
-              Scopri l'Associazione
-              <span class="inline-block group-hover:translate-x-1 transition-transform">&rarr;</span>
-            </button>
-          </div>
+          <button
+            @click="router.push('/associazione')"
+            class="group inline-flex items-center gap-2 bg-accent text-white font-semibold px-7 py-3.5 rounded-full hover:bg-[#cf5e0e] transition-all text-sm tracking-wide shadow-md shadow-accent/20">
+            Come partecipare
+            <span class="inline-block group-hover:translate-x-1 transition-transform">&rarr;</span>
+          </button>
         </div>
 
       </div>

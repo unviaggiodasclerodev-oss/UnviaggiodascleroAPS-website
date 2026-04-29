@@ -4,7 +4,6 @@ import HeroSection from '../components/HeroSection.vue'
 import ChiSiamo from '../components/ChiSiamo.vue'
 import Viaggio2027 from '../components/Viaggio2027.vue'
 import AssociazioneTeaser from '../components/AssociazioneTeaser.vue'
-import SponsorPatrocini from '../components/SponsorPatrocini.vue'
 import CtaBanner from '../components/CtaBanner.vue'
 import JourneyLine from '../components/JourneyLine.vue'
 
@@ -17,10 +16,9 @@ useScrollReveal()
     <main id="main-content">
       <div class="journey-host">
         <JourneyLine />
-        <ChiSiamo />
-        <Viaggio2027 />
+        <ChiSiamo :teaser="true" />
+        <Viaggio2027 :show-tappe="false" />
         <AssociazioneTeaser />
-        <SponsorPatrocini />
         <CtaBanner
           title="Hai domande? Siamo qui."
           subtitle="Scrivici per qualsiasi informazione sul viaggio, sull'associazione o per collaborare con noi."

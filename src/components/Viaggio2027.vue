@@ -1,4 +1,11 @@
 <script setup>
+const props = defineProps({
+  showTappe: {
+    type: Boolean,
+    default: true,
+  },
+})
+
 const perche = [
   { title: 'Cosa è il Viaggio 2027',
     desc: "Oltre 2.000 chilometri a piedi, per mesi consecutivi, da Sud a Nord. Un percorso continuo, misurabile e documentato giorno dopo giorno, senza eventi spot e senza scorciatoie. Non è simbolico. Succede davvero." },
@@ -85,7 +92,7 @@ const tappe = [
   </section>
 
   <!-- Le Tappe -->
-  <section class="section-light py-10 md:py-20">
+  <section v-if="props.showTappe" class="section-light py-10 md:py-20">
     <div class="section-pad">
       <div class="text-center mb-16 reveal">
         <span class="accent-bar accent-bar-center"></span>

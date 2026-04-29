@@ -24,30 +24,51 @@ onMounted(() => {
 })
 onUnmounted(() => { if (ro) ro.disconnect() })
 
-// Build the control points: top anchor → 15 tappa dots → bottom anchor
+// Posizioni geografiche reali sulla mappa d'Italia (Taranto→Verona)
+// x = frazione larghezza viewport: 0 = sinistra, 1 = destra
+const X_FRACS = [
+  0.76,  // Taranto       — costa est Puglia, punto di partenza
+  0.68,  // Matera        — entroterra est Basilicata
+  0.48,  // San Gregorio  — Campania interna, grande svolta ovest
+  0.24,  // Napoli        — costa tirrenica, punto più a ovest del sud
+  0.20,  // Formia        — costa tirrenica laziale
+  0.32,  // Roma          — risalita verso centro
+  0.44,  // Orvieto       — Umbria, centro Italia
+  0.46,  // Torrenieri    — Val d'Orcia, Toscana centro
+  0.26,  // Pontedera     — Toscana ovest (verso Pisa)
+  0.18,  // La Spezia     — Liguria, nordovest
+  0.12,  // Genova        — arco ligure, punto più a nordovest
+  0.40,  // Nizza M.      — Langhe piemontesi, grande svolta est
+  0.16,  // Torino        — Piemonte nordovest
+  0.42,  // Milano        — centro nord
+  0.64,  // Verona        — Veneto nordest, arrivo
+]
+
+// Su mobile comprime l'ampiezza verso il centro per lasciare spazio alle etichette
+function toX(frac, mobile) {
+  return mobile ? 0.5 + (frac - 0.5) * 0.52 : frac
+}
+
 const points = computed(() => {
   const w = vw.value
   const h = vh.value
-  const n = tappe.length   // 15
+  const n = tappe.length
   const pad = h * 0.02
+  const mobile = w < 640
 
   const pts = [{ x: w * 0.50, y: 0, name: null }]
-
   for (let i = 0; i < n; i++) {
     const t = (i + 1) / (n + 1)
     const y = pad + t * (h - 2 * pad)
-    // S-wave: amplitude 38% of width so dots land in the side whitespace
-    const phase = (i + 0.5) * Math.PI * 0.9
-    const x = w * 0.50 + w * 0.38 * Math.sin(phase)
+    const x = w * toX(X_FRACS[i], mobile)
     pts.push({ x, y, name: tappe[i], idx: i })
   }
-
   pts.push({ x: w * 0.50, y: h, name: null })
   return pts
 })
 
-// Catmull-Rom spline converted to cubic Bezier segments (smooth curve)
-function spline(pts, tension = 0.35) {
+// Catmull-Rom → cubic Bézier, tensione 0.32 per curve fluide ma non sinuose
+function spline(pts, tension = 0.32) {
   if (pts.length < 2) return ''
   let d = `M ${pts[0].x.toFixed(1)} ${pts[0].y.toFixed(1)}`
   for (let i = 0; i < pts.length - 1; i++) {
@@ -64,15 +85,24 @@ function spline(pts, tension = 0.35) {
   return d
 }
 
-const pathD = computed(() => spline(points.value))
+const pathD    = computed(() => spline(points.value))
 const tappePoints = computed(() => points.value.filter(p => p.name !== null))
+const isMobile = computed(() => vw.value < 640)
 
-// Labels hug the viewport edge — opposite side from dot keeps them in whitespace
-const MARGIN = 16
+const DOT_OFFSET = 16
+const EDGE_PAD   = 6
+
 function side(p)   { return p.x > vw.value * 0.5 ? 'right' : 'left' }
-function lx(p)     { return side(p) === 'right' ? vw.value - MARGIN : MARGIN }
-function anchor(p) { return side(p) === 'right' ? 'end' : 'start' }
-function connX(p)  { return p.x + (lx(p) - p.x) * 0.45 }
+function anchor(p) { return side(p) === 'right' ? 'start' : 'end' }
+function lx(p) {
+  const isRight = side(p) === 'right'
+  const raw = isRight ? p.x + DOT_OFFSET : p.x - DOT_OFFSET
+  // clamp dentro il viewport così le etichette non escono
+  return isRight
+    ? Math.min(raw, vw.value - EDGE_PAD)
+    : Math.max(raw, EDGE_PAD)
+}
+function fontSize(p) { return isMobile.value || p.name.length > 10 ? '8' : '9' }
 </script>
 
 <template>
@@ -119,26 +149,21 @@ function connX(p)  { return p.x + (lx(p) - p.x) * 0.45 }
         <!-- Filled dot -->
         <circle :cx="p.x" :cy="p.y" r="3.5" fill="#F05022" opacity="0.55" />
 
-        <!-- Short dashed connector from dot to the label at the edge -->
-        <line :x1="p.x" :y1="p.y" :x2="connX(p)" :y2="p.y"
-          stroke="#F05022" stroke-width="0.7"
-          stroke-dasharray="2 4" opacity="0.20" />
-
-        <!-- City name — in the viewport margin area -->
+        <!-- City name — accanto al punto -->
         <text
-          :x="lx(p)" :y="p.y - 5"
+          :x="lx(p)" :y="p.y - 3"
           :text-anchor="anchor(p)"
           font-family="'Barlow Condensed', sans-serif"
-          font-size="9" font-weight="700" letter-spacing="2"
-          fill="#F05022" opacity="0.28"
+          :font-size="fontSize(p)" font-weight="700" letter-spacing="2"
+          fill="#F05022" opacity="0.30"
         >{{ p.name.toUpperCase() }}</text>
 
         <!-- Tappa number -->
         <text
-          :x="lx(p)" :y="p.y + 12"
+          :x="lx(p)" :y="p.y + 10"
           :text-anchor="anchor(p)"
           font-family="'Barlow Condensed', sans-serif"
-          font-size="8" letter-spacing="1"
+          font-size="7" letter-spacing="1"
           fill="#F05022" opacity="0.18"
         >{{ p.idx + 1 }} / 15</text>
       </g>

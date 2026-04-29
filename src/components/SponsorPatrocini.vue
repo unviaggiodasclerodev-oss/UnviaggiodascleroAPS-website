@@ -2,7 +2,7 @@
   <section id="sponsor" class="section-light py-10 md:py-20">
     <div class="section-pad">
       <!-- Header -->
-      <div class="text-center mb-12 reveal">
+      <div class="text-center mb-16 reveal">
         <span class="accent-bar accent-bar-center"></span>
         <p class="text-accent text-xs font-semibold tracking-widest uppercase mb-4">Sponsor & Patrocini</p>
         <h2 class="text-4xl md:text-5xl font-bold tx mb-3">

@@ -17,7 +17,7 @@ useScrollReveal()
 
         <!-- Sezione 1: La storia -->
         <div class="relative">
-          <div class="section-pad pt-6 pb-0">
+          <div class="section-pad pb-0">
             <p class="text-accent text-xs font-semibold tracking-widest uppercase mb-2">01 — La storia</p>
           </div>
           <ChiSiamo :show-journey-cta="false" />
@@ -25,7 +25,7 @@ useScrollReveal()
 
         <!-- Sezione 2: L'associazione -->
         <div class="relative">
-          <div class="section-pad pt-10 pb-0">
+          <div class="section-pad pb-0">
             <p class="text-accent text-xs font-semibold tracking-widest uppercase mb-2">02 — L'associazione</p>
           </div>
           <AssociazioneServizi :show-services="false" section-id="associazione-aps" />
@@ -33,7 +33,7 @@ useScrollReveal()
 
         <!-- Sezione 3: I numeri -->
         <div class="relative">
-          <div class="section-pad pt-10 pb-0">
+          <div class="section-pad pb-0">
             <p class="text-accent text-xs font-semibold tracking-widest uppercase mb-2">03 — I numeri</p>
           </div>
           <NumeriChiave :show-chiave="false" />

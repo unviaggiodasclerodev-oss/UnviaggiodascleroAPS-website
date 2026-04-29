@@ -12,7 +12,7 @@ function play() {
 <template>
   <section class="section-muted py-10 md:py-20">
     <div class="section-pad">
-      <div class="text-center mb-14 reveal">
+      <div class="text-center mb-16 reveal">
         <span class="accent-bar accent-bar-center"></span>
         <p class="text-xs font-semibold tracking-widest uppercase mb-4" style="color:#F05022">Il Viaggio 2027</p>
         <h2 class="text-4xl md:text-5xl font-bold font-display tx mb-4">
