@@ -26,11 +26,11 @@ const router = useRouter()
           <p class="text-accent text-xs font-semibold tracking-widest uppercase mb-4">L'Associazione APS</p>
           <h2 class="text-4xl md:text-5xl font-bold tx leading-tight mb-8">
             Un progetto collettivo<br>
-            <span class="text-accent">a cui puoi far parte</span>
+            <span class="text-accent">di cui puoi essere parte</span>
           </h2>
           <p class="tx2 leading-relaxed text-base mb-8">
             Un Viaggio da Sclero è diventata un'Associazione di Promozione Sociale:
-            un luogo aperto a chi vuole contribuire con il proprio tempo, le proprie competenze
+            un luogo aperto a chi vuole contribuire con il proprio tempo
             o semplicemente la propria presenza.
           </p>
           <div class="flex flex-col gap-3 mb-10">
