@@ -3,6 +3,7 @@ import { useScrollReveal } from './composables/useScrollReveal.js'
 import NavBar from './components/NavBar.vue'
 import FooterSection from './components/FooterSection.vue'
 import BackToTop from './components/BackToTop.vue'
+import { Analytics } from '@vercel/analytics/vue'
 
 useScrollReveal()
 </script>
@@ -18,5 +19,6 @@ useScrollReveal()
     <router-view />
     <FooterSection />
     <BackToTop />
+    <Analytics />
   </div>
 </template>
