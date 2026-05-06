@@ -11,6 +11,10 @@ declare module 'vue-router' {
   }
 }
 
+declare global {
+  function gtag(...args: unknown[]): void
+}
+
 const routes: RouteRecordRaw[] = [
   {
     path: '/',
@@ -65,5 +69,20 @@ const router = createRouter({
 router.beforeEach((to) => {
   document.title = to.meta.title ?? 'Un Viaggio da Sclero APS'
 })
+
+router.beforeEach((to) => {
+  document.title = to.meta.title ?? 'Un Viaggio da Sclero APS'
+})
+
+// ✅ Aggiunto per tracciare ogni cambio di pagina con Google Analytics
+router.afterEach((to) => {
+  if (typeof window.gtag === 'function') {
+    window.gtag('event', 'page_view', {
+      page_path: to.fullPath,
+      page_title: to.meta.title ?? 'Un Viaggio da Sclero APS',
+    })
+  }
+})
+
 
 export default router
