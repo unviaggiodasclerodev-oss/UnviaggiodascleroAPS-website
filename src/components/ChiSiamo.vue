@@ -98,22 +98,7 @@ const doubled = [...mediaItems, ...mediaItems]
             <p class="tx font-semibold text-sm mb-1">Mesi in cammino</p>
             <p class="tx3 text-xs leading-relaxed mt-auto">Presenza quotidiana lungo il percorso</p>
           </div>
-          <div class="card-solid p-6 col-span-2">
-            <div class="flex items-start gap-4">
-              <div class="w-11 h-11 rounded-full bg-accent/10 border border-accent/20 flex items-center justify-center shrink-0">
-                <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
-                </svg>
-              </div>
-              <div>
-                <p class="text-accent font-semibold text-xs tracking-wide uppercase mb-1">Guinness World Records</p>
-                <p class="tx2 text-sm leading-relaxed">
-                  Richiesta ufficiale inoltrata per il cammino più lungo mai percorso da una persona con sclerosi multipla.
-                </p>
-              </div>
-            </div>
-          </div>
+          <!-- Guinness card hidden -->
         </div>
       </div>
     </div>  <!-- end .section-pad -->

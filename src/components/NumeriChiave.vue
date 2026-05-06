@@ -95,38 +95,7 @@ onMounted(() => {
         </div>
       </div>
 
-      <!-- ── Guinness World Record banner ────────────────────────────────── -->
-      <div class="reveal rounded-2xl overflow-hidden" style="background: linear-gradient(135deg, #0C2B5E 0%, #0d3572 60%, #0C2B5E 100%);">
-        <div class="grid md:grid-cols-[1fr_auto] items-center gap-0">
-          <!-- Text side -->
-          <div class="p-8 md:p-12">
-            <div class="flex items-center gap-3 mb-5">
-              <span class="text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-full"
-                style="background:#fef700; color:#0C2B5E;">World Record</span>
-            </div>
-            <h3 class="text-white text-2xl md:text-3xl font-bold font-display uppercase leading-tight mb-4">
-              Official Attempt —<br>
-              <span style="color:#fef700">Guinness World Records</span>
-            </h3>
-            <p class="text-white/75 leading-relaxed max-w-xl">
-              Per il cammino 2027 è stata inoltrata la richiesta ufficiale a
-              <strong class="text-white">Guinness World Records</strong>
-              per il riconoscimento come il cammino più lungo mai percorso da una persona con sclerosi multipla.
-            </p>
-          </div>
-          <!-- Badge side — Guinness logo -->
-          <div class="flex items-center justify-center p-8 md:p-12 bg-white/5 md:border-l border-white/10 min-w-[220px]">
-            <div class="flex flex-col items-center text-center gap-4">
-              <div class="bg-white rounded-xl px-5 py-4">
-                <img src="/images/logoworldguinness.png" alt="Guinness World Records" class="h-20 w-auto" />
-              </div>
-              <div class="px-4 py-1.5 rounded-full" style="background:#fef700;">
-                <p class="font-black text-xs tracking-[0.2em] uppercase" style="color:#0C2B5E">OFFICIAL ATTEMPT</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <!-- Guinness banner hidden -->
 
     </div>
   </section>

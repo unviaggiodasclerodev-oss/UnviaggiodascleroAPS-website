@@ -53,7 +53,7 @@ const faqs = [
   { q: 'Come posso partecipare ad un viaggio?',
     a: 'Dal 2028 saremmo pronti per seguirti e per personalizzare il tuo viaggio. Nel frattempo puoi scriverci per avere maggiori informazioni e descrivere la tua idea.' },
   { q: 'Posso camminare con voi durante il Viaggio del 2027?',
-    a: 'Il Viaggio sarà videodocumentato e monitorato per il Guinness World Record e non potremo seguire altre persone durante le giornate di cammino. Sarà comunque un onore incontrarti nelle tappe.' },
+    a: 'Il Viaggio sarà videodocumentato e non potremo seguire altre persone durante le giornate di cammino. Sarà comunque un onore incontrarti nelle tappe.' },
   { q: "Posso sponsorizzare l'associazione?",
     a: "Certamente! Puoi farlo con un contributo economico, con un aiuto durante i Viaggi, con materiale inerente al cammino. Scrivici a info@unviaggiodascleroaps.org per tutti i dettagli." },
   { q: "Posso far parte dell'Associazione?",
