@@ -3,10 +3,12 @@ import { ref, onMounted, onUnmounted } from 'vue'
 
 const visible = ref(false)
 
-function onScroll() { visible.value = window.scrollY > 500 }
-function scrollTop() { window.scrollTo({ top: 0, behavior: 'smooth' }) }
+function onScroll() { visible.value = window.scrollY > 300 }
+function scrollTop() {
+  (document.scrollingElement || document.documentElement).scrollTo({ top: 0, behavior: 'smooth' })
+}
 
-onMounted(() => window.addEventListener('scroll', onScroll))
+onMounted(() => window.addEventListener('scroll', onScroll, { passive: true }))
 onUnmounted(() => window.removeEventListener('scroll', onScroll))
 </script>
 

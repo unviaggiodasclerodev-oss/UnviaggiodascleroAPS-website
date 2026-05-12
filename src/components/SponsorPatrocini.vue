@@ -15,15 +15,16 @@
       <div v-if="patrocini.length" class="mb-12">
         <h3 class="text-center text-xl font-semibold tx mb-6">Con il patrocinio di</h3>
         <div class="flex flex-wrap justify-center items-center gap-8 md:gap-12">
-          <a v-for="patrocinio in patrocini" :key="patrocinio.nome"
-            :href="patrocinio.link" target="_blank" rel="noopener"
-            class="group flex flex-col items-center text-center p-6 rounded-2xl transition-all hover:bg-white/50 dark:hover:bg-white/5">
-            <img v-if="patrocinio.logo" :src="patrocinio.logo" :alt="patrocinio.nome"
-              class="h-20 w-auto object-contain mb-4" />
-            <span v-else class="text-3xl mb-2">🏛️</span>
-            <span class="font-semibold tx group-hover:text-accent transition-colors">{{ patrocinio.nome }}</span>
-            <span v-if="patrocinio.tipo" class="text-xs text-stone-500 mt-1">{{ patrocinio.tipo }}</span>
-          </a>
+          <div v-for="patrocinio in patrocini" :key="patrocinio.nome"
+            class="flex flex-col items-center text-center p-6 rounded-2xl transition-all hover:bg-white/50 dark:hover:bg-white/5">
+            <a :href="patrocinio.link" target="_blank" rel="noopener" class="group flex flex-col items-center">
+              <img v-if="patrocinio.logo" :src="patrocinio.logo" :alt="patrocinio.nome"
+                class="h-20 w-auto object-contain mb-4" />
+              <span v-else class="text-3xl mb-2">🏛️</span>
+              <span class="font-semibold tx group-hover:text-accent transition-colors">{{ patrocinio.nome }}</span>
+              <span v-if="patrocinio.tipo" class="text-xs text-stone-500 mt-1">{{ patrocinio.tipo }}</span>
+            </a>
+          </div>
         </div>
       </div>
 
@@ -53,6 +54,13 @@ const patrocini = ref([
     logo: '/patrocini/Stemma-di-Valdobbiadene.webp',
     link: 'https://comune.valdobbiadene.tv.it',
     tipo: 'Patrocinio'
+  },
+  {
+    nome: 'Colline del Prosecco di Conegliano e Valdobbiadene',
+    logo: '/patrocini/Associazione_color-positivo (7) (4).png',
+    link: 'https://www.colline-unesco.it',
+    tipo: 'Patrocinio',
+    pdf: '/patrocini/linee-guida-patrocinio-colline-prosecco.pdf'
   }
 ])
 
