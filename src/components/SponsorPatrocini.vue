@@ -58,7 +58,7 @@ const patrocini = ref([
   {
     nome: 'Colline del Prosecco di Conegliano e Valdobbiadene',
     logo: '/patrocini/Associazione_color-positivo (7) (4).png',
-    link: 'https://www.colline-unesco.it',
+    link: 'https://collineconeglianovaldobbiadene.it/',
     tipo: 'Patrocinio',
     pdf: '/patrocini/linee-guida-patrocinio-colline-prosecco.pdf'
   }
