@@ -18,6 +18,7 @@ const navLinks = [
   { label: 'Chi siamo', to: '/chi-siamo' },
   { label: 'Il Viaggio 2027', to: '/il-viaggio-2027' },
   { label: 'Associazione', to: '/associazione' },
+  { label: 'sclHEROES', to: '/sclheroes' },
   { label: 'Media', to: '/media' },
   { label: 'Contatti', to: '/contatti' },
 ]

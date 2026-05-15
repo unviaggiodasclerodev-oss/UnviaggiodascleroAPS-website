@@ -5,6 +5,8 @@ import ViaggioView from './views/ViaggioView.vue'
 import ServiziView from './views/ServiziView.vue'
 import ContattiView from './views/ContattiView.vue'
 import RassegnaStampaView from './views/RassegnaStampaView.vue'
+import SclHeroesView from './views/SclHeroesView.vue'
+import CookiePolicyView from './views/CookiePolicyView.vue'
 declare module 'vue-router' {
   interface RouteMeta {
     title?: string
@@ -51,6 +53,18 @@ const routes: RouteRecordRaw[] = [
     name: 'media',
     component: RassegnaStampaView,
     meta: { title: 'Media - Un Viaggio da Sclero APS' }
+  },
+  {
+    path: '/sclheroes',
+    name: 'sclheroes',
+    component: SclHeroesView,
+    meta: { title: 'sclHEROES - Un Viaggio da Sclero APS' }
+  },
+  {
+    path: '/cookie-policy',
+    name: 'cookie-policy',
+    component: CookiePolicyView,
+    meta: { title: 'Cookie Policy - Un Viaggio da Sclero APS' }
   }
 ]
 

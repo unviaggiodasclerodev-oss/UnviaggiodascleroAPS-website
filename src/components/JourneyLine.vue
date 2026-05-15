@@ -131,23 +131,23 @@ function fontSize(p) { return isMobile.value || p.name.length > 10 ? '8' : '9' }
       <!-- Soft glow behind dots line -->
       <path :d="pathD" fill="none" stroke="#F05022" stroke-width="10"
         stroke-dasharray="3 14" stroke-linecap="round"
-        opacity="0.05" mask="url(#jl-mask)" />
+        opacity="0.03" mask="url(#jl-mask)" />
 
       <!-- Main dotted line -->
       <path :d="pathD" fill="none" stroke="#F05022" stroke-width="2"
         stroke-dasharray="3 14" stroke-linecap="round"
-        opacity="0.36" mask="url(#jl-mask)" />
+        opacity="0.16" mask="url(#jl-mask)" />
 
       <!-- Tappa markers + edge labels -->
       <g v-for="(p, i) in tappePoints" :key="i">
         <!-- Outer pulse ring -->
         <circle :cx="p.x" :cy="p.y" r="13" fill="none"
-          stroke="#F05022" stroke-width="0.7" opacity="0.13" />
+          stroke="#F05022" stroke-width="0.7" opacity="0.07" />
         <!-- Inner ring -->
         <circle :cx="p.x" :cy="p.y" r="6.5" fill="none"
-          stroke="#F05022" stroke-width="1.5" opacity="0.40" />
+          stroke="#F05022" stroke-width="1.5" opacity="0.18" />
         <!-- Filled dot -->
-        <circle :cx="p.x" :cy="p.y" r="3.5" fill="#F05022" opacity="0.55" />
+        <circle :cx="p.x" :cy="p.y" r="3.5" fill="#F05022" opacity="0.25" />
 
         <!-- City name — accanto al punto -->
         <text
@@ -155,7 +155,7 @@ function fontSize(p) { return isMobile.value || p.name.length > 10 ? '8' : '9' }
           :text-anchor="anchor(p)"
           font-family="'Barlow Condensed', sans-serif"
           :font-size="fontSize(p)" font-weight="700" letter-spacing="2"
-          fill="#F05022" opacity="0.30"
+          fill="#F05022" opacity="0.13"
         >{{ p.name.toUpperCase() }}</text>
 
         <!-- Tappa number -->
@@ -164,7 +164,7 @@ function fontSize(p) { return isMobile.value || p.name.length > 10 ? '8' : '9' }
           :text-anchor="anchor(p)"
           font-family="'Barlow Condensed', sans-serif"
           font-size="7" letter-spacing="1"
-          fill="#F05022" opacity="0.18"
+          fill="#F05022" opacity="0.08"
         >{{ p.idx + 1 }} / 15</text>
       </g>
     </svg>

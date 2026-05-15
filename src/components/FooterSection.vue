@@ -1,3 +1,8 @@
+<script setup>
+import { useCookieConsent } from '../composables/useCookieConsent'
+const { riapriBanner } = useCookieConsent()
+</script>
+
 <template>
   <footer class="relative bg-stone-900 py-16">
     <!-- Gradient top border -->
@@ -65,11 +70,13 @@
 
       <div class="border-t border-stone-800 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
         <p class="text-stone-500 text-sm">© 2026 Un Viaggio da Sclero APS. All rights reserved.</p>
-        <div class="flex gap-6 items-center">
+        <div class="flex flex-wrap gap-6 items-center justify-center">
           <a href="https://onecdn.io/media/termini-di-utilizzo-aps-un-viaggio-da-sclero-19c08123-ad77-425c-8c64-a08cc1d09989.pdf"
             target="_blank" class="text-stone-500 hover:text-accent text-xs transition-colors duration-200">Termini di utilizzo</a>
           <a href="https://onecdn.io/media/privacy-policy-aps-un-viaggio-da-sclero-fe32abfa-d624-4e79-b1c6-53e7164f50f4.pdf"
             target="_blank" class="text-stone-500 hover:text-accent text-xs transition-colors duration-200">Privacy Policy</a>
+          <router-link to="/cookie-policy" class="text-stone-500 hover:text-accent text-xs transition-colors duration-200">Cookie Policy</router-link>
+          <button @click="riapriBanner" class="text-stone-500 hover:text-accent text-xs transition-colors duration-200">Gestisci cookie</button>
         </div>
       </div>
     </div>
