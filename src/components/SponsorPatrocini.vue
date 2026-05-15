@@ -1,5 +1,5 @@
 <template>
-  <section id="sponsor" class="section-light py-10 md:py-20">
+  <section id="sponsor" class="section-light pt-10 md:pt-20 pb-4 md:pb-8">
     <div class="section-pad">
       <!-- Header -->
       <div class="text-center mb-16 reveal">
