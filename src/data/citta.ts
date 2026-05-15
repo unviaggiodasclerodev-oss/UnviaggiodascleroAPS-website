@@ -1,0 +1,25 @@
+export const CITTA_ITALIANE: string[] = [
+  // Capoluoghi di provincia
+  'Agrigento', 'Alessandria', 'Ancona', 'Andria', 'Aosta', 'Arezzo', 'Ascoli Piceno', 'Asti',
+  'Avellino', 'Bari', 'Barletta', 'Belluno', 'Benevento', 'Bergamo', 'Biella', 'Bologna',
+  'Bolzano', 'Brescia', 'Brindisi', 'Cagliari', 'Caltanissetta', 'Campobasso', 'Caserta',
+  'Catania', 'Catanzaro', 'Chieti', 'Como', 'Cosenza', 'Cremona', 'Crotone', 'Cuneo', 'Enna',
+  'Fermo', 'Ferrara', 'Firenze', 'Foggia', 'Forlì', 'Frosinone', 'Genova', 'Gorizia',
+  'Grosseto', 'Imperia', 'Isernia', "L'Aquila", 'La Spezia', 'Latina', 'Lecce', 'Lecco',
+  'Livorno', 'Lodi', 'Lucca', 'Macerata', 'Mantova', 'Massa', 'Matera', 'Messina', 'Milano',
+  'Modena', 'Monza', 'Napoli', 'Novara', 'Nuoro', 'Oristano', 'Padova', 'Palermo', 'Parma',
+  'Pavia', 'Perugia', 'Pesaro', 'Pescara', 'Piacenza', 'Pisa', 'Pistoia', 'Pordenone',
+  'Potenza', 'Prato', 'Ragusa', 'Ravenna', 'Reggio Calabria', 'Reggio Emilia', 'Rieti',
+  'Rimini', 'Roma', 'Rovigo', 'Salerno', 'Sassari', 'Savona', 'Siena', 'Siracusa', 'Sondrio',
+  'Taranto', 'Teramo', 'Terni', 'Torino', 'Trani', 'Trapani', 'Trento', 'Treviso', 'Trieste',
+  'Udine', 'Varese', 'Venezia', 'Verbania', 'Vercelli', 'Verona', 'Vibo Valentia', 'Vicenza',
+  'Viterbo',
+  // Principali comuni non capoluogo
+  'Acireale', 'Afragola', 'Aprilia', 'Bagheria', 'Battipaglia', 'Busto Arsizio', 'Carpi',
+  'Casalnuovo di Napoli', 'Casoria', 'Castellammare di Stabia', 'Cesena', 'Cinisello Balsamo',
+  'Civitavecchia', 'Collegno', 'Ercolano', 'Faenza', 'Giugliano in Campania', 'Imola',
+  'Misterbianco', 'Molfetta', 'Monreale', 'Mugnano di Napoli', 'Nola', 'Olbia',
+  'Pagani', 'Pomezia', 'Qualiano', 'Quarto', 'Rho', 'San Giorgio a Cremano', 'Sesto San Giovanni',
+  'Settimo Torinese', 'Scafati', 'Somma Vesuviana', 'Torre Annunziata', 'Torre del Greco',
+  'Vittoria', 'Vittorio Veneto',
+].sort((a, b) => a.localeCompare(b, 'it'))
