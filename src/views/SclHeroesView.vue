@@ -226,7 +226,7 @@ void cityContainerRef // template ref — populated by Vue at runtime
 
             <!-- Published stories grid -->
             <div v-if="publishedHeroes.length > 0" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              <div v-for="hero in publishedHeroes" :key="hero.created_at" class="bg-stone-50 dark:bg-stone-800 rounded-2xl overflow-hidden shadow-sm border border-stone-200/50 dark:border-white/10 reveal flex flex-col">
+              <div v-for="hero in publishedHeroes" :key="hero.created_at" class="bg-stone-50 dark:bg-stone-800 rounded-2xl overflow-hidden shadow-sm border border-stone-200/50 dark:border-white/10 flex flex-col">
                 <div v-if="hero.foto_url" class="h-44 overflow-hidden">
                   <img :src="hero.foto_url" :alt="hero.nome" class="w-full h-full object-cover" />
                 </div>

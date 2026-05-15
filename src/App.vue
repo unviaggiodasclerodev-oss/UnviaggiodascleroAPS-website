@@ -1,7 +1,9 @@
 <script setup>
 import { onMounted } from 'vue'
+import { useRoute } from 'vue-router'
 import { useScrollReveal } from './composables/useScrollReveal.js'
 import { useCookieConsent } from './composables/useCookieConsent'
+import { useAuth } from './composables/useAuth'
 import NavBar from './components/NavBar.vue'
 import FooterSection from './components/FooterSection.vue'
 import BackToTop from './components/BackToTop.vue'
@@ -11,8 +13,14 @@ import { SpeedInsights } from '@vercel/speed-insights/vue'
 
 useScrollReveal()
 
+const route = useRoute()
 const { caricaPreferenze } = useCookieConsent()
-onMounted(caricaPreferenze)
+const { init: initAuth } = useAuth()
+
+onMounted(() => {
+  caricaPreferenze()
+  initAuth()
+})
 </script>
 
 <template>
@@ -21,7 +29,12 @@ onMounted(caricaPreferenze)
     Vai al contenuto principale
   </a>
 
-  <div>
+  <!-- Admin pages skip the public layout -->
+  <template v-if="route.path.startsWith('/admin')">
+    <router-view />
+  </template>
+
+  <div v-else>
     <NavBar />
     <router-view />
     <FooterSection />
