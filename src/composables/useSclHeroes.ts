@@ -2,29 +2,31 @@ import { ref, onMounted } from 'vue'
 import { supabase } from '../lib/supabase'
 import type { SclHero } from '../data/sclheroes'
 
+/** Fetches public sclHEROES data: total submission count and published stories. */
 export function useSclHeroes() {
-  const totaleInvii = ref<number | null>(null)
-  const wallOfHeroes = ref<SclHero[]>([])
+  const submissionCount = ref<number | null>(null)
+  const publishedHeroes = ref<SclHero[]>([])
 
-  async function carica() {
+  async function fetchData() {
     const { count } = await supabase
       .from('sclheroes_submissions')
       .select('*', { count: 'exact', head: true })
-    totaleInvii.value = count ?? 0
+    submissionCount.value = count ?? 0
 
     const { data } = await supabase
       .from('sclheroes_submissions')
       .select('nome, citta, storia, foto_url, created_at')
       .eq('stato', 'pubblicato')
       .order('created_at', { ascending: false })
-    wallOfHeroes.value = (data as SclHero[]) ?? []
+    publishedHeroes.value = (data as SclHero[]) ?? []
   }
 
-  function incrementaContatore() {
-    if (totaleInvii.value !== null) totaleInvii.value++
+  // Optimistic update after a successful form submission
+  function incrementCount() {
+    if (submissionCount.value !== null) submissionCount.value++
   }
 
-  onMounted(carica)
+  onMounted(fetchData)
 
-  return { totaleInvii, wallOfHeroes, incrementaContatore }
+  return { submissionCount, publishedHeroes, incrementCount }
 }

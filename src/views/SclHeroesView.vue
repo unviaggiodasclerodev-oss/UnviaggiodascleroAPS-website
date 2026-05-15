@@ -2,22 +2,22 @@
 import { useScrollReveal } from '../composables/useScrollReveal.js'
 import { useSclHeroes } from '../composables/useSclHeroes'
 import { useSclHeroesForm } from '../composables/useSclHeroesForm'
-import { useCittaAutocomplete } from '../composables/useCittaAutocomplete'
-import { PASSI_PERCORSO } from '../data/sclheroes'
+import { useCityAutocomplete } from '../composables/useCityAutocomplete'
+import { JOURNEY_STEPS } from '../data/sclheroes'
 import JourneyLine from '../components/JourneyLine.vue'
 
 useScrollReveal()
 
-const { totaleInvii, wallOfHeroes, incrementaContatore } = useSclHeroes()
-const { form, fotoPreview, stato, errore, onFotoChange, rimuoviFoto, invia } = useSclHeroesForm(incrementaContatore)
-const { query: cittaQuery, aperta: cittaAperta, wrapper: cittaWrapper, filtrate: cittaFiltrate, seleziona: selezionaCitta, onInput: onCittaInput } = useCittaAutocomplete((val) => { form.value.citta = val })
-void cittaWrapper // template ref — Vue lo popola a runtime
+const { submissionCount, publishedHeroes, incrementCount } = useSclHeroes()
+const { form, photoPreview, status, errorMessage, handlePhotoChange, removePhoto, submitForm } = useSclHeroesForm(incrementCount)
+const { query: cityQuery, isOpen: cityDropdownOpen, containerRef: cityContainerRef, suggestions: citySuggestions, selectCity, handleInput: handleCityInput } = useCityAutocomplete((value) => { form.value.citta = value })
+void cityContainerRef // template ref — populated by Vue at runtime
 </script>
 
 <template>
   <div class="relative">
 
-    <!-- Sfondo -->
+    <!-- Background overlay — same treatment as ChiSiamo -->
     <div class="absolute inset-0 -z-10 overflow-hidden" aria-hidden="true">
       <img src="/images/cammin.jpg" alt="" class="w-full h-full object-cover object-center" />
       <div class="absolute inset-0 bg-overlay backdrop-blur-sm"></div>
@@ -30,7 +30,7 @@ void cittaWrapper // template ref — Vue lo popola a runtime
         <section class="section-pad relative">
           <div class="max-w-3xl mx-auto">
 
-            <!-- Header -->
+            <!-- Page header -->
             <div class="text-center mb-6 reveal">
               <span class="accent-bar accent-bar-center"></span>
               <p class="text-xs font-semibold tracking-widest uppercase mb-4" style="color:#F05022">Community</p>
@@ -41,40 +41,41 @@ void cittaWrapper // template ref — Vue lo popola a runtime
               </p>
             </div>
 
-            <!-- Contatore -->
-            <div v-if="totaleInvii !== null" class="text-center mb-6 reveal">
+            <!-- Live submission counter -->
+            <div v-if="submissionCount !== null" class="text-center mb-6 reveal">
               <p class="text-sm tx3">
-                <span class="text-2xl font-bold" style="color:#F05022">{{ totaleInvii }}</span>
+                <span class="text-2xl font-bold" style="color:#F05022">{{ submissionCount }}</span>
                 <span class="ml-2">storie condivise finora</span>
               </p>
             </div>
 
-            <!-- Percorso -->
+            <!-- Journey steps -->
             <div class="mb-14 reveal">
               <h2 class="text-center text-xs font-bold tracking-wide uppercase mb-8" style="color:#F05022">Il percorso dello sclHERO</h2>
               <div class="relative">
+                <!-- Connector line (desktop only) -->
                 <div class="hidden md:block absolute top-7 left-[10%] right-[10%] h-px bg-gradient-to-r from-transparent via-accent/30 to-transparent" aria-hidden="true"></div>
                 <div class="grid grid-cols-1 md:grid-cols-5 gap-6">
-                  <div v-for="passo in PASSI_PERCORSO" :key="passo.numero" class="flex flex-col items-center text-center gap-3">
+                  <div v-for="item in JOURNEY_STEPS" :key="item.step" class="flex flex-col items-center text-center gap-3">
                     <div class="w-14 h-14 rounded-full flex items-center justify-center text-white font-bold text-sm shrink-0 shadow-md" style="background:#F05022">
-                      {{ passo.numero }}
+                      {{ item.step }}
                     </div>
                     <div>
-                      <p class="font-semibold tx text-sm">{{ passo.titolo }}</p>
-                      <p class="text-xs tx3 leading-relaxed mt-1">{{ passo.descrizione }}</p>
+                      <p class="font-semibold tx text-sm">{{ item.title }}</p>
+                      <p class="text-xs tx3 leading-relaxed mt-1">{{ item.description }}</p>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            <!-- Form / Successo -->
+            <!-- Submission form / success state -->
             <Transition name="scl-fade" mode="out-in">
 
-              <div v-if="stato !== 'success'" class="bg-stone-50 dark:bg-stone-800 rounded-2xl p-8 shadow-sm border border-stone-200/50 dark:border-white/10 reveal">
-                <form @submit.prevent="invia" novalidate class="space-y-6">
+              <div v-if="status !== 'success'" class="bg-stone-50 dark:bg-stone-800 rounded-2xl p-8 shadow-sm border border-stone-200/50 dark:border-white/10 reveal">
+                <form @submit.prevent="submitForm" novalidate class="space-y-6">
 
-                  <!-- Nome -->
+                  <!-- Full name -->
                   <div>
                     <label class="block text-sm font-semibold tx mb-1.5" for="nome">
                       Nome e cognome <span style="color:#F05022">*</span>
@@ -98,33 +99,33 @@ void cittaWrapper // template ref — Vue lo popola a runtime
                     />
                   </div>
 
-                  <!-- Città -->
-                  <div ref="cittaWrapper">
+                  <!-- City autocomplete -->
+                  <div ref="cityContainerRef">
                     <label class="block text-sm font-semibold tx mb-1.5" for="citta">
                       Da dove scrivi?
                       <span class="text-xs tx3 font-normal ml-1">(facoltativo)</span>
                     </label>
                     <div class="relative">
                       <input
-                        id="citta" v-model="cittaQuery" type="text" autocomplete="off"
+                        id="citta" v-model="cityQuery" type="text" autocomplete="off"
                         placeholder="Cerca la tua città…"
                         class="w-full px-4 py-3 rounded-xl border border-stone-300 dark:border-stone-600 bg-white dark:bg-stone-900 tx text-sm focus:outline-none focus:ring-2 focus:ring-accent/50 transition"
-                        @input="onCittaInput"
-                        @focus="cittaAperta = true"
-                        @keydown.escape="cittaAperta = false"
-                        @keydown.enter.prevent="cittaFiltrate.length && selezionaCitta(cittaFiltrate[0])"
+                        @input="handleCityInput"
+                        @focus="cityDropdownOpen = true"
+                        @keydown.escape="cityDropdownOpen = false"
+                        @keydown.enter.prevent="citySuggestions.length && selectCity(citySuggestions[0])"
                       />
-                      <ul v-if="cittaAperta && cittaFiltrate.length" class="absolute z-50 w-full mt-1 bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-700 rounded-xl shadow-lg max-h-56 overflow-y-auto">
+                      <ul v-if="cityDropdownOpen && citySuggestions.length" class="absolute z-50 w-full mt-1 bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-700 rounded-xl shadow-lg max-h-56 overflow-y-auto">
                         <li
-                          v-for="citta in cittaFiltrate" :key="citta"
-                          @mousedown.prevent="selezionaCitta(citta)"
+                          v-for="city in citySuggestions" :key="city"
+                          @mousedown.prevent="selectCity(city)"
                           class="px-4 py-2.5 text-sm tx cursor-pointer hover:bg-stone-100 dark:hover:bg-stone-800 first:rounded-t-xl last:rounded-b-xl"
-                        >{{ citta }}</li>
+                        >{{ city }}</li>
                       </ul>
                     </div>
                   </div>
 
-                  <!-- Storia -->
+                  <!-- Story -->
                   <div>
                     <label class="block text-sm font-semibold tx mb-1.5" for="storia">
                       La tua storia <span style="color:#F05022">*</span>
@@ -137,24 +138,24 @@ void cittaWrapper // template ref — Vue lo popola a runtime
                     <p class="text-xs tx3 mt-1">{{ form.storia.length }} caratteri</p>
                   </div>
 
-                  <!-- Foto -->
+                  <!-- Photo upload -->
                   <div>
                     <label class="block text-sm font-semibold tx mb-1.5">
                       Una tua foto
                       <span class="text-xs tx3 font-normal ml-1">(facoltativa, max 5 MB)</span>
                     </label>
-                    <div v-if="!fotoPreview">
+                    <div v-if="!photoPreview">
                       <label for="foto" class="flex flex-col items-center justify-center gap-3 w-full h-36 border-2 border-dashed border-stone-300 dark:border-stone-600 rounded-xl cursor-pointer hover:border-accent/60 transition-colors">
                         <svg class="w-8 h-8 tx3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
                         </svg>
                         <span class="text-sm tx2">Clicca per caricare una foto</span>
-                        <input id="foto" type="file" accept="image/*" class="sr-only" @change="onFotoChange" />
+                        <input id="foto" type="file" accept="image/*" class="sr-only" @change="handlePhotoChange" />
                       </label>
                     </div>
                     <div v-else class="relative">
-                      <img :src="fotoPreview" alt="Anteprima" class="w-full h-48 object-cover rounded-xl" />
-                      <button type="button" @click="rimuoviFoto" class="absolute top-2 right-2 w-8 h-8 rounded-full bg-black/60 hover:bg-black/80 flex items-center justify-center transition-colors" aria-label="Rimuovi foto">
+                      <img :src="photoPreview" alt="Anteprima" class="w-full h-48 object-cover rounded-xl" />
+                      <button type="button" @click="removePhoto" class="absolute top-2 right-2 w-8 h-8 rounded-full bg-black/60 hover:bg-black/80 flex items-center justify-center transition-colors" aria-label="Rimuovi foto">
                         <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
                         </svg>
@@ -162,7 +163,7 @@ void cittaWrapper // template ref — Vue lo popola a runtime
                     </div>
                   </div>
 
-                  <!-- Privacy -->
+                  <!-- Privacy consent -->
                   <div class="flex items-start gap-3">
                     <input id="privacy" v-model="form.consenso_privacy" type="checkbox" required class="mt-0.5 w-4 h-4 accent-accent shrink-0" />
                     <label for="privacy" class="text-xs tx2 leading-relaxed cursor-pointer">
@@ -173,26 +174,26 @@ void cittaWrapper // template ref — Vue lo popola a runtime
                     </label>
                   </div>
 
-                  <!-- Errore -->
-                  <p v-if="errore" class="text-sm text-red-500 dark:text-red-400">{{ errore }}</p>
+                  <!-- Error message -->
+                  <p v-if="errorMessage" class="text-sm text-red-500 dark:text-red-400">{{ errorMessage }}</p>
 
-                  <!-- Submit -->
+                  <!-- Submit button -->
                   <button
                     type="submit"
-                    :disabled="stato === 'loading' || !form.nome || !form.email || !form.storia || !form.consenso_privacy"
+                    :disabled="status === 'loading' || !form.nome || !form.email || !form.storia || !form.consenso_privacy"
                     class="w-full flex items-center justify-center gap-2 bg-accent text-white font-semibold px-8 py-4 rounded-full hover:bg-[#cf5e0e] disabled:opacity-50 disabled:cursor-not-allowed transition-all text-sm tracking-wide shadow-md shadow-accent/20"
                   >
-                    <svg v-if="stato === 'loading'" class="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
+                    <svg v-if="status === 'loading'" class="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
                       <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/>
                       <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"/>
                     </svg>
-                    <span>{{ stato === 'loading' ? 'Invio in corso…' : 'Invia la tua storia' }}</span>
+                    <span>{{ status === 'loading' ? 'Invio in corso…' : 'Invia la tua storia' }}</span>
                   </button>
 
                 </form>
               </div>
 
-              <!-- Successo -->
+              <!-- Success state -->
               <div v-else class="text-center py-20">
                 <div class="w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-8 shadow-xl" style="background:#F05022">
                   <svg class="w-11 h-11 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -223,8 +224,9 @@ void cittaWrapper // template ref — Vue lo popola a runtime
               <h2 class="text-3xl font-bold tx">Le storie dei nostri sclHEROES</h2>
             </div>
 
-            <div v-if="wallOfHeroes.length > 0" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              <div v-for="hero in wallOfHeroes" :key="hero.created_at" class="bg-stone-50 dark:bg-stone-800 rounded-2xl overflow-hidden shadow-sm border border-stone-200/50 dark:border-white/10 reveal flex flex-col">
+            <!-- Published stories grid -->
+            <div v-if="publishedHeroes.length > 0" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div v-for="hero in publishedHeroes" :key="hero.created_at" class="bg-stone-50 dark:bg-stone-800 rounded-2xl overflow-hidden shadow-sm border border-stone-200/50 dark:border-white/10 reveal flex flex-col">
                 <div v-if="hero.foto_url" class="h-44 overflow-hidden">
                   <img :src="hero.foto_url" :alt="hero.nome" class="w-full h-full object-cover" />
                 </div>
@@ -243,6 +245,7 @@ void cittaWrapper // template ref — Vue lo popola a runtime
               </div>
             </div>
 
+            <!-- Empty state -->
             <div v-else class="text-center py-16 reveal">
               <div class="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 bg-stone-100 dark:bg-stone-800">
                 <svg class="w-9 h-9 tx3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -252,6 +255,7 @@ void cittaWrapper // template ref — Vue lo popola a runtime
               <p class="font-semibold tx mb-2">Le prime storie arriveranno presto</p>
               <p class="text-sm tx3 max-w-sm mx-auto">Sii tra i primi sclHEROES: racconta la tua storia e potresti apparire qui.</p>
             </div>
+
           </div>
         </section>
 

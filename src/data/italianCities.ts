@@ -1,5 +1,6 @@
-export const CITTA_ITALIANE: string[] = [
-  // Capoluoghi di provincia
+/** Alphabetically sorted list of Italian cities (provincial capitals + major municipalities). */
+export const ITALIAN_CITIES: string[] = [
+  // Provincial capitals
   'Agrigento', 'Alessandria', 'Ancona', 'Andria', 'Aosta', 'Arezzo', 'Ascoli Piceno', 'Asti',
   'Avellino', 'Bari', 'Barletta', 'Belluno', 'Benevento', 'Bergamo', 'Biella', 'Bologna',
   'Bolzano', 'Brescia', 'Brindisi', 'Cagliari', 'Caltanissetta', 'Campobasso', 'Caserta',
@@ -14,7 +15,7 @@ export const CITTA_ITALIANE: string[] = [
   'Taranto', 'Teramo', 'Terni', 'Torino', 'Trani', 'Trapani', 'Trento', 'Treviso', 'Trieste',
   'Udine', 'Varese', 'Venezia', 'Verbania', 'Vercelli', 'Verona', 'Vibo Valentia', 'Vicenza',
   'Viterbo',
-  // Principali comuni non capoluogo
+  // Major non-capital municipalities
   'Acireale', 'Afragola', 'Aprilia', 'Bagheria', 'Battipaglia', 'Busto Arsizio', 'Carpi',
   'Casalnuovo di Napoli', 'Casoria', 'Castellammare di Stabia', 'Cesena', 'Cinisello Balsamo',
   'Civitavecchia', 'Collegno', 'Ercolano', 'Faenza', 'Giugliano in Campania', 'Imola',
