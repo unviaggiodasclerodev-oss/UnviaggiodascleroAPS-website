@@ -36,7 +36,7 @@ void cityContainerRef // template ref — populated by Vue at runtime
               <p class="text-xs font-semibold tracking-widest uppercase mb-4" style="color:#F05022">Community</p>
               <h1 class="text-4xl md:text-5xl font-bold tx mb-4">scl<span style="color:#F05022">HEROES</span></h1>
               <p class="tx2 text-lg max-w-xl mx-auto leading-relaxed">
-                Condividi la tua storia: le più toccanti verranno invitate in diretta su Instagram
+                Condividi la tua storia: le più toccanti verranno invitate in diretta su YouTube
                 per dar voce a una community vera — e diventare episodi di un podcast.
               </p>
             </div>
@@ -203,7 +203,7 @@ void cityContainerRef // template ref — populated by Vue at runtime
                 <h2 class="text-3xl md:text-4xl font-bold tx mb-4">Grazie, sei uno sclHERO!</h2>
                 <p class="tx2 text-lg max-w-md mx-auto leading-relaxed mb-8">
                   La tua storia è arrivata. La leggeremo con cura e ti contatteremo via email
-                  se vorremo invitarti in diretta su Instagram.
+                  se vorremo invitarti in diretta su YouTube.
                 </p>
                 <router-link to="/" class="inline-flex items-center gap-2 text-sm font-semibold text-white px-6 py-3 rounded-full hover:opacity-90 transition-all" style="background:#F05022">
                   Torna alla home
