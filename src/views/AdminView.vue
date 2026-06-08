@@ -143,7 +143,7 @@ onMounted(fetchAll)
               <div class="flex items-start justify-between gap-2 flex-wrap mb-1">
                 <div>
                   <p class="font-bold tx">{{ sub.nome }}</p>
-                  <p class="text-xs tx3">{{ sub.email }}{{ sub.citta ? ` · ${sub.citta}` : '' }} · {{ formatDate(sub.created_at) }}</p>
+                  <p class="text-xs tx3">{{ sub.email }}{{ sub.telefono ? ` · ${sub.telefono}` : '' }}{{ sub.citta ? ` · ${sub.citta}` : '' }} · {{ formatDate(sub.created_at) }}</p>
                 </div>
                 <!-- Status badge -->
                 <span :class="[

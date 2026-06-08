@@ -8,6 +8,7 @@ export function useSclHeroesForm(onSuccess: () => void) {
   const form = ref({
     nome: '',
     email: '',
+    telefono: '',
     citta: '',
     storia: '',
     consenso_privacy: false,
@@ -55,6 +56,7 @@ export function useSclHeroesForm(onSuccess: () => void) {
       const { error: insertError } = await supabase.from('sclheroes_submissions').insert({
         nome: form.value.nome.trim(),
         email: form.value.email.trim(),
+        telefono: form.value.telefono.trim() || null,
         citta: form.value.citta.trim() || null,
         storia: form.value.storia.trim(),
         foto_url: photoUrl,

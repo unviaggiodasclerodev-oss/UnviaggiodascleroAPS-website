@@ -99,6 +99,19 @@ void cityContainerRef // template ref — populated by Vue at runtime
                     />
                   </div>
 
+                  <!-- Phone -->
+                  <div>
+                    <label class="block text-sm font-semibold tx mb-1.5" for="telefono">
+                      Numero di telefono
+                      <span class="text-xs tx3 font-normal ml-1">(facoltativo)</span>
+                    </label>
+                    <input
+                      id="telefono" v-model="form.telefono" type="tel" autocomplete="tel"
+                      placeholder="+39 333 000 0000"
+                      class="w-full px-4 py-3 rounded-xl border border-stone-300 dark:border-stone-600 bg-white dark:bg-stone-900 tx text-sm focus:outline-none focus:ring-2 focus:ring-accent/50 transition"
+                    />
+                  </div>
+
                   <!-- City autocomplete -->
                   <div ref="cityContainerRef">
                     <label class="block text-sm font-semibold tx mb-1.5" for="citta">
