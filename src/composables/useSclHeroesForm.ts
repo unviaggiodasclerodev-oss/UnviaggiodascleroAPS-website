@@ -65,8 +65,11 @@ export function useSclHeroesForm(onSuccess: () => void) {
       status.value = 'success'
       onSuccess()
     } catch (err: unknown) {
-      console.error(err)
-      errorMessage.value = 'Si è verificato un errore. Riprova tra qualche minuto.'
+      console.error('[useSclHeroesForm] submit error:', err)
+      const msg = err instanceof Error ? err.message : String(err)
+      errorMessage.value = import.meta.env.DEV
+        ? `Errore: ${msg}`
+        : 'Si è verificato un errore. Riprova tra qualche minuto.'
       status.value = 'error'
     }
   }
