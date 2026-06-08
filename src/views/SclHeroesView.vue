@@ -181,8 +181,11 @@ void cityContainerRef // template ref — populated by Vue at runtime
                     <input id="privacy" v-model="form.consenso_privacy" type="checkbox" required class="mt-0.5 w-4 h-4 accent-accent shrink-0" />
                     <label for="privacy" class="text-xs tx2 leading-relaxed cursor-pointer">
                       Acconsento al trattamento dei miei dati personali ai sensi del GDPR.
-                      La mia storia potrà essere condivisa (anche in forma anonima) nelle attività dell'associazione,
-                      previo accordo con me.
+                      I dati forniti (nome, email, telefono, città e storia) verranno utilizzati
+                      esclusivamente per la valutazione e gestione delle candidature sclHEROES
+                      e non saranno condivisi con terze parti.
+                      La mia storia potrà essere condivisa (anche in forma anonima) nelle attività
+                      dell'associazione, previo accordo con me.
                       <router-link to="/contatti" class="text-accent hover:underline ml-1">Contatti</router-link>
                     </label>
                   </div>
