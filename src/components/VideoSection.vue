@@ -1,7 +1,10 @@
 <script setup>
 import { ref } from 'vue'
+import { useVideoIntro } from '../composables/useVideoIntro'
+
 const playing = ref(false)
 const videoRef = ref(null)
+const { openModal } = useVideoIntro()
 
 function play() {
   playing.value = true
@@ -52,6 +55,19 @@ function play() {
             :class="playing ? 'opacity-100' : 'opacity-0'"
             playsinline
           ></video>
+        </div>
+
+        <!-- Rewatch button -->
+        <div class="flex justify-center mt-5">
+          <button
+            @click="openModal"
+            class="inline-flex items-center gap-2 text-xs font-semibold text-accent hover:underline transition-colors"
+          >
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M8 5v14l11-7z"/>
+            </svg>
+            Rivedi in anteprima
+          </button>
         </div>
 
         <!-- Stats below video -->
