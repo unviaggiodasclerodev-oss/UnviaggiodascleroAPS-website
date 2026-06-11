@@ -1,15 +1,3 @@
-<script setup>
-import { ref } from 'vue'
-
-const playing = ref(false)
-const videoRef = ref(null)
-
-function play() {
-  playing.value = true
-  videoRef.value?.play()
-}
-</script>
-
 <template>
   <section class="section-muted py-10 md:py-20">
     <div class="section-pad">
@@ -24,34 +12,15 @@ function play() {
         </p>
       </div>
 
-      <!-- Video box -->
       <div class="w-full reveal">
-        <div class="relative rounded-2xl overflow-hidden shadow-2xl border border-orange-200/30 group aspect-[16/9] md:aspect-[21/8]"
+        <div class="rounded-2xl overflow-hidden shadow-2xl border border-orange-200/30 aspect-[16/9] md:aspect-[21/8]"
           style="background:#0A0A0A;">
-          <!-- Thumbnail overlay when not playing -->
-          <div v-if="!playing"
-            class="absolute inset-0 z-10 flex flex-col items-center justify-center cursor-pointer"
-            @click="play">
-            <img src="/images/spiaggia.jpg" alt="Video thumbnail"
-              class="absolute inset-0 w-full h-full object-cover object-center opacity-75" />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/20"></div>
-            <!-- Play button -->
-            <button class="relative z-10 w-24 h-24 rounded-full flex items-center justify-center shadow-2xl transition-transform duration-300 group-hover:scale-110"
-              style="background:#F05022;">
-              <svg class="w-10 h-10 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z"/>
-              </svg>
-            </button>
-            <p class="relative z-10 mt-5 text-white/80 text-sm font-medium tracking-wide uppercase">Guarda il video</p>
-          </div>
-          <!-- Actual video -->
           <video
-            ref="videoRef"
             src="/videoplayback.mp4"
             class="w-full h-full object-cover"
             controls
-            :class="playing ? 'opacity-100' : 'opacity-0'"
             playsinline
+            preload="metadata"
           ></video>
         </div>
 
