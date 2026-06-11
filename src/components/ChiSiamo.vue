@@ -38,7 +38,7 @@ const doubled = [...mediaItems, ...mediaItems]
     </div>
 
     <div class="relative z-10 section-pad">
-      <div :class="['grid gap-16 items-center', props.teaser ? 'max-w-2xl' : 'md:grid-cols-2']">
+      <div class="grid md:grid-cols-2 gap-16 items-center">
 
         <!-- Text -->
         <div class="reveal-left">
@@ -86,7 +86,18 @@ const doubled = [...mediaItems, ...mediaItems]
           </div>
         </div>
 
-        <!-- Stat cards aside -->
+        <!-- Photo (teaser) or stat cards (full page) -->
+        <div v-if="props.teaser" class="reveal flex" style="transition-delay: 0.15s">
+          <div class="relative rounded-2xl overflow-hidden shadow-2xl w-full aspect-[4/5]">
+            <img src="/images/michele.JPG" alt="Michele Agostinetto" class="w-full h-full object-cover object-top" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-6">
+              <p class="text-white font-bold text-base font-display">Michele Agostinetto</p>
+              <p class="text-white/70 text-xs mt-1">Fondatore, Un Viaggio da Sclero APS</p>
+            </div>
+          </div>
+        </div>
+
         <div v-if="!props.teaser" class="reveal grid grid-cols-2 gap-4" style="transition-delay: 0.15s">
           <div class="card-solid p-6 flex flex-col">
             <p class="text-4xl font-bold text-accent mb-1 font-display">2.000+</p>
