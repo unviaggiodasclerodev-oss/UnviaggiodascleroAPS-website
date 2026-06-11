@@ -49,7 +49,7 @@ function play() {
           <!-- Actual video -->
           <video
             ref="videoRef"
-            src="/hero.mp4"
+            src="/videoplayback.mp4"
             class="w-full h-full object-cover"
             controls
             :class="playing ? 'opacity-100' : 'opacity-0'"

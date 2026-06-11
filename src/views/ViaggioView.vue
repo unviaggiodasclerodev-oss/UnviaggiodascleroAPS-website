@@ -3,6 +3,7 @@ import { onMounted, onUnmounted } from 'vue'
 import { useScrollReveal } from '../composables/useScrollReveal.js'
 import { useVideoIntro } from '../composables/useVideoIntro'
 import VideoSection from '../components/VideoSection.vue'
+import VideoTeaser from '../components/VideoTeaser.vue'
 import VideoIntroModal from '../components/VideoIntroModal.vue'
 import Viaggio2027 from '../components/Viaggio2027.vue'
 import NumeriChiave from '../components/NumeriChiave.vue'
@@ -40,6 +41,7 @@ onUnmounted(() => {
         <VideoSection />
         <Viaggio2027 />
         <NumeriChiave :show-numeri="false" />
+        <VideoTeaser />
         <SponsorPatrocini />
         <CtaBanner
           title="Vuoi far parte del viaggio?"
