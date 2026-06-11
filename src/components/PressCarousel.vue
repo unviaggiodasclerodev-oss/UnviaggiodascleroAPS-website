@@ -31,7 +31,7 @@ const categoryLabel: Record<string, string> = {
 </script>
 
 <template>
-  <section class="section-light py-10 md:py-20">
+  <section class="section-light pt-4 md:pt-8 pb-10 md:pb-20">
     <div class="section-pad">
 
       <!-- Header -->
