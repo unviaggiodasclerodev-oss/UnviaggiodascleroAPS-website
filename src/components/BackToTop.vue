@@ -5,7 +5,7 @@ const visible = ref(false)
 
 function onScroll() { visible.value = window.scrollY > 300 }
 function scrollTop() {
-  (document.scrollingElement || document.documentElement).scrollTo({ top: 0, behavior: 'smooth' })
+  window.scrollTo({ top: 0, behavior: 'smooth' })
 }
 
 onMounted(() => window.addEventListener('scroll', onScroll, { passive: true }))
