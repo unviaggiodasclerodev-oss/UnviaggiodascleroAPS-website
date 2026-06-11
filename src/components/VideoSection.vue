@@ -1,10 +1,8 @@
 <script setup>
 import { ref } from 'vue'
-import { useVideoIntro } from '../composables/useVideoIntro'
 
 const playing = ref(false)
 const videoRef = ref(null)
-const { openModal } = useVideoIntro()
 
 function play() {
   playing.value = true
@@ -55,21 +53,6 @@ function play() {
             :class="playing ? 'opacity-100' : 'opacity-0'"
             playsinline
           ></video>
-        </div>
-
-        <!-- Rewatch trigger -->
-        <div class="flex justify-center mt-6">
-          <button
-            @click="openModal"
-            class="inline-flex items-center gap-3 px-6 py-3 rounded-full border border-accent/40 hover:border-accent hover:bg-accent/5 transition-all group"
-          >
-            <span class="w-8 h-8 rounded-full flex items-center justify-center shrink-0" style="background:#F05022">
-              <svg class="w-4 h-4 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z"/>
-              </svg>
-            </span>
-            <span class="text-sm font-semibold tx group-hover:text-accent transition-colors">Guarda il video del viaggio</span>
-          </button>
         </div>
 
         <!-- Stats below video -->
