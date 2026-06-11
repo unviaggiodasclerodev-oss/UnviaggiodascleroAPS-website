@@ -63,7 +63,7 @@ const faqs = [
 
 <template>
   <!-- Statuto APS -->
-  <section v-if="props.showStatuto" class="relative py-8 md:py-14 overflow-hidden">
+  <section v-if="props.showStatuto" class="relative py-10 md:py-20 overflow-hidden">
     <div class="absolute inset-0 z-0">
       <img src="/images/IMG_2238.JPG" alt="" class="w-full h-full object-cover opacity-15" />
       <div class="absolute inset-0 section-muted opacity-85"></div>
@@ -132,7 +132,7 @@ const faqs = [
   </section>
 
   <!-- Contatti -->
-  <section v-if="props.showContatti" id="contatti" class="relative py-8 md:py-14 overflow-hidden">
+  <section v-if="props.showContatti" id="contatti" class="relative py-10 md:py-20 overflow-hidden">
     <!-- Background photo with overlay -->
     <div class="absolute inset-0 z-0">
       <img src="/images/spiaggia.jpg" alt="" class="w-full h-full object-cover" />
@@ -141,7 +141,7 @@ const faqs = [
 
     <div class="relative z-10 section-pad">
       <!-- Header -->
-      <div class="text-center mb-16 reveal">
+      <div class="text-center mb-6 reveal">
         <span class="accent-bar accent-bar-center" style="background:#fef700"></span>
         <p class="text-xs font-semibold tracking-widest uppercase mb-4" style="color:#fef700">Contattaci</p>
         <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">
@@ -224,9 +224,9 @@ const faqs = [
   </section>
 
   <!-- FAQ -->
-  <section v-if="props.showFaq" id="faq" class="section-muted py-8 md:py-14">
+  <section v-if="props.showFaq" id="faq" class="section-muted py-10 md:py-20">
     <div class="section-pad">
-      <div class="text-center mb-16 reveal">
+      <div class="text-center mb-6 reveal">
         <span class="accent-bar accent-bar-center"></span>
         <p class="text-accent text-xs font-semibold tracking-widest uppercase mb-4">FAQ</p>
         <h2 class="text-4xl md:text-5xl font-bold tx">

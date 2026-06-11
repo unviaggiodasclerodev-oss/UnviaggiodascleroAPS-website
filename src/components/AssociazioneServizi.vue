@@ -43,7 +43,7 @@ const servizi = [
 </script>
 
 <template>
-  <section :id="props.sectionId" class="relative py-8 md:py-14 overflow-hidden">
+  <section :id="props.sectionId" class="relative py-10 md:py-20 overflow-hidden">
     <!-- Faint photo background -->
     <div class="absolute inset-0 z-0">
       <img src="/images/cammin.jpg" alt="" class="w-full h-full object-cover opacity-18" />
@@ -134,7 +134,7 @@ const servizi = [
 
       <!-- Servizi -->
       <div v-if="props.showServices">
-        <div class="text-center mb-16 reveal">
+        <div class="text-center mb-6 reveal">
           <p class="tx font-semibold text-sm tracking-wide mb-5">Cosa facciamo per te</p>
           <h2 class="text-4xl md:text-5xl font-bold max-w-3xl mx-auto leading-tight">
             <span class="text-accent">Vogliamo farti</span> <span class="tx">vivere l&#39;esperienza</span><br>

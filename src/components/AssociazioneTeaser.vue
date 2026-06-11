@@ -4,7 +4,7 @@ const router = useRouter()
 </script>
 
 <template>
-  <section class="section-light py-8 md:py-14">
+  <section class="section-light py-10 md:py-20">
     <div class="section-pad">
       <div class="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
 

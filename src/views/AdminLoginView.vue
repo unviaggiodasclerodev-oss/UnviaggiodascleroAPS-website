@@ -29,7 +29,7 @@ async function handleLogin() {
   <div class="min-h-screen flex items-center justify-center bg-stone-100 dark:bg-stone-900 px-4">
     <div class="w-full max-w-sm bg-white dark:bg-stone-800 rounded-2xl shadow-lg p-8">
 
-      <div class="text-center mb-8">
+      <div class="text-center mb-6">
         <img src="/logo.png" alt="Un Viaggio da Sclero APS" class="h-10 w-auto object-contain mx-auto mb-4" />
         <h1 class="text-xl font-bold tx">Admin</h1>
         <p class="text-sm tx3 mt-1">Accedi per gestire le submissions</p>

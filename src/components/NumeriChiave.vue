@@ -38,10 +38,10 @@ onMounted(() => {
 
 <template>
   <!-- I numeri raccolti -->
-  <section v-if="props.showNumeri" ref="section" class="section-muted py-8 md:py-14">
+  <section v-if="props.showNumeri" ref="section" class="section-muted py-10 md:py-20">
     <div class="section-pad">
       <!-- Header box — no photo, clean text on bg -->
-      <div class="relative rounded-2xl overflow-hidden mb-16 reveal border edge"
+      <div class="relative rounded-2xl overflow-hidden mb-6 reveal border edge"
         style="background: linear-gradient(135deg, rgba(240,80,34,0.06) 0%, transparent 60%)">
         <div class="relative z-10 p-10 md:p-16">
           <span class="accent-bar"></span>
@@ -70,9 +70,9 @@ onMounted(() => {
   </section>
 
   <!-- La chiave del nuovo Viaggio -->
-  <section v-if="props.showChiave" class="section-light py-8 md:py-14">
+  <section v-if="props.showChiave" class="section-light py-10 md:py-20">
     <div class="section-pad">
-      <div class="text-center mb-16 reveal">
+      <div class="text-center mb-6 reveal">
         <span class="accent-bar accent-bar-center"></span>
         <p class="text-xs font-semibold tracking-widest uppercase mb-4" style="color:#F05022">La chiave del nuovo viaggio</p>
         <h2 class="text-4xl md:text-5xl font-bold tx max-w-3xl mx-auto">

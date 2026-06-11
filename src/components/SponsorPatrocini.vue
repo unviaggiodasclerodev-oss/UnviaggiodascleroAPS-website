@@ -1,8 +1,8 @@
 <template>
-  <section id="sponsor" class="section-light pt-8 md:pt-14 pb-4 md:pb-8">
+  <section id="sponsor" class="section-light pt-10 md:pt-20 pb-4 md:pb-8">
     <div class="section-pad">
       <!-- Header -->
-      <div class="text-center mb-16 reveal">
+      <div class="text-center mb-6 reveal">
         <span class="accent-bar accent-bar-center"></span>
         <p class="text-accent text-xs font-semibold tracking-widest uppercase mb-4">Sponsor & Patrocini</p>
         <h2 class="text-4xl md:text-5xl font-bold tx mb-3">

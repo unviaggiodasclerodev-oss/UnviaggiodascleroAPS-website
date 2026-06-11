@@ -77,9 +77,9 @@ const tappe = [
 
 <template>
   <!-- Viaggio 2027 -->
-  <section id="viaggio-2027" class="section-muted py-8 md:py-14 journey-line-wrap">
+  <section id="viaggio-2027" class="section-muted py-10 md:py-20 journey-line-wrap">
     <div class="relative z-10 section-pad">
-      <div class="text-center mb-16 reveal">
+      <div class="text-center mb-6 reveal">
         <span class="accent-bar accent-bar-center"></span>
         <p class="text-accent text-xs font-semibold tracking-widest uppercase mb-4">Affinare ciò che è già successo nel 2022</p>
         <h2 class="text-4xl md:text-5xl font-bold tx mb-4">Un Viaggio da Sclero 2027</h2>
@@ -116,7 +116,7 @@ const tappe = [
   </section>
 
   <!-- Percorso video — standalone section between cards and tappe -->
-  <section v-if="props.showTappe" class="section-muted py-8 md:py-14">
+  <section v-if="props.showTappe" class="section-muted py-10 md:py-20">
     <div class="section-pad">
       <div class="relative rounded-2xl overflow-hidden min-h-[40vh] md:min-h-[52vh] reveal" style="background:#0A0A0A">
         <video
@@ -165,9 +165,9 @@ const tappe = [
   </section>
 
   <!-- Le Tappe -->
-  <section v-if="props.showTappe" class="section-light py-8 md:py-14">
+  <section v-if="props.showTappe" class="section-light py-10 md:py-20">
     <div class="section-pad">
-      <div class="text-center mb-16 reveal">
+      <div class="text-center mb-6 reveal">
         <span class="accent-bar accent-bar-center"></span>
         <p class="text-accent text-xs font-semibold tracking-widest uppercase mb-4">Le Tappe</p>
         <h2 class="text-4xl md:text-5xl font-bold tx mb-3">

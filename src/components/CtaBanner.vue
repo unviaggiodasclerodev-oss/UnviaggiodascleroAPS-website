@@ -13,7 +13,7 @@ defineProps({
 </script>
 
 <template>
-  <section class="section-muted py-8 md:py-14">
+  <section class="section-muted py-10 md:py-20">
     <div class="section-pad">
       <div class="max-w-2xl mx-auto text-center reveal">
         <span class="accent-bar accent-bar-center"></span>
