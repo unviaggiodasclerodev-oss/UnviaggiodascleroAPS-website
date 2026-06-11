@@ -3,7 +3,6 @@ import { onMounted, onUnmounted } from 'vue'
 import { useScrollReveal } from '../composables/useScrollReveal.js'
 import { useVideoIntro } from '../composables/useVideoIntro'
 import VideoSection from '../components/VideoSection.vue'
-import VideoTeaser from '../components/VideoTeaser.vue'
 import VideoIntroModal from '../components/VideoIntroModal.vue'
 import Viaggio2027 from '../components/Viaggio2027.vue'
 import NumeriChiave from '../components/NumeriChiave.vue'
@@ -21,7 +20,6 @@ function handleKeydown(e) {
 
 onMounted(() => {
   document.addEventListener('keydown', handleKeydown)
-  // Auto-open on first visit with a short delay
   if (isFirstVisit()) {
     setTimeout(openModal, 800)
   }
@@ -42,7 +40,6 @@ onUnmounted(() => {
         <Viaggio2027 />
         <NumeriChiave :show-numeri="false" />
         <SponsorPatrocini />
-        <VideoTeaser />
         <CtaBanner
           title="Vuoi far parte del viaggio?"
           subtitle="Puoi partecipare come volontario, sostenitore o semplicemente seguendo il racconto."

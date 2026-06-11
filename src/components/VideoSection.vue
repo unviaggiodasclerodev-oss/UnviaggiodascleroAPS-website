@@ -25,7 +25,7 @@ function toggleMute() {
 </script>
 
 <template>
-  <section class="section-muted py-10 md:py-20">
+  <section class="section-muted py-8 md:py-14">
     <div class="section-pad">
 
       <!-- Video container with background fill -->

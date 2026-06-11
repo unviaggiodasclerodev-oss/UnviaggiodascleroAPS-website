@@ -43,7 +43,7 @@ const servizi = [
 </script>
 
 <template>
-  <section :id="props.sectionId" class="relative py-10 md:py-20 overflow-hidden">
+  <section :id="props.sectionId" class="relative py-8 md:py-14 overflow-hidden">
     <!-- Faint photo background -->
     <div class="absolute inset-0 z-0">
       <img src="/images/cammin.jpg" alt="" class="w-full h-full object-cover opacity-18" />

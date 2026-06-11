@@ -38,7 +38,7 @@ onMounted(() => {
 
 <template>
   <!-- I numeri raccolti -->
-  <section v-if="props.showNumeri" ref="section" class="section-muted py-10 md:py-20">
+  <section v-if="props.showNumeri" ref="section" class="section-muted py-8 md:py-14">
     <div class="section-pad">
       <!-- Header box — no photo, clean text on bg -->
       <div class="relative rounded-2xl overflow-hidden mb-16 reveal border edge"
@@ -70,7 +70,7 @@ onMounted(() => {
   </section>
 
   <!-- La chiave del nuovo Viaggio -->
-  <section v-if="props.showChiave" class="section-light py-10 md:py-20">
+  <section v-if="props.showChiave" class="section-light py-8 md:py-14">
     <div class="section-pad">
       <div class="text-center mb-16 reveal">
         <span class="accent-bar accent-bar-center"></span>

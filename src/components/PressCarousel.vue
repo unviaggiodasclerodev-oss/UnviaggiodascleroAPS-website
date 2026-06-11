@@ -31,7 +31,7 @@ const categoryLabel: Record<string, string> = {
 </script>
 
 <template>
-  <section class="section-light py-10 md:py-20">
+  <section class="section-light py-8 md:py-14">
     <div class="section-pad">
 
       <!-- Header -->
@@ -143,7 +143,7 @@ const categoryLabel: Record<string, string> = {
       <!-- Link to full press page -->
       <div class="text-center mt-8">
         <RouterLink
-          to="/rassegna-stampa"
+          to="/media"
           class="inline-flex items-center gap-2 text-sm font-semibold text-accent hover:underline"
         >
           Vedi tutta la rassegna stampa

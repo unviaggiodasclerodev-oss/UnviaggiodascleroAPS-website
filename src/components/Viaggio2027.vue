@@ -1,4 +1,28 @@
 <script setup>
+import { ref, onMounted } from 'vue'
+
+const videoRef = ref(null)
+const isPlaying = ref(false)
+const isMuted = ref(true)
+
+onMounted(() => {
+  if (videoRef.value) {
+    videoRef.value.muted = true
+    videoRef.value.play().then(() => { isPlaying.value = true }).catch(() => {})
+  }
+})
+
+function togglePlay() {
+  if (!videoRef.value) return
+  isPlaying.value ? videoRef.value.pause() : videoRef.value.play()
+}
+
+function toggleMute() {
+  if (!videoRef.value) return
+  videoRef.value.muted = !videoRef.value.muted
+  isMuted.value = videoRef.value.muted
+}
+
 const props = defineProps({
   showTappe: {
     type: Boolean,
@@ -53,7 +77,7 @@ const tappe = [
 
 <template>
   <!-- Viaggio 2027 -->
-  <section id="viaggio-2027" class="section-muted py-10 md:py-20 journey-line-wrap">
+  <section id="viaggio-2027" class="section-muted py-8 md:py-14 journey-line-wrap">
     <div class="relative z-10 section-pad">
       <div class="text-center mb-16 reveal">
         <span class="accent-bar accent-bar-center"></span>
@@ -91,8 +115,57 @@ const tappe = [
     </div>
   </section>
 
+  <!-- Percorso video — standalone section between cards and tappe -->
+  <section v-if="props.showTappe" class="section-muted py-8 md:py-14">
+    <div class="section-pad">
+      <div class="relative rounded-2xl overflow-hidden min-h-[40vh] md:min-h-[52vh] reveal" style="background:#0A0A0A">
+        <video
+          ref="videoRef"
+          src="/percorso.mp4"
+          class="absolute inset-0 w-full h-full object-cover"
+          muted
+          loop
+          playsinline
+          preload="metadata"
+          @play="isPlaying = true"
+          @pause="isPlaying = false"
+        ></video>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent pointer-events-none"></div>
+        <div class="absolute bottom-4 right-4 z-10 flex gap-2">
+          <button
+            @click="toggleMute"
+            class="w-9 h-9 rounded-full bg-white/10 hover:bg-white/25 backdrop-blur-sm flex items-center justify-center transition-colors text-white"
+            :aria-label="isMuted ? 'Attiva audio' : 'Disattiva audio'"
+          >
+            <svg v-if="isMuted" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2"/>
+            </svg>
+            <svg v-else class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M15.536 8.464a5 5 0 010 7.072M12 6v12M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/>
+            </svg>
+          </button>
+          <button
+            @click="togglePlay"
+            class="w-9 h-9 rounded-full bg-white/10 hover:bg-white/25 backdrop-blur-sm flex items-center justify-center transition-colors text-white"
+            :aria-label="isPlaying ? 'Pausa' : 'Riproduci'"
+          >
+            <svg v-if="isPlaying" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+            </svg>
+            <svg v-else class="w-4 h-4 ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M8 5v14l11-7z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Le Tappe -->
-  <section v-if="props.showTappe" class="section-light py-10 md:py-20">
+  <section v-if="props.showTappe" class="section-light py-8 md:py-14">
     <div class="section-pad">
       <div class="text-center mb-16 reveal">
         <span class="accent-bar accent-bar-center"></span>
@@ -101,15 +174,6 @@ const tappe = [
           Qui è dove potremo incontrarci
         </h2>
         <p class="tx3 text-lg">durante il 2027</p>
-      </div>
-
-      <!-- Journey path line above grid -->
-      <div class="relative mb-12 hidden md:block">
-        <div class="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-px"
-          style="background: repeating-linear-gradient(to right, #F05022 0, #F05022 8px, transparent 8px, transparent 18px); opacity: 0.35;"></div>
-        <div class="flex justify-between items-center px-2">
-          <div v-for="n in 5" :key="n" class="w-3 h-3 rounded-full border-2 border-accent bg-white"></div>
-        </div>
       </div>
 
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">

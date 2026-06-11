@@ -30,7 +30,7 @@ const doubled = [...mediaItems, ...mediaItems]
 </script>
 
 <template>
-  <section id="chi-siamo" class="relative py-10 md:py-20 overflow-hidden">
+  <section id="chi-siamo" class="relative py-8 md:py-14 overflow-hidden">
     <!-- Background photo -->
     <div class="absolute inset-0 z-0">
       <img src="/images/IMG_2440.JPG" alt="" class="w-full h-full object-cover object-center" />

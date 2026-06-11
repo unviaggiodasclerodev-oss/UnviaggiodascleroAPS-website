@@ -63,7 +63,7 @@ const faqs = [
 
 <template>
   <!-- Statuto APS -->
-  <section v-if="props.showStatuto" class="relative py-10 md:py-20 overflow-hidden">
+  <section v-if="props.showStatuto" class="relative py-8 md:py-14 overflow-hidden">
     <div class="absolute inset-0 z-0">
       <img src="/images/IMG_2238.JPG" alt="" class="w-full h-full object-cover opacity-15" />
       <div class="absolute inset-0 section-muted opacity-85"></div>
@@ -132,7 +132,7 @@ const faqs = [
   </section>
 
   <!-- Contatti -->
-  <section v-if="props.showContatti" id="contatti" class="relative py-10 md:py-20 overflow-hidden">
+  <section v-if="props.showContatti" id="contatti" class="relative py-8 md:py-14 overflow-hidden">
     <!-- Background photo with overlay -->
     <div class="absolute inset-0 z-0">
       <img src="/images/spiaggia.jpg" alt="" class="w-full h-full object-cover" />
@@ -224,7 +224,7 @@ const faqs = [
   </section>
 
   <!-- FAQ -->
-  <section v-if="props.showFaq" id="faq" class="section-muted py-10 md:py-20">
+  <section v-if="props.showFaq" id="faq" class="section-muted py-8 md:py-14">
     <div class="section-pad">
       <div class="text-center mb-16 reveal">
         <span class="accent-bar accent-bar-center"></span>
