@@ -12,8 +12,8 @@
         </p>
       </div>
 
-      <div class="w-full reveal">
-        <div class="rounded-2xl overflow-hidden shadow-2xl border border-orange-200/30 aspect-[16/9] md:aspect-[21/8]"
+      <div class="w-full max-w-4xl mx-auto reveal">
+        <div class="rounded-2xl overflow-hidden shadow-2xl border border-orange-200/30 aspect-video"
           style="background:#0A0A0A;">
           <video
             src="/videoplayback.mp4"
