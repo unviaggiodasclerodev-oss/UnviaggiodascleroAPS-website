@@ -42,7 +42,7 @@ watch(isOpen, async (open) => {
           <div class="rounded-2xl overflow-hidden shadow-2xl aspect-video bg-black">
             <video
               ref="videoRef"
-              src="/videoplayback.mp4"
+              src="/intro_viaggio.mp4"
               class="w-full h-full object-cover"
               controls
               playsinline

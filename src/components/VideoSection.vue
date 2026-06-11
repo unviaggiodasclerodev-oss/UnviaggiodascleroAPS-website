@@ -32,7 +32,7 @@ function toggleMute() {
       <div class="relative rounded-2xl overflow-hidden min-h-[50vh] md:min-h-[62vh] reveal" style="background:#0A0A0A">
         <video
           ref="videoRef"
-          src="/videoplayback.mp4"
+          src="/intro_viaggio.mp4"
           class="absolute inset-0 w-full h-full object-cover"
           muted
           loop
