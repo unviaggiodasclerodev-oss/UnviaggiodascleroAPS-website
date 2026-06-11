@@ -15,9 +15,6 @@ watch(isOpen, async (open) => {
   }
 })
 
-function handleBackdropClick(e: MouseEvent) {
-  if (e.target === e.currentTarget) closeModal()
-}
 </script>
 
 <template>
@@ -27,7 +24,6 @@ function handleBackdropClick(e: MouseEvent) {
         v-if="isOpen"
         class="fixed inset-0 z-[300] flex items-center justify-center p-4 md:p-8"
         style="background: rgba(0,0,0,0.85);"
-        @click="handleBackdropClick"
       >
         <div class="relative w-full max-w-4xl">
 
