@@ -91,7 +91,7 @@ function toggleMute() {
   </section>
 
   <!-- Stats in own band below the video -->
-  <section class="section-muted py-8">
+  <section class="section-muted py-10 md:py-20">
     <div class="section-pad">
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 md:gap-6">
         <div class="card-solid p-6 md:p-7 text-center">
