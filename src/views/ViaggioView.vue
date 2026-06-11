@@ -41,8 +41,8 @@ onUnmounted(() => {
         <VideoSection />
         <Viaggio2027 />
         <NumeriChiave :show-numeri="false" />
-        <VideoTeaser />
         <SponsorPatrocini />
+        <VideoTeaser />
         <CtaBanner
           title="Vuoi far parte del viaggio?"
           subtitle="Puoi partecipare come volontario, sostenitore o semplicemente seguendo il racconto."

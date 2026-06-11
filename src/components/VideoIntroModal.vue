@@ -52,7 +52,7 @@ watch(isOpen, async (open) => {
 
           <!-- Skip hint -->
           <p class="text-center text-white/40 text-xs mt-4">
-            Premi <span class="font-semibold text-white/60">ESC</span> o clicca fuori per chiudere
+            Premi <span class="font-semibold text-white/60">ESC</span> o la <span class="font-semibold text-white/60">✕</span> per chiudere
           </p>
 
         </div>
