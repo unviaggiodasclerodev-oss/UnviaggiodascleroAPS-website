@@ -86,19 +86,8 @@ const doubled = [...mediaItems, ...mediaItems]
           </div>
         </div>
 
-        <!-- Photo (teaser) or stat cards (full page) -->
-        <div v-if="props.teaser" class="reveal flex" style="transition-delay: 0.15s">
-          <div class="relative rounded-2xl overflow-hidden shadow-2xl w-full aspect-[4/5]">
-            <img src="/images/michele.JPG" alt="Michele Agostinetto" class="w-full h-full object-cover object-top" />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-            <div class="absolute bottom-0 left-0 right-0 p-6">
-              <p class="text-white font-bold text-base font-display">Michele Agostinetto</p>
-              <p class="text-white/70 text-xs mt-1">Fondatore, Un Viaggio da Sclero APS</p>
-            </div>
-          </div>
-        </div>
-
-        <div v-if="!props.teaser" class="reveal grid grid-cols-2 gap-4" style="transition-delay: 0.15s">
+        <!-- Stat cards — both teaser and full page -->
+        <div class="reveal grid grid-cols-2 gap-4" style="transition-delay: 0.15s">
           <div class="card-solid p-6 flex flex-col">
             <p class="text-4xl font-bold text-accent mb-1 font-display">2.000+</p>
             <p class="tx font-semibold text-sm mb-1">km percorsi</p>
