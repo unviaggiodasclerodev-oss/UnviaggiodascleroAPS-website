@@ -106,7 +106,7 @@ const doubled = [...mediaItems, ...mediaItems]
   </section>
 
   <!-- Media logos — separate white section -->
-  <section class="section-light py-8">
+  <section v-if="props.teaser" class="section-light py-8">
     <div class="section-pad">
       <p class="text-center tx3 text-xs tracking-[0.15em] uppercase mb-8 font-semibold">Hanno parlato di noi</p>
     </div>
