@@ -33,7 +33,7 @@ const doubled = [...mediaItems, ...mediaItems]
   <section id="chi-siamo" class="relative py-10 md:py-20 overflow-hidden">
     <!-- Background photo -->
     <div class="absolute inset-0 z-0">
-      <img src="/images/IMG_2440.JPG" alt="" class="w-full h-full object-cover object-center" />
+      <img src="/images/michele.JPG" alt="" class="w-full h-full object-cover object-center" />
       <div class="absolute inset-0 bg-overlay backdrop-blur-sm"></div>
     </div>
 
