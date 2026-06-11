@@ -4,7 +4,6 @@ import HeroSection from '../components/HeroSection.vue'
 import ChiSiamo from '../components/ChiSiamo.vue'
 import Viaggio2027 from '../components/Viaggio2027.vue'
 import AssociazioneTeaser from '../components/AssociazioneTeaser.vue'
-import PressCarousel from '../components/PressCarousel.vue'
 import CtaBanner from '../components/CtaBanner.vue'
 import JourneyLine from '../components/JourneyLine.vue'
 
@@ -19,7 +18,6 @@ useScrollReveal()
         <JourneyLine />
         <ChiSiamo :teaser="true" />
         <Viaggio2027 :show-tappe="false" />
-        <PressCarousel />
         <AssociazioneTeaser />
         <CtaBanner
           title="Hai domande? Siamo qui."
