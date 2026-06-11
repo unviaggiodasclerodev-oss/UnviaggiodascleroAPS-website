@@ -44,17 +44,6 @@ function toggleMute() {
 
         <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/10 pointer-events-none"></div>
 
-        <!-- Content bottom-left -->
-        <div class="absolute inset-0 flex flex-col justify-end p-8 md:p-12 z-10">
-          <p class="text-xs font-semibold tracking-widest uppercase mb-3 text-white/60">Anteprima</p>
-          <h2 class="text-3xl md:text-4xl font-bold font-display text-white mb-3">
-            Il teaser del <span style="color:#F05022">Viaggio 2027</span>
-          </h2>
-          <p class="text-white/65 max-w-xl leading-relaxed">
-            Un assaggio di quello che verrà. Quattro mesi, 2.000 chilometri, una storia che continua.
-          </p>
-        </div>
-
         <!-- Controls bottom-right -->
         <div class="absolute bottom-4 right-4 z-10 flex gap-2">
           <button
