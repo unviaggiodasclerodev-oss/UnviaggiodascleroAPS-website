@@ -116,7 +116,7 @@ const tappe = [
   </section>
 
   <!-- Percorso video — standalone section between cards and tappe -->
-  <section v-if="props.showTappe" class="section-muted py-10 md:py-20">
+  <section v-if="props.showTappe" class="section-muted pt-4 md:pt-20 pb-10 md:pb-20">
     <div class="section-pad">
       <div class="relative rounded-2xl overflow-hidden min-h-[40vh] md:min-h-[52vh] reveal" style="background:#0A0A0A">
         <video
