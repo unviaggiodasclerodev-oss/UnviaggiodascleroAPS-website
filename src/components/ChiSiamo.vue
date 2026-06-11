@@ -103,21 +103,21 @@ const doubled = [...mediaItems, ...mediaItems]
       </div>
     </div>  <!-- end .section-pad -->
 
-    <!-- Media ticker -->
-    <!-- Media logos — bottom of section, clearly visible in both themes -->
-    <div v-if="!props.teaser" class="relative z-10 mt-16 pt-8 pb-2">
-      <div class="section-pad">
-        <p class="text-center tx3 text-xs tracking-[0.15em] uppercase mb-8 font-semibold">Hanno parlato di noi</p>
-      </div>
-      <div class="overflow-hidden">
-        <div class="flex animate-ticker" style="width: max-content">
-          <a v-for="(item, i) in doubled" :key="i" :href="item.href"
-            target="_blank" rel="noopener"
-            class="inline-flex items-center justify-center shrink-0 px-6 md:px-10 hover:opacity-100 transition-opacity duration-300">
-            <img :src="item.logo" :alt="item.label"
-              class="media-logo max-h-[40px] max-w-[200px] md:max-h-[56px] md:max-w-[280px] w-auto h-auto" />
-          </a>
-        </div>
+  </section>
+
+  <!-- Media logos — separate white section -->
+  <section v-if="!props.teaser" class="section-light py-8">
+    <div class="section-pad">
+      <p class="text-center tx3 text-xs tracking-[0.15em] uppercase mb-8 font-semibold">Hanno parlato di noi</p>
+    </div>
+    <div class="overflow-hidden">
+      <div class="flex animate-ticker" style="width: max-content">
+        <a v-for="(item, i) in doubled" :key="i" :href="item.href"
+          target="_blank" rel="noopener"
+          class="inline-flex items-center justify-center shrink-0 px-6 md:px-10 hover:opacity-100 transition-opacity duration-300">
+          <img :src="item.logo" :alt="item.label"
+            class="media-logo max-h-[40px] max-w-[200px] md:max-h-[56px] md:max-w-[280px] w-auto h-auto" />
+        </a>
       </div>
     </div>
   </section>
