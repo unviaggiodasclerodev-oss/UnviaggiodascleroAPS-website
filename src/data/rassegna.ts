@@ -13,6 +13,16 @@ export interface ArticoloRassegna {
 
 export const articoli: ArticoloRassegna[] = [
   {
+    id: '7',
+    titolo: 'Intervista a TV2000 — Un Viaggio da Sclero',
+    descrizione: 'Michele Agostinetto ospite a TV2000 per raccontare il progetto Un Viaggio da Sclero e il prossimo cammino di oltre 2.000 km attraverso l\'Italia nel 2027.',
+    data: '2026-06-16',
+    fonte: 'TV2000',
+    immagine: 'https://img.youtube.com/vi/Fcp2LP0N4TE/hqdefault.jpg',
+    link: 'https://youtu.be/Fcp2LP0N4TE?si=uG4nnJWdl670TV6M',
+    categoria: 'tv'
+  },
+  {
     id: '1',
     titolo: '2000 km a piedi con la sclerosi multipla: il Viaggio da Sclero riparte nel 2027',
     descrizione: 'Michele Agostinetto, affetto da sclerosi multipla, rilancia con un nuovo viaggio nazionale nel 2027. L\'iniziativa coinvolgerà circa 100 comuni italiani con tappe ufficiali ed eventi pubblici.',
