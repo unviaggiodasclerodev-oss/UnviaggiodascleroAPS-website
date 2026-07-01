@@ -11,6 +11,12 @@ const route = useRoute()
 const isScrolled = ref(false)
 const mobileOpen = ref(false)
 const scrollProgress = ref(0)
+const showBanner = ref(localStorage.getItem('gofundme-banner-dismissed') !== '1')
+
+function dismissBanner() {
+  showBanner.value = false
+  localStorage.setItem('gofundme-banner-dismissed', '1')
+}
 const isInternalPage = computed(() => route.path !== '/')
 const hasSolidHeader = computed(() => isScrolled.value || isInternalPage.value)
 const logoSrc = computed(() => (!hasSolidHeader.value || isDark.value) ? '/logo.png' : '/logo-light.jpg')
@@ -113,6 +119,31 @@ function navigateTo(path) {
       </div>
     </div>
 
+    <!-- GoFundMe ribbon -->
+    <Transition name="ribbon">
+      <div v-if="showBanner" class="border-t"
+        :class="isDark ? 'bg-accent/90 border-accent' : 'bg-accent border-accent'">
+        <div class="section-pad py-2 flex items-center justify-between gap-4">
+          <div class="flex items-center gap-2 min-w-0 flex-wrap">
+            <span :class="['text-xs font-semibold text-white shrink-0']">Sostieni il Viaggio 2027 —</span>
+            <a
+              href="https://www.gofundme.com/f/un-viaggio-da-sclero-2027-2000-km-a-piedi-per-linclusione"
+              target="_blank" rel="noopener noreferrer"
+              class="text-xs font-bold text-white underline underline-offset-2 hover:no-underline truncate">
+              Dona su GoFundMe →
+            </a>
+          </div>
+          <button @click="dismissBanner"
+            class="shrink-0 text-white/80 hover:text-white transition-colors p-0.5"
+            aria-label="Chiudi">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </Transition>
+
     <Transition name="slide">
       <div v-if="mobileOpen"
         :class="['md:hidden border-t section-pad py-6 flex flex-col gap-5', isDark ? 'bg-stone-900 border-white/10' : 'bg-white border-stone-200']">
@@ -129,4 +160,6 @@ function navigateTo(path) {
 <style scoped>
 .slide-enter-active, .slide-leave-active { transition: all 0.3s ease; }
 .slide-enter-from, .slide-leave-to { opacity: 0; transform: translateY(-10px); }
+.ribbon-enter-active, .ribbon-leave-active { transition: all 0.25s ease; }
+.ribbon-enter-from, .ribbon-leave-to { opacity: 0; max-height: 0; }
 </style>
