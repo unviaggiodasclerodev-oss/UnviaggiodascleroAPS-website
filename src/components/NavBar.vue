@@ -49,13 +49,13 @@ function navigateTo(path) {
   <header :class="[
     'fixed top-0 left-0 right-0 z-50 transition-all duration-500',
     hasSolidHeader
-      ? (isDark ? 'bg-stone-900/95 backdrop-blur-md border-b border-white/10 py-3' : 'bg-white/95 backdrop-blur-md border-b border-stone-200 py-3')
-      : 'bg-transparent py-5'
+      ? (isDark ? 'bg-stone-900/95 backdrop-blur-md border-b border-white/10' : 'bg-white/95 backdrop-blur-md border-b border-stone-200')
+      : 'bg-transparent'
   ]">
     <!-- Scroll progress bar -->
     <div class="absolute top-0 left-0 h-[2px] bg-accent transition-all duration-100"
       :style="{ width: scrollProgress + '%' }" />
-    <div class="section-pad flex items-center justify-between">
+    <div :class="['section-pad flex items-center justify-between', hasSolidHeader ? 'py-3' : 'py-5']">
       <router-link to="/" @click.prevent="navigateTo('/')">
         <img :src="logoSrc" alt="Un Viaggio da Sclero APS" class="h-24 w-auto object-contain" />
       </router-link>
@@ -121,8 +121,8 @@ function navigateTo(path) {
 
     <!-- GoFundMe ribbon -->
     <Transition name="ribbon">
-      <div v-if="showBanner && hasSolidHeader" class="border-t"
-        :class="isDark ? 'bg-accent/90 border-accent' : 'bg-accent border-accent'">
+      <div v-if="showBanner && hasSolidHeader"
+        :class="isDark ? 'bg-accent/90' : 'bg-accent'">
         <div class="section-pad py-2 flex items-center justify-between gap-4">
           <div class="flex items-center gap-2 min-w-0 flex-wrap">
             <span :class="['text-xs font-semibold text-white shrink-0']">Sostieni il Viaggio 2027 —</span>
