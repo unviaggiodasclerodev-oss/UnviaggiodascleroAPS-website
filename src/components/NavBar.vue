@@ -121,7 +121,7 @@ function navigateTo(path) {
 
     <!-- GoFundMe ribbon -->
     <Transition name="ribbon">
-      <div v-if="showBanner" class="border-t"
+      <div v-if="showBanner && hasSolidHeader" class="border-t"
         :class="isDark ? 'bg-accent/90 border-accent' : 'bg-accent border-accent'">
         <div class="section-pad py-2 flex items-center justify-between gap-4">
           <div class="flex items-center gap-2 min-w-0 flex-wrap">
