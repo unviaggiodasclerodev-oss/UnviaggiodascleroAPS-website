@@ -19,7 +19,6 @@ useScrollReveal()
       <div class="journey-host">
         <JourneyLine />
         <ChiSiamo :teaser="true" />
-        <Viaggio2027 :show-tappe="false" />
 
         <!-- Donation CTA -->
         <section class="section-light py-16 md:py-24">
@@ -43,6 +42,7 @@ useScrollReveal()
           </div>
         </section>
 
+        <Viaggio2027 :show-tappe="false" />
         <AssociazioneTeaser />
         <CtaBanner
           title="Hai domande? Siamo qui."
