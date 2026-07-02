@@ -23,6 +23,7 @@ const logoSrc = computed(() => (!hasSolidHeader.value || isDark.value) ? '/logo.
 
 const navLinks = [
   { label: 'Home', to: '/' },
+  { label: 'Sostieni il Viaggio', to: '/sostieni' },
   { label: 'Chi siamo', to: '/chi-siamo' },
   { label: 'Il Viaggio 2027', to: '/il-viaggio-2027' },
   { label: 'Associazione', to: '/associazione' },

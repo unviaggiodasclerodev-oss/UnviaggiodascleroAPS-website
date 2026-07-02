@@ -6,6 +6,7 @@ import ViaggioView from './views/ViaggioView.vue'
 import ServiziView from './views/ServiziView.vue'
 import ContattiView from './views/ContattiView.vue'
 import RassegnaStampaView from './views/RassegnaStampaView.vue'
+import SosteniView from './views/SosteniView.vue'
 import SclHeroesView from './views/SclHeroesView.vue'
 import CookiePolicyView from './views/CookiePolicyView.vue'
 import AdminView from './views/AdminView.vue'
@@ -29,6 +30,7 @@ const routes: RouteRecordRaw[] = [
   { path: '/associazione',   name: 'associazione',     component: ServiziView,       meta: { title: 'Associazione - Un Viaggio da Sclero APS' } },
   { path: '/contatti',       name: 'contatti',         component: ContattiView,      meta: { title: 'Contatti - Un Viaggio da Sclero APS' } },
   { path: '/media',          name: 'media',            component: RassegnaStampaView,meta: { title: 'Media - Un Viaggio da Sclero APS' } },
+  { path: '/sostieni',       name: 'sostieni',         component: SosteniView,       meta: { title: 'Sostieni - Un Viaggio da Sclero APS' } },
   { path: '/sclheroes',      name: 'sclheroes',        component: SclHeroesView,     meta: { title: 'sclHEROES - Un Viaggio da Sclero APS' } },
   { path: '/cookie-policy',  name: 'cookie-policy',   component: CookiePolicyView,  meta: { title: 'Cookie Policy - Un Viaggio da Sclero APS' } },
 
