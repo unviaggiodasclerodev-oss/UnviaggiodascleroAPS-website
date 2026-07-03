@@ -50,7 +50,7 @@ useScrollReveal()
                 </p>
                 <a href="https://gofund.me/c9f494b2d" target="_blank" rel="noopener noreferrer"
                   class="group inline-flex items-center gap-2 bg-accent text-white font-bold px-7 py-3.5 rounded-full hover:bg-[#cf5e0e] transition-all text-sm tracking-wide shadow-lg shadow-accent/30 self-start">
-                  Dona ora su GoFundMe
+                  Sostienici
                   <span class="group-hover:translate-x-1 transition-transform">→</span>
                 </a>
               </div>
