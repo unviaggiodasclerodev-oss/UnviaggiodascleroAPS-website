@@ -127,12 +127,11 @@ function navigateTo(path) {
         <div class="section-pad py-2 flex items-center justify-between gap-4">
           <div class="flex items-center gap-2 min-w-0 flex-wrap">
             <span :class="['text-xs font-semibold text-white shrink-0']">Sostieni il Viaggio 2027 —</span>
-            <a
-              href="https://www.gofundme.com/f/un-viaggio-da-sclero-2027-2000-km-a-piedi-per-linclusione"
-              target="_blank" rel="noopener noreferrer"
+            <router-link
+              to="/sostieni"
               class="text-xs font-bold text-white underline underline-offset-2 hover:no-underline truncate">
-              Dona su GoFundMe →
-            </a>
+              Sostienici →
+            </router-link>
           </div>
           <button @click="dismissBanner"
             class="shrink-0 text-white/80 hover:text-white transition-colors p-0.5"

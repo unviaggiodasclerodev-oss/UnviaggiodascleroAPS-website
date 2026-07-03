@@ -42,11 +42,12 @@ useScrollReveal()
                 Scopri come sostenerci
                 <span class="group-hover:translate-x-1 transition-transform">→</span>
               </button>
-              <a href="https://gofund.me/c9f494b2d" target="_blank" rel="noopener noreferrer"
+              <button
+                @click="router.push('/sostieni')"
                 class="group inline-flex items-center justify-center gap-2 border-2 border-accent text-accent font-semibold px-9 py-4 rounded-full hover:bg-accent hover:text-white transition-all text-sm tracking-wide">
-                Dona ora su GoFundMe
+                Sostieni il Viaggio
                 <span class="group-hover:translate-x-1 transition-transform">→</span>
-              </a>
+              </button>
             </div>
           </div>
         </section>
