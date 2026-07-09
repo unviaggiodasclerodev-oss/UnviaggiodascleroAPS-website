@@ -257,18 +257,24 @@ void cityContainerRef // template ref — populated by Vue at runtime
                   <img src="/logo.png" alt="Un Viaggio da Sclero APS" class="h-16 w-auto object-contain opacity-40" />
                 </div>
                 <div class="p-5 flex flex-col gap-3">
-                  <div>
-                    <p class="font-bold tx">{{ hero.nome }}</p>
-                    <p v-if="hero.citta" class="text-xs tx3 mt-0.5">{{ hero.citta }}</p>
+                  <div class="flex items-start justify-between gap-2">
+                    <div>
+                      <p class="font-bold tx">{{ hero.nome }}</p>
+                      <p v-if="hero.citta" class="text-xs tx3 mt-0.5">{{ hero.citta }}</p>
+                    </div>
+                    <span class="text-[10px] font-bold tracking-widest uppercase text-white px-2.5 py-1 rounded-full shrink-0" style="background:#F05022">sclHEROES</span>
                   </div>
-                  <!-- Live badge with YouTube link -->
-                  <a v-if="hero.diretta_at"
-                    href="https://www.youtube.com/@unviaggiodasclero"
-                    target="_blank" rel="noopener noreferrer"
-                    class="inline-flex items-center gap-2 text-[11px] font-semibold text-white px-3 py-1.5 rounded-full self-start hover:opacity-90 transition-opacity"
-                    style="background:#F05022">
+                  <!-- Diretta date if set -->
+                  <p v-if="hero.diretta_at" class="text-xs tx3 flex items-center gap-1.5">
                     <svg class="w-3 h-3 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
                     Diretta {{ formatLive(hero.diretta_at) }}
+                  </p>
+                  <!-- YouTube CTA — always visible -->
+                  <a href="https://www.youtube.com/@unviaggiodasclero"
+                    target="_blank" rel="noopener noreferrer"
+                    class="group inline-flex items-center gap-1.5 text-xs font-semibold text-accent hover:text-[#cf5e0e] transition-colors mt-auto pt-1">
+                    Ecco la prima storia
+                    <span class="group-hover:translate-x-0.5 transition-transform">→</span>
                   </a>
                 </div>
               </div>
