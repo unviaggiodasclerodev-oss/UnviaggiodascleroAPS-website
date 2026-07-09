@@ -256,20 +256,20 @@ void cityContainerRef // template ref — populated by Vue at runtime
                 <div v-else class="h-44 flex items-center justify-center bg-stone-100 dark:bg-stone-800/60">
                   <img src="/logo.png" alt="Un Viaggio da Sclero APS" class="h-16 w-auto object-contain opacity-40" />
                 </div>
-                <div class="p-5 flex flex-col gap-2 flex-1">
+                <div class="p-5 flex flex-col gap-3">
                   <div>
-                    <p class="font-bold tx text-sm">{{ hero.nome }}</p>
-                    <p v-if="hero.citta" class="text-xs tx3">{{ hero.citta }}</p>
+                    <p class="font-bold tx">{{ hero.nome }}</p>
+                    <p v-if="hero.citta" class="text-xs tx3 mt-0.5">{{ hero.citta }}</p>
                   </div>
-                  <!-- Short summary (fallback to full story) -->
-                  <p class="text-sm tx2 leading-relaxed flex-1">{{ hero.riassunto || hero.storia }}</p>
-                  <!-- Live badge -->
-                  <div v-if="hero.diretta_at" class="mt-2 flex items-center gap-1.5">
-                    <span class="inline-flex items-center gap-1.5 text-[11px] font-semibold text-white px-3 py-1 rounded-full" style="background:#F05022">
-                      <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
-                      Diretta {{ formatLive(hero.diretta_at) }}
-                    </span>
-                  </div>
+                  <!-- Live badge with YouTube link -->
+                  <a v-if="hero.diretta_at"
+                    href="https://www.youtube.com/@unviaggiodasclero"
+                    target="_blank" rel="noopener noreferrer"
+                    class="inline-flex items-center gap-2 text-[11px] font-semibold text-white px-3 py-1.5 rounded-full self-start hover:opacity-90 transition-opacity"
+                    style="background:#F05022">
+                    <svg class="w-3 h-3 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+                    Diretta {{ formatLive(hero.diretta_at) }}
+                  </a>
                 </div>
               </div>
             </div>
