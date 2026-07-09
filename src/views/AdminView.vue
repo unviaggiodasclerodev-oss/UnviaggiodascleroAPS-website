@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAuth } from '../composables/useAuth'
 import { useAdminSubmissions } from '../composables/useAdminSubmissions'
@@ -7,7 +7,7 @@ import type { SubmissionStatus } from '../composables/useAdminSubmissions'
 
 const router = useRouter()
 const { signOut } = useAuth()
-const { submissions, isLoading, errorMessage, fetchAll, updateStatus, deleteSubmission } = useAdminSubmissions()
+const { submissions, isLoading, errorMessage, fetchAll, updateStatus, updateExtras, deleteSubmission } = useAdminSubmissions()
 
 type FilterTab = 'in_attesa' | 'pubblicato' | 'rifiutato' | 'tutti'
 const activeFilter = ref<FilterTab>('in_attesa')
@@ -25,6 +25,31 @@ const counts = computed(() => ({
 
 const updatingId = ref<number | null>(null)
 const deletingId = ref<number | null>(null)
+const savingExtrasId = ref<number | null>(null)
+const extrasDraft = ref<Record<number, { riassunto: string; diretta_at: string }>>({})
+
+watch(submissions, (list) => {
+  for (const sub of list) {
+    if (extrasDraft.value[sub.id] === undefined) {
+      extrasDraft.value[sub.id] = {
+        riassunto: sub.riassunto ?? '',
+        diretta_at: sub.diretta_at ? sub.diretta_at.slice(0, 16) : '',
+      }
+    }
+  }
+}, { immediate: true })
+
+async function handleSaveExtras(id: number) {
+  savingExtrasId.value = id
+  try {
+    const d = extrasDraft.value[id]
+    await updateExtras(id, d.riassunto, d.diretta_at || null)
+  } catch {
+    alert('Errore durante il salvataggio.')
+  } finally {
+    savingExtrasId.value = null
+  }
+}
 
 async function handleStatus(id: number, status: SubmissionStatus) {
   updatingId.value = id
@@ -156,6 +181,28 @@ onMounted(fetchAll)
 
               <!-- Story text -->
               <p class="text-sm tx2 leading-relaxed line-clamp-3 mt-2">{{ sub.storia }}</p>
+            </div>
+          </div>
+
+          <!-- Extras edit: riassunto + diretta -->
+          <div v-if="extrasDraft[sub.id]" class="border-t border-stone-100 dark:border-stone-700 px-5 py-4 space-y-3 bg-stone-50/50 dark:bg-stone-900/30">
+            <div>
+              <label class="block text-xs font-semibold tx mb-1">Riassunto card pubblica</label>
+              <textarea v-model="extrasDraft[sub.id].riassunto" rows="2"
+                placeholder="Breve riassunto visibile sulla card pubblica…"
+                class="w-full px-3 py-2 text-xs rounded-lg border border-stone-300 dark:border-stone-600 bg-white dark:bg-stone-900 tx resize-none focus:outline-none focus:ring-1 focus:ring-accent/50 transition">
+              </textarea>
+            </div>
+            <div class="flex items-end gap-3">
+              <div class="flex-1">
+                <label class="block text-xs font-semibold tx mb-1">Data e ora diretta YouTube</label>
+                <input type="datetime-local" v-model="extrasDraft[sub.id].diretta_at"
+                  class="w-full px-3 py-2 text-xs rounded-lg border border-stone-300 dark:border-stone-600 bg-white dark:bg-stone-900 tx focus:outline-none focus:ring-1 focus:ring-accent/50 transition" />
+              </div>
+              <button @click="handleSaveExtras(sub.id)" :disabled="savingExtrasId === sub.id"
+                class="px-5 py-2 rounded-lg bg-accent text-white text-xs font-semibold hover:bg-[#cf5e0e] transition-all disabled:opacity-50 shrink-0">
+                {{ savingExtrasId === sub.id ? '…' : 'Salva' }}
+              </button>
             </div>
           </div>
 

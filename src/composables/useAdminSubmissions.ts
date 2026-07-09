@@ -10,7 +10,9 @@ export interface Submission {
   telefono: string | null
   citta: string | null
   storia: string
+  riassunto: string | null
   foto_url: string | null
+  diretta_at: string | null
   stato: SubmissionStatus
   created_at: string
 }
@@ -27,7 +29,7 @@ export function useAdminSubmissions() {
     try {
       const { data, error } = await supabase
         .from('sclheroes_submissions')
-        .select('id, nome, email, telefono, citta, storia, foto_url, stato, created_at')
+        .select('id, nome, email, telefono, citta, storia, riassunto, foto_url, diretta_at, stato, created_at')
         .order('created_at', { ascending: false })
       if (error) throw error
       submissions.value = (data as Submission[]) ?? []
@@ -48,6 +50,20 @@ export function useAdminSubmissions() {
 
     const submission = submissions.value.find(s => s.id === id)
     if (submission) submission.stato = status
+  }
+
+  async function updateExtras(id: number, riassunto: string, diretta_at: string | null) {
+    const { error } = await supabase
+      .from('sclheroes_submissions')
+      .update({ riassunto: riassunto || null, diretta_at: diretta_at || null })
+      .eq('id', id)
+    if (error) throw error
+
+    const submission = submissions.value.find(s => s.id === id)
+    if (submission) {
+      submission.riassunto = riassunto || null
+      submission.diretta_at = diretta_at || null
+    }
   }
 
   async function deleteSubmission(id: number) {
@@ -72,5 +88,5 @@ export function useAdminSubmissions() {
     submissions.value = submissions.value.filter(s => s.id !== id)
   }
 
-  return { submissions, isLoading, errorMessage, fetchAll, updateStatus, deleteSubmission }
+  return { submissions, isLoading, errorMessage, fetchAll, updateStatus, updateExtras, deleteSubmission }
 }

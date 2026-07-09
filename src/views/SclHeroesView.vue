@@ -9,6 +9,12 @@ import JourneyLine from '../components/JourneyLine.vue'
 useScrollReveal()
 
 const { submissionCount, publishedHeroes, incrementCount } = useSclHeroes()
+
+function formatLive(iso: string) {
+  const d = new Date(iso)
+  return d.toLocaleDateString('it-IT', { day: 'numeric', month: 'long' }) +
+    ' · ore ' + d.toLocaleTimeString('it-IT', { hour: '2-digit', minute: '2-digit' })
+}
 const { form, photoPreview, status, errorMessage, handlePhotoChange, removePhoto, submitForm } = useSclHeroesForm(incrementCount)
 const { query: cityQuery, isOpen: cityDropdownOpen, containerRef: cityContainerRef, suggestions: citySuggestions, selectCity, handleInput: handleCityInput } = useCityAutocomplete((value) => { form.value.citta = value })
 void cityContainerRef // template ref — populated by Vue at runtime
@@ -243,20 +249,27 @@ void cityContainerRef // template ref — populated by Vue at runtime
             <!-- Published stories grid -->
             <div v-if="publishedHeroes.length > 0" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               <div v-for="hero in publishedHeroes" :key="hero.created_at" class="bg-stone-50 dark:bg-stone-800 rounded-2xl overflow-hidden shadow-sm border border-stone-200/50 dark:border-white/10 flex flex-col">
+                <!-- Photo or APS logo placeholder -->
                 <div v-if="hero.foto_url" class="h-44 overflow-hidden">
                   <img :src="hero.foto_url" :alt="hero.nome" class="w-full h-full object-cover" />
                 </div>
-                <div v-else class="h-44 flex items-center justify-center bg-stone-100 dark:bg-stone-700">
-                  <svg class="w-12 h-12 tx3 opacity-30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
-                  </svg>
+                <div v-else class="h-44 flex items-center justify-center bg-stone-100 dark:bg-stone-800/60">
+                  <img src="/logo.png" alt="Un Viaggio da Sclero APS" class="h-16 w-auto object-contain opacity-40" />
                 </div>
                 <div class="p-5 flex flex-col gap-2 flex-1">
                   <div>
                     <p class="font-bold tx text-sm">{{ hero.nome }}</p>
                     <p v-if="hero.citta" class="text-xs tx3">{{ hero.citta }}</p>
                   </div>
-                  <p class="text-sm tx2 leading-relaxed line-clamp-4 flex-1">{{ hero.storia }}</p>
+                  <!-- Short summary (fallback to full story) -->
+                  <p class="text-sm tx2 leading-relaxed flex-1">{{ hero.riassunto || hero.storia }}</p>
+                  <!-- Live badge -->
+                  <div v-if="hero.diretta_at" class="mt-2 flex items-center gap-1.5">
+                    <span class="inline-flex items-center gap-1.5 text-[11px] font-semibold text-white px-3 py-1 rounded-full" style="background:#F05022">
+                      <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+                      Diretta {{ formatLive(hero.diretta_at) }}
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>

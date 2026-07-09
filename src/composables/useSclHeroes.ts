@@ -15,7 +15,7 @@ export function useSclHeroes() {
 
     const { data } = await supabase
       .from('sclheroes_submissions')
-      .select('nome, citta, storia, foto_url, created_at')
+      .select('nome, citta, storia, riassunto, foto_url, diretta_at, created_at')
       .eq('stato', 'pubblicato')
       .order('created_at', { ascending: false })
     publishedHeroes.value = (data as SclHero[]) ?? []

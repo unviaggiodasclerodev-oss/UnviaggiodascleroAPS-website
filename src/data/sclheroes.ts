@@ -17,6 +17,8 @@ export interface SclHero {
   nome: string
   citta: string | null
   storia: string
+  riassunto: string | null
   foto_url: string | null
+  diretta_at: string | null
   created_at: string
 }
