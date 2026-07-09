@@ -43,7 +43,8 @@ async function handleSaveExtras(id: number) {
   savingExtrasId.value = id
   try {
     const d = extrasDraft.value[id]
-    await updateExtras(id, d.riassunto, d.diretta_at || null)
+    const diretta = d.diretta_at ? new Date(d.diretta_at).toISOString() : null
+    await updateExtras(id, d.riassunto, diretta)
   } catch {
     alert('Errore durante il salvataggio.')
   } finally {

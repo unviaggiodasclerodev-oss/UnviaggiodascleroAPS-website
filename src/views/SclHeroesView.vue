@@ -253,8 +253,8 @@ void cityContainerRef // template ref — populated by Vue at runtime
                 <div v-if="hero.foto_url" class="h-44 overflow-hidden">
                   <img :src="hero.foto_url" :alt="hero.nome" class="w-full h-full object-cover" />
                 </div>
-                <div v-else class="h-44 flex items-center justify-center bg-stone-100 dark:bg-stone-800/60">
-                  <img src="/logo.png" alt="Un Viaggio da Sclero APS" class="h-16 w-auto object-contain opacity-40" />
+                <div v-else class="h-44 flex items-center justify-center" style="background:#1a1a1a">
+                  <img src="/logo.png" alt="Un Viaggio da Sclero APS" class="h-14 w-auto object-contain opacity-70" />
                 </div>
                 <div class="p-5 flex flex-col gap-3">
                   <div class="flex items-start justify-between gap-2">
