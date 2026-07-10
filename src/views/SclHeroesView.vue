@@ -275,7 +275,7 @@ function isPlaceholder(hero: { foto_url: string | null; created_at: string }) {
                     <img src="/logo.png" alt="" class="w-32 h-32 object-contain group-hover:scale-105 transition-transform duration-700 ease-out" />
                   </div>
                   <!-- Overlay for text legibility -->
-                  <div v-if="!isPlaceholder(hero)" class="absolute inset-0" style="background: linear-gradient(to top, rgba(0,0,0,0.92) 40%, rgba(0,0,0,0.3) 100%)"></div>
+                  <div v-if="!isPlaceholder(hero)" class="absolute inset-0" style="background: linear-gradient(to top, rgba(0,0,0,0.8) 40%, rgba(0,0,0,0.2) 100%)"></div>
                   <div v-else class="absolute inset-0" style="background: linear-gradient(to top, rgba(255,255,255,0.97) 40%, rgba(255,255,255,0.55) 100%)"></div>
                 </div>
 
