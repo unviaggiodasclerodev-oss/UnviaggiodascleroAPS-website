@@ -22,10 +22,13 @@ const { form, photoPreview, status, errorMessage, handlePhotoChange, removePhoto
 const { query: cityQuery, isOpen: cityDropdownOpen, containerRef: cityContainerRef, suggestions: citySuggestions, selectCity, handleInput: handleCityInput } = useCityAutocomplete((value) => { form.value.citta = value })
 void cityContainerRef // template ref — populated by Vue at runtime
 
-// Tracks hero photos that failed to load, so the card falls back to the gradient instead of a blank black background
+// Tracks hero photos that failed to load, so the card falls back to the logo placeholder instead of a blank black background
 const brokenPhotos = ref<Record<string, boolean>>({})
 function handlePhotoError(key: string) {
   brokenPhotos.value[key] = true
+}
+function isPlaceholder(hero: { foto_url: string | null; created_at: string }) {
+  return !hero.foto_url || !!brokenPhotos.value[hero.created_at]
 }
 </script>
 
@@ -261,23 +264,25 @@ function handlePhotoError(key: string) {
                 href="https://www.youtube.com/@unviaggiodasclero"
                 target="_blank" rel="noopener noreferrer"
                 class="group relative rounded-2xl overflow-hidden shadow-lg flex flex-col cursor-pointer"
-                style="min-height: 340px; background: #0d0d0d">
+                :style="isPlaceholder(hero) ? 'min-height: 340px; background: #ffffff' : 'min-height: 340px; background: #0d0d0d'">
 
-                <!-- Background: photo or gradient -->
+                <!-- Background: photo or logo placeholder -->
                 <div class="absolute inset-0">
-                  <img v-if="hero.foto_url && !brokenPhotos[hero.created_at]" :src="hero.foto_url" :alt="hero.nome"
+                  <img v-if="!isPlaceholder(hero)" :src="hero.foto_url!" :alt="hero.nome"
                     class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
                     @error="handlePhotoError(hero.created_at)" />
-                  <div v-else class="w-full h-full hero-card-gradient flex items-center justify-center">
-                    <img src="/logo.png" alt="" class="w-28 h-28 object-contain opacity-90 drop-shadow-lg group-hover:scale-105 transition-transform duration-700 ease-out" />
+                  <div v-else class="w-full h-full bg-white flex items-center justify-center">
+                    <img src="/logo.png" alt="" class="w-32 h-32 object-contain group-hover:scale-105 transition-transform duration-700 ease-out" />
                   </div>
-                  <!-- Dark overlay -->
-                  <div class="absolute inset-0" style="background: linear-gradient(to top, rgba(0,0,0,0.92) 40%, rgba(0,0,0,0.3) 100%)"></div>
+                  <!-- Overlay for text legibility -->
+                  <div v-if="!isPlaceholder(hero)" class="absolute inset-0" style="background: linear-gradient(to top, rgba(0,0,0,0.92) 40%, rgba(0,0,0,0.3) 100%)"></div>
+                  <div v-else class="absolute inset-0" style="background: linear-gradient(to top, rgba(255,255,255,0.97) 40%, rgba(255,255,255,0.55) 100%)"></div>
                 </div>
 
                 <!-- sclHEROES badge top-left -->
                 <div class="relative z-10 p-5 flex items-center justify-between">
-                  <span class="text-[10px] font-bold tracking-[0.2em] uppercase text-white/80 border border-white/20 px-2.5 py-1 rounded-full backdrop-blur-sm">
+                  <span class="text-[10px] font-bold tracking-[0.2em] uppercase px-2.5 py-1 rounded-full backdrop-blur-sm"
+                    :class="isPlaceholder(hero) ? 'text-stone-500 border border-stone-300' : 'text-white/80 border border-white/20'">
                     scl<span style="color:#F05022">HEROES</span>
                   </span>
                   <!-- Live indicator -->
@@ -289,15 +294,15 @@ function handlePhotoError(key: string) {
 
                 <!-- Bottom content -->
                 <div class="relative z-10 mt-auto p-5">
-                  <p class="text-white/50 text-[10px] font-semibold tracking-widest uppercase mb-1">La sua storia</p>
-                  <h3 class="text-white font-bold text-xl leading-tight mb-3">{{ hero.nome }}</h3>
+                  <p class="text-[10px] font-semibold tracking-widest uppercase mb-1" :class="isPlaceholder(hero) ? 'text-stone-400' : 'text-white/50'">La sua storia</p>
+                  <h3 class="font-bold text-xl leading-tight mb-3" :class="isPlaceholder(hero) ? 'text-stone-800' : 'text-white'">{{ hero.nome }}</h3>
 
                   <!-- Diretta info -->
                   <div v-if="hero.diretta_at" class="flex items-center gap-2 mb-4">
                     <svg class="w-3.5 h-3.5 shrink-0" fill="currentColor" style="color:#F05022" viewBox="0 0 24 24">
                       <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/>
                     </svg>
-                    <span class="text-white/70 text-xs font-medium">Diretta {{ formatLive(hero.diretta_at) }}</span>
+                    <span class="text-xs font-medium" :class="isPlaceholder(hero) ? 'text-stone-500' : 'text-white/70'">Diretta {{ formatLive(hero.diretta_at) }}</span>
                   </div>
 
                   <!-- CTA -->
@@ -336,10 +341,4 @@ function handlePhotoError(key: string) {
 .scl-fade-leave-active { transition: opacity 0.2s ease, transform 0.2s ease; }
 .scl-fade-enter-from   { opacity: 0; transform: translateY(16px); }
 .scl-fade-leave-to     { opacity: 0; transform: translateY(-8px); }
-
-.hero-card-gradient {
-  background: radial-gradient(ellipse at 30% 60%, rgba(240,80,34,0.35) 0%, transparent 60%),
-              radial-gradient(ellipse at 80% 20%, rgba(240,80,34,0.15) 0%, transparent 50%),
-              #0d0d0d;
-}
 </style>
