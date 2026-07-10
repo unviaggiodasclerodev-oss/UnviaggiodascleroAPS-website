@@ -248,36 +248,61 @@ void cityContainerRef // template ref — populated by Vue at runtime
 
             <!-- Published stories grid -->
             <div v-if="publishedHeroes.length > 0" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              <div v-for="hero in publishedHeroes" :key="hero.created_at" class="bg-stone-50 dark:bg-stone-800 rounded-2xl overflow-hidden shadow-sm border border-stone-200/50 dark:border-white/10 flex flex-col">
-                <!-- Photo or APS logo placeholder -->
-                <div v-if="hero.foto_url" class="h-44 overflow-hidden">
-                  <img :src="hero.foto_url" :alt="hero.nome" class="w-full h-full object-cover" />
+              <a v-for="hero in publishedHeroes" :key="hero.created_at"
+                href="https://www.youtube.com/@unviaggiodasclero"
+                target="_blank" rel="noopener noreferrer"
+                class="group relative rounded-2xl overflow-hidden shadow-lg flex flex-col cursor-pointer"
+                style="min-height: 340px; background: #0d0d0d">
+
+                <!-- Background: photo or gradient -->
+                <div class="absolute inset-0">
+                  <img v-if="hero.foto_url" :src="hero.foto_url" :alt="hero.nome"
+                    class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out" />
+                  <div v-else class="w-full h-full hero-card-gradient"></div>
+                  <!-- Dark overlay -->
+                  <div class="absolute inset-0" style="background: linear-gradient(to top, rgba(0,0,0,0.92) 40%, rgba(0,0,0,0.3) 100%)"></div>
                 </div>
-                <div v-else class="h-44 flex items-center justify-center" style="background:#1a1a1a">
-                  <img src="/logo.png" alt="Un Viaggio da Sclero APS" class="h-14 w-auto object-contain opacity-70" />
+
+                <!-- sclHEROES badge top-left -->
+                <div class="relative z-10 p-5 flex items-center justify-between">
+                  <span class="text-[10px] font-bold tracking-[0.2em] uppercase text-white/80 border border-white/20 px-2.5 py-1 rounded-full backdrop-blur-sm">
+                    scl<span style="color:#F05022">HEROES</span>
+                  </span>
+                  <!-- Live indicator -->
+                  <span v-if="hero.diretta_at" class="flex items-center gap-1.5 text-[10px] font-bold text-white px-2.5 py-1 rounded-full backdrop-blur-sm" style="background:rgba(240,80,34,0.85)">
+                    <span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
+                    LIVE
+                  </span>
                 </div>
-                <div class="p-5 flex flex-col gap-3">
-                  <div class="flex items-start justify-between gap-2">
-                    <div>
-                      <p class="font-bold tx">{{ hero.nome }}</p>
-                      <p v-if="hero.citta" class="text-xs tx3 mt-0.5">{{ hero.citta }}</p>
-                    </div>
-                    <span class="text-[10px] font-bold tracking-widest uppercase text-white px-2.5 py-1 rounded-full shrink-0" style="background:#F05022">sclHEROES</span>
+
+                <!-- Bottom content -->
+                <div class="relative z-10 mt-auto p-5">
+                  <!-- Logo watermark if no photo -->
+                  <div v-if="!hero.foto_url" class="mb-4">
+                    <img src="/logo.png" alt="" class="h-10 w-auto object-contain opacity-30" />
                   </div>
-                  <!-- Diretta date if set -->
-                  <p v-if="hero.diretta_at" class="text-xs tx3 flex items-center gap-1.5">
-                    <svg class="w-3 h-3 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
-                    Diretta {{ formatLive(hero.diretta_at) }}
-                  </p>
-                  <!-- YouTube CTA — always visible -->
-                  <a href="https://www.youtube.com/@unviaggiodasclero"
-                    target="_blank" rel="noopener noreferrer"
-                    class="group inline-flex items-center gap-1.5 text-xs font-semibold text-accent hover:text-[#cf5e0e] transition-colors mt-auto pt-1">
-                    Ecco la prima storia
-                    <span class="group-hover:translate-x-0.5 transition-transform">→</span>
-                  </a>
+
+                  <p class="text-white/50 text-[10px] font-semibold tracking-widest uppercase mb-1">La sua storia</p>
+                  <h3 class="text-white font-bold text-xl leading-tight mb-3">{{ hero.nome }}</h3>
+
+                  <!-- Diretta info -->
+                  <div v-if="hero.diretta_at" class="flex items-center gap-2 mb-4">
+                    <svg class="w-3.5 h-3.5 shrink-0" fill="currentColor" style="color:#F05022" viewBox="0 0 24 24">
+                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/>
+                    </svg>
+                    <span class="text-white/70 text-xs font-medium">Diretta {{ formatLive(hero.diretta_at) }}</span>
+                  </div>
+
+                  <!-- CTA -->
+                  <div class="flex items-center gap-2 text-xs font-semibold group-hover:gap-3 transition-all"  style="color:#F05022">
+                    <svg class="w-7 h-7 shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+                    </svg>
+                    <span>Guarda su YouTube</span>
+                    <span class="group-hover:translate-x-1 transition-transform">→</span>
+                  </div>
                 </div>
-              </div>
+              </a>
             </div>
 
             <!-- Empty state -->
@@ -305,10 +330,9 @@ void cityContainerRef // template ref — populated by Vue at runtime
 .scl-fade-enter-from   { opacity: 0; transform: translateY(16px); }
 .scl-fade-leave-to     { opacity: 0; transform: translateY(-8px); }
 
-.line-clamp-4 {
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+.hero-card-gradient {
+  background: radial-gradient(ellipse at 30% 60%, rgba(240,80,34,0.35) 0%, transparent 60%),
+              radial-gradient(ellipse at 80% 20%, rgba(240,80,34,0.15) 0%, transparent 50%),
+              #0d0d0d;
 }
 </style>
