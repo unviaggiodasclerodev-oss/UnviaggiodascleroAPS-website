@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import { useScrollReveal } from '../composables/useScrollReveal.js'
 import { useSclHeroes } from '../composables/useSclHeroes'
 import { useSclHeroesForm } from '../composables/useSclHeroesForm'
@@ -20,6 +21,12 @@ function formatLive(iso: string) {
 const { form, photoPreview, status, errorMessage, handlePhotoChange, removePhoto, submitForm } = useSclHeroesForm(incrementCount)
 const { query: cityQuery, isOpen: cityDropdownOpen, containerRef: cityContainerRef, suggestions: citySuggestions, selectCity, handleInput: handleCityInput } = useCityAutocomplete((value) => { form.value.citta = value })
 void cityContainerRef // template ref — populated by Vue at runtime
+
+// Tracks hero photos that failed to load, so the card falls back to the gradient instead of a blank black background
+const brokenPhotos = ref<Record<string, boolean>>({})
+function handlePhotoError(key: string) {
+  brokenPhotos.value[key] = true
+}
 </script>
 
 <template>
@@ -258,9 +265,12 @@ void cityContainerRef // template ref — populated by Vue at runtime
 
                 <!-- Background: photo or gradient -->
                 <div class="absolute inset-0">
-                  <img v-if="hero.foto_url" :src="hero.foto_url" :alt="hero.nome"
-                    class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out" />
-                  <div v-else class="w-full h-full hero-card-gradient"></div>
+                  <img v-if="hero.foto_url && !brokenPhotos[hero.created_at]" :src="hero.foto_url" :alt="hero.nome"
+                    class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
+                    @error="handlePhotoError(hero.created_at)" />
+                  <div v-else class="w-full h-full hero-card-gradient flex items-center justify-center">
+                    <img src="/logo.png" alt="" class="w-28 h-28 object-contain opacity-90 drop-shadow-lg group-hover:scale-105 transition-transform duration-700 ease-out" />
+                  </div>
                   <!-- Dark overlay -->
                   <div class="absolute inset-0" style="background: linear-gradient(to top, rgba(0,0,0,0.92) 40%, rgba(0,0,0,0.3) 100%)"></div>
                 </div>
@@ -279,11 +289,6 @@ void cityContainerRef // template ref — populated by Vue at runtime
 
                 <!-- Bottom content -->
                 <div class="relative z-10 mt-auto p-5">
-                  <!-- Logo watermark if no photo -->
-                  <div v-if="!hero.foto_url" class="mb-4">
-                    <img src="/logo.png" alt="" class="h-10 w-auto object-contain opacity-30" />
-                  </div>
-
                   <p class="text-white/50 text-[10px] font-semibold tracking-widest uppercase mb-1">La sua storia</p>
                   <h3 class="text-white font-bold text-xl leading-tight mb-3">{{ hero.nome }}</h3>
 
