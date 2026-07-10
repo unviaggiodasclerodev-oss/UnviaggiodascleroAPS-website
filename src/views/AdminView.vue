@@ -26,7 +26,7 @@ const counts = computed(() => ({
 const updatingId = ref<number | null>(null)
 const deletingId = ref<number | null>(null)
 const savingExtrasId = ref<number | null>(null)
-const extrasDraft = ref<Record<number, { riassunto: string; diretta_at: string }>>({})
+const extrasDraft = ref<Record<number, { riassunto: string; diretta_at: string; foto_url: string }>>({})
 
 watch(submissions, (list) => {
   for (const sub of list) {
@@ -34,6 +34,7 @@ watch(submissions, (list) => {
       extrasDraft.value[sub.id] = {
         riassunto: sub.riassunto ?? '',
         diretta_at: sub.diretta_at ? sub.diretta_at.slice(0, 16) : '',
+        foto_url: sub.foto_url ?? '',
       }
     }
   }
@@ -43,8 +44,7 @@ async function handleSaveExtras(id: number) {
   savingExtrasId.value = id
   try {
     const d = extrasDraft.value[id]
-    const diretta = d.diretta_at ? new Date(d.diretta_at).toISOString() : null
-    await updateExtras(id, d.riassunto, diretta)
+    await updateExtras(id, d.riassunto, d.diretta_at || null, d.foto_url)
   } catch {
     alert('Errore durante il salvataggio.')
   } finally {
@@ -185,8 +185,17 @@ onMounted(fetchAll)
             </div>
           </div>
 
-          <!-- Extras edit: riassunto + diretta -->
+          <!-- Extras edit: foto, riassunto + diretta -->
           <div v-if="extrasDraft[sub.id]" class="border-t border-stone-100 dark:border-stone-700 px-5 py-4 space-y-3 bg-stone-50/50 dark:bg-stone-900/30">
+            <div>
+              <label class="block text-xs font-semibold tx mb-1">URL foto card (es. /images/Matteo_B.png)</label>
+              <div class="flex gap-2 items-center">
+                <input type="text" v-model="extrasDraft[sub.id].foto_url"
+                  placeholder="/images/nome-foto.jpg oppure URL Supabase"
+                  class="flex-1 px-3 py-2 text-xs rounded-lg border border-stone-300 dark:border-stone-600 bg-white dark:bg-stone-900 tx focus:outline-none focus:ring-1 focus:ring-accent/50 transition" />
+                <img v-if="extrasDraft[sub.id].foto_url" :src="extrasDraft[sub.id].foto_url" class="h-9 w-9 rounded-md object-cover shrink-0 bg-stone-200" />
+              </div>
+            </div>
             <div>
               <label class="block text-xs font-semibold tx mb-1">Riassunto card pubblica</label>
               <textarea v-model="extrasDraft[sub.id].riassunto" rows="2"

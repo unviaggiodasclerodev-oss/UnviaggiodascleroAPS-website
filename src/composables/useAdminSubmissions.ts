@@ -52,10 +52,16 @@ export function useAdminSubmissions() {
     if (submission) submission.stato = status
   }
 
-  async function updateExtras(id: number, riassunto: string, diretta_at: string | null) {
+  async function updateExtras(id: number, riassunto: string, diretta_at: string | null, foto_url_override?: string) {
+    const patch: Record<string, unknown> = {
+      riassunto: riassunto || null,
+      diretta_at: diretta_at || null,
+    }
+    if (foto_url_override !== undefined) patch.foto_url = foto_url_override || null
+
     const { error } = await supabase
       .from('sclheroes_submissions')
-      .update({ riassunto: riassunto || null, diretta_at: diretta_at || null })
+      .update(patch)
       .eq('id', id)
     if (error) throw error
 
@@ -63,6 +69,7 @@ export function useAdminSubmissions() {
     if (submission) {
       submission.riassunto = riassunto || null
       submission.diretta_at = diretta_at || null
+      if (foto_url_override !== undefined) submission.foto_url = foto_url_override || null
     }
   }
 

@@ -12,8 +12,10 @@ const { submissionCount, publishedHeroes, incrementCount } = useSclHeroes()
 
 function formatLive(iso: string) {
   const d = new Date(iso)
-  return d.toLocaleDateString('it-IT', { day: 'numeric', month: 'long' }) +
-    ' · ore ' + d.toLocaleTimeString('it-IT', { hour: '2-digit', minute: '2-digit' })
+  const day = d.toLocaleDateString('it-IT', { day: 'numeric', month: 'long', timeZone: 'UTC' })
+  const hh = String(d.getUTCHours()).padStart(2, '0')
+  const mm = String(d.getUTCMinutes()).padStart(2, '0')
+  return `${day} · ore ${hh}:${mm}`
 }
 const { form, photoPreview, status, errorMessage, handlePhotoChange, removePhoto, submitForm } = useSclHeroesForm(incrementCount)
 const { query: cityQuery, isOpen: cityDropdownOpen, containerRef: cityContainerRef, suggestions: citySuggestions, selectCity, handleInput: handleCityInput } = useCityAutocomplete((value) => { form.value.citta = value })
