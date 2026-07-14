@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, watch } from 'vue'
 import { useScrollReveal } from '../composables/useScrollReveal.js'
 import { useSclHeroes } from '../composables/useSclHeroes'
 import { useSclHeroesForm } from '../composables/useSclHeroesForm'
@@ -39,19 +39,28 @@ function heroVideoUrl(hero: { nome: string }) {
   return HERO_VIDEO_LINKS[hero.nome] ?? 'https://www.youtube.com/@unviaggiodasclero'
 }
 
-// Next upcoming live among published heroes, shown as a banner CTA at the top of the page
+// Lives run for roughly this long; the floating card keeps showing until then, not just until start
+const LIVE_DURATION_MS = 2.75 * 60 * 60 * 1000 // 2h45m
+
+// Hero whose live hasn't ended yet, shown as a floating card — automatically moves on to
+// whichever hero has the next diretta_at once the current one's window closes
 const nextLive = computed(() => {
   const now = Date.now()
   const upcoming = publishedHeroes.value
-    .filter(h => h.diretta_at && new Date(h.diretta_at).getTime() > now)
+    .filter(h => h.diretta_at && now < new Date(h.diretta_at).getTime() + LIVE_DURATION_MS)
     .sort((a, b) => new Date(a.diretta_at!).getTime() - new Date(b.diretta_at!).getTime())
   return upcoming[0] ?? null
 })
 
-const ctaDismissed = ref(localStorage.getItem('sclheroes-live-cta-dismissed') === '1')
+// Dismissal is remembered per-hero, so a new guest's card isn't hidden by an old dismissal
+const ctaDismissed = ref(false)
+watch(nextLive, (hero) => {
+  ctaDismissed.value = hero ? localStorage.getItem(`sclheroes-live-cta-dismissed-${hero.created_at}`) === '1' : false
+}, { immediate: true })
 function dismissCta() {
+  if (!nextLive.value) return
   ctaDismissed.value = true
-  localStorage.setItem('sclheroes-live-cta-dismissed', '1')
+  localStorage.setItem(`sclheroes-live-cta-dismissed-${nextLive.value.created_at}`, '1')
 }
 </script>
 
@@ -64,8 +73,8 @@ function dismissCta() {
       <div class="absolute inset-0 bg-overlay backdrop-blur-sm"></div>
     </div>
 
-    <!-- Floating CTA: opens the upcoming live directly on YouTube -->
-    <div v-if="nextLive && !ctaDismissed" class="fixed bottom-24 right-6 z-40 flex flex-col items-center gap-2">
+    <!-- Floating mini-card: same look as the Wall of Heroes card, opens the live on YouTube -->
+    <div v-if="nextLive && !ctaDismissed" class="fixed bottom-24 right-6 z-40">
       <button @click="dismissCta" aria-label="Chiudi"
         class="absolute -top-2 -right-2 z-10 w-5 h-5 rounded-full bg-stone-900 text-white flex items-center justify-center shadow hover:bg-stone-700 transition-colors">
         <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -73,19 +82,30 @@ function dismissCta() {
         </svg>
       </button>
       <a :href="heroVideoUrl(nextLive)" target="_blank" rel="noopener noreferrer"
-        class="group flex flex-col items-center gap-2"
-        :aria-label="`Segui la diretta sclHEROES su YouTube — ${formatLive(nextLive.diretta_at!)}`">
-        <span class="relative flex items-center justify-center">
-          <span class="absolute inline-flex h-16 w-16 rounded-full animate-ping" style="background:#F05022; opacity:0.6"></span>
-          <span class="relative inline-flex items-center justify-center w-16 h-16 rounded-full shadow-lg text-white transition-transform group-hover:scale-110" style="background:#F05022">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 12h14m0 0l-6-6m6 6l-6 6"/>
-            </svg>
+        class="group relative w-32 flex flex-col rounded-xl overflow-hidden shadow-xl transition-transform hover:scale-105"
+        :style="isPlaceholder(nextLive) ? 'min-height:160px;background:#ffffff' : 'min-height:160px;background:#0d0d0d'"
+        :aria-label="`Segui la diretta di ${nextLive.nome} su YouTube — ${formatLive(nextLive.diretta_at!)}`">
+
+        <div class="absolute inset-0">
+          <img v-if="!isPlaceholder(nextLive)" :src="nextLive.foto_url!" :alt="nextLive.nome" class="w-full h-full object-cover object-top" />
+          <div v-else class="w-full h-full bg-white flex items-center justify-center">
+            <img src="/logo.png" alt="" class="w-14 h-14 object-contain" />
+          </div>
+          <div v-if="!isPlaceholder(nextLive)" class="absolute inset-0" style="background: linear-gradient(to top, rgba(0,0,0,0.85) 35%, rgba(0,0,0,0.15) 100%)"></div>
+          <div v-else class="absolute inset-0" style="background: linear-gradient(to top, rgba(255,255,255,0.97) 35%, rgba(255,255,255,0.55) 100%)"></div>
+        </div>
+
+        <div class="relative z-10 p-2.5">
+          <span class="flex items-center gap-1 w-fit text-[9px] font-bold text-white px-2 py-0.5 rounded-full" style="background:rgba(240,80,34,0.9)">
+            <span class="w-1 h-1 rounded-full bg-white animate-pulse"></span>
+            LIVE
           </span>
-        </span>
-        <span class="px-3 py-1.5 rounded-full text-[11px] font-semibold text-white text-center leading-tight shadow-lg max-w-[8.5rem]" style="background:#1c1c1c">
-          Segui la diretta sclHEROES<br>{{ formatLive(nextLive.diretta_at!) }}
-        </span>
+        </div>
+
+        <div class="relative z-10 mt-auto p-2.5">
+          <h3 class="font-bold text-xs leading-tight mb-0.5" :class="isPlaceholder(nextLive) ? 'text-stone-800' : 'text-white'">{{ nextLive.nome }}</h3>
+          <p class="text-[10px] font-semibold" style="color:#F05022">Guarda la diretta →</p>
+        </div>
       </a>
     </div>
 
