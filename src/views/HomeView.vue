@@ -7,6 +7,7 @@ import Viaggio2027 from '../components/Viaggio2027.vue'
 import AssociazioneTeaser from '../components/AssociazioneTeaser.vue'
 import CtaBanner from '../components/CtaBanner.vue'
 import JourneyLine from '../components/JourneyLine.vue'
+import LiveHeroCta from '../components/LiveHeroCta.vue'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
@@ -16,6 +17,7 @@ useScrollReveal()
 
 <template>
   <div>
+    <LiveHeroCta />
     <HeroSection />
     <MediaLogos />
     <main id="main-content">
