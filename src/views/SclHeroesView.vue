@@ -58,6 +58,21 @@ const nextLive = computed(() => {
       <div class="absolute inset-0 bg-overlay backdrop-blur-sm"></div>
     </div>
 
+    <!-- Floating CTA: jumps to the upcoming live's card -->
+    <a v-if="nextLive" href="#wall-of-heroes"
+      class="fixed bottom-24 right-6 z-40 group flex items-center justify-center"
+      :aria-label="`Segui la diretta di ${nextLive.nome} su YouTube — ${formatLive(nextLive.diretta_at!)}`">
+      <span class="absolute inline-flex h-16 w-16 rounded-full animate-ping" style="background:#F05022; opacity:0.6"></span>
+      <span class="relative inline-flex items-center justify-center w-16 h-16 rounded-full shadow-lg text-white transition-transform group-hover:scale-110" style="background:#F05022">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+        </svg>
+      </span>
+      <span class="absolute right-full mr-3 px-3 py-2 rounded-lg text-xs font-semibold text-white whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-lg" style="background:#1c1c1c">
+        Diretta {{ nextLive.nome }} — {{ formatLive(nextLive.diretta_at!) }}
+      </span>
+    </a>
+
     <main id="main-content" class="pt-32 pb-16">
       <div class="journey-host">
         <JourneyLine />
@@ -75,20 +90,6 @@ const nextLive = computed(() => {
                 per dar voce a una community vera — e diventare episodi di un podcast.
               </p>
             </div>
-
-            <!-- Upcoming live CTA -->
-            <a v-if="nextLive" href="#wall-of-heroes"
-              class="group flex flex-col items-center gap-2 mb-8 mx-auto w-fit px-6 py-4 rounded-2xl border border-stone-200/50 dark:border-white/10 bg-stone-50 dark:bg-stone-800 shadow-sm hover:shadow-md hover:border-stone-300 dark:hover:border-white/20 transition-all duration-300 reveal">
-              <span class="flex items-center gap-1.5 text-[10px] font-bold text-white px-2.5 py-1 rounded-full" style="background:rgba(240,80,34,0.85)">
-                <span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
-                LIVE IN ARRIVO
-              </span>
-              <span class="font-bold tx text-center">Segui la diretta di {{ nextLive.nome }} su YouTube</span>
-              <span class="text-sm tx2">{{ formatLive(nextLive.diretta_at!) }}</span>
-              <svg class="w-5 h-5 mt-1 group-hover:translate-y-1 transition-transform" style="color:#F05022" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
-              </svg>
-            </a>
 
             <!-- Live submission counter -->
             <div v-if="submissionCount !== null" class="text-center mb-6 reveal">
