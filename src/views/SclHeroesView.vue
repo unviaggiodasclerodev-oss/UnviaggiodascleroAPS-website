@@ -47,6 +47,12 @@ const nextLive = computed(() => {
     .sort((a, b) => new Date(a.diretta_at!).getTime() - new Date(b.diretta_at!).getTime())
   return upcoming[0] ?? null
 })
+
+const ctaDismissed = ref(localStorage.getItem('sclheroes-live-cta-dismissed') === '1')
+function dismissCta() {
+  ctaDismissed.value = true
+  localStorage.setItem('sclheroes-live-cta-dismissed', '1')
+}
 </script>
 
 <template>
@@ -59,21 +65,29 @@ const nextLive = computed(() => {
     </div>
 
     <!-- Floating CTA: opens the upcoming live directly on YouTube -->
-    <a v-if="nextLive" :href="heroVideoUrl(nextLive)" target="_blank" rel="noopener noreferrer"
-      class="fixed bottom-24 right-6 z-40 group flex flex-col items-center gap-2"
-      :aria-label="`Segui la diretta sclHEROES su YouTube — ${formatLive(nextLive.diretta_at!)}`">
-      <span class="relative flex items-center justify-center">
-        <span class="absolute inline-flex h-16 w-16 rounded-full animate-ping" style="background:#F05022; opacity:0.6"></span>
-        <span class="relative inline-flex items-center justify-center w-16 h-16 rounded-full shadow-lg text-white transition-transform group-hover:scale-110" style="background:#F05022">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 12h14m0 0l-6-6m6 6l-6 6"/>
-          </svg>
+    <div v-if="nextLive && !ctaDismissed" class="fixed bottom-24 right-6 z-40 flex flex-col items-center gap-2">
+      <button @click="dismissCta" aria-label="Chiudi"
+        class="absolute -top-2 -right-2 z-10 w-5 h-5 rounded-full bg-stone-900 text-white flex items-center justify-center shadow hover:bg-stone-700 transition-colors">
+        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+      <a :href="heroVideoUrl(nextLive)" target="_blank" rel="noopener noreferrer"
+        class="group flex flex-col items-center gap-2"
+        :aria-label="`Segui la diretta sclHEROES su YouTube — ${formatLive(nextLive.diretta_at!)}`">
+        <span class="relative flex items-center justify-center">
+          <span class="absolute inline-flex h-16 w-16 rounded-full animate-ping" style="background:#F05022; opacity:0.6"></span>
+          <span class="relative inline-flex items-center justify-center w-16 h-16 rounded-full shadow-lg text-white transition-transform group-hover:scale-110" style="background:#F05022">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 12h14m0 0l-6-6m6 6l-6 6"/>
+            </svg>
+          </span>
         </span>
-      </span>
-      <span class="px-3 py-1.5 rounded-full text-[11px] font-semibold text-white text-center leading-tight shadow-lg max-w-[8.5rem]" style="background:#1c1c1c">
-        Segui la diretta sclHEROES<br>{{ formatLive(nextLive.diretta_at!) }}
-      </span>
-    </a>
+        <span class="px-3 py-1.5 rounded-full text-[11px] font-semibold text-white text-center leading-tight shadow-lg max-w-[8.5rem]" style="background:#1c1c1c">
+          Segui la diretta sclHEROES<br>{{ formatLive(nextLive.diretta_at!) }}
+        </span>
+      </a>
+    </div>
 
     <main id="main-content" class="pt-32 pb-16">
       <div class="journey-host">
