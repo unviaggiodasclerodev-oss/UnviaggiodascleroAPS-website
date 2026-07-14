@@ -30,6 +30,14 @@ function handlePhotoError(key: string) {
 function isPlaceholder(hero: { foto_url: string | null; created_at: string }) {
   return !hero.foto_url || !!brokenPhotos.value[hero.created_at]
 }
+
+// Direct link to a hero's live once it's aired, otherwise the channel page
+const HERO_VIDEO_LINKS: Record<string, string> = {
+  'Matteo Boseglio': 'https://www.youtube.com/watch?v=h5O2vBzeXjM',
+}
+function heroVideoUrl(hero: { nome: string }) {
+  return HERO_VIDEO_LINKS[hero.nome] ?? 'https://www.youtube.com/@unviaggiodasclero'
+}
 </script>
 
 <template>
@@ -261,7 +269,7 @@ function isPlaceholder(hero: { foto_url: string | null; created_at: string }) {
             <!-- Published stories grid -->
             <div v-if="publishedHeroes.length > 0" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               <a v-for="hero in publishedHeroes" :key="hero.created_at"
-                href="https://www.youtube.com/@unviaggiodasclero"
+                :href="heroVideoUrl(hero)"
                 target="_blank" rel="noopener noreferrer"
                 class="group relative rounded-2xl overflow-hidden shadow-lg flex flex-col cursor-pointer"
                 :style="isPlaceholder(hero) ? 'min-height: 340px; background: #ffffff' : 'min-height: 340px; background: #0d0d0d'">

@@ -172,7 +172,7 @@ const faqs = [
           </svg>
         </a>
 
-        <a href="https://wa.me/393516200034" target="_blank" rel="noopener"
+        <a href="https://wa.me/393793668397" target="_blank" rel="noopener"
           class="group flex items-center gap-6 p-7 rounded-2xl border border-white/15 bg-white/8 backdrop-blur-sm hover:bg-white/15 hover:border-white/30 transition-all duration-300">
           <div class="w-14 h-14 rounded-xl flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-110"
             style="background:#25D366">
