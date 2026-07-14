@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { useScrollReveal } from '../composables/useScrollReveal.js'
 import { useSclHeroes } from '../composables/useSclHeroes'
 import { useSclHeroesForm } from '../composables/useSclHeroesForm'
@@ -38,6 +38,15 @@ const HERO_VIDEO_LINKS: Record<string, string> = {
 function heroVideoUrl(hero: { nome: string }) {
   return HERO_VIDEO_LINKS[hero.nome] ?? 'https://www.youtube.com/@unviaggiodasclero'
 }
+
+// Next upcoming live among published heroes, shown as a banner CTA at the top of the page
+const nextLive = computed(() => {
+  const now = Date.now()
+  const upcoming = publishedHeroes.value
+    .filter(h => h.diretta_at && new Date(h.diretta_at).getTime() > now)
+    .sort((a, b) => new Date(a.diretta_at!).getTime() - new Date(b.diretta_at!).getTime())
+  return upcoming[0] ?? null
+})
 </script>
 
 <template>
@@ -66,6 +75,20 @@ function heroVideoUrl(hero: { nome: string }) {
                 per dar voce a una community vera — e diventare episodi di un podcast.
               </p>
             </div>
+
+            <!-- Upcoming live CTA -->
+            <a v-if="nextLive" href="#wall-of-heroes"
+              class="group flex flex-col items-center gap-2 mb-8 mx-auto w-fit px-6 py-4 rounded-2xl border border-stone-200/50 dark:border-white/10 bg-stone-50 dark:bg-stone-800 shadow-sm hover:shadow-md hover:border-stone-300 dark:hover:border-white/20 transition-all duration-300 reveal">
+              <span class="flex items-center gap-1.5 text-[10px] font-bold text-white px-2.5 py-1 rounded-full" style="background:rgba(240,80,34,0.85)">
+                <span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
+                LIVE IN ARRIVO
+              </span>
+              <span class="font-bold tx text-center">Segui la diretta di {{ nextLive.nome }} su YouTube</span>
+              <span class="text-sm tx2">{{ formatLive(nextLive.diretta_at!) }}</span>
+              <svg class="w-5 h-5 mt-1 group-hover:translate-y-1 transition-transform" style="color:#F05022" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+              </svg>
+            </a>
 
             <!-- Live submission counter -->
             <div v-if="submissionCount !== null" class="text-center mb-6 reveal">
@@ -258,7 +281,7 @@ function heroVideoUrl(hero: { nome: string }) {
         </section>
 
         <!-- Wall of Heroes -->
-        <section class="section-pad">
+        <section id="wall-of-heroes" class="section-pad scroll-mt-24">
           <div class="max-w-5xl mx-auto">
             <div class="text-center mb-10 reveal">
               <span class="accent-bar accent-bar-center"></span>
