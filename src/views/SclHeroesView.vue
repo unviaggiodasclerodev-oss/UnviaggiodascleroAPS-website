@@ -18,6 +18,9 @@ function formatLive(iso: string) {
   const mm = String(d.getUTCMinutes()).padStart(2, '0')
   return `${day} · ore ${hh}:${mm}`
 }
+function formatLiveDate(iso: string) {
+  return new Date(iso).toLocaleDateString('it-IT', { day: 'numeric', month: 'long', timeZone: 'UTC' })
+}
 const { form, photoPreview, status, errorMessage, handlePhotoChange, removePhoto, submitForm } = useSclHeroesForm(incrementCount)
 const { query: cityQuery, isOpen: cityDropdownOpen, containerRef: cityContainerRef, suggestions: citySuggestions, selectCity, handleInput: handleCityInput } = useCityAutocomplete((value) => { form.value.citta = value })
 void cityContainerRef // template ref — populated by Vue at runtime
@@ -82,8 +85,8 @@ function dismissCta() {
         </svg>
       </button>
       <a :href="heroVideoUrl(nextLive)" target="_blank" rel="noopener noreferrer"
-        class="group relative w-32 flex flex-col rounded-xl overflow-hidden shadow-xl transition-transform hover:scale-105"
-        :style="isPlaceholder(nextLive) ? 'min-height:160px;background:#ffffff' : 'min-height:160px;background:#0d0d0d'"
+        class="group relative w-36 flex flex-col rounded-xl overflow-hidden shadow-xl transition-transform hover:scale-105"
+        :style="isPlaceholder(nextLive) ? 'min-height:180px;background:#ffffff' : 'min-height:180px;background:#0d0d0d'"
         :aria-label="`Segui la diretta di ${nextLive.nome} su YouTube — ${formatLive(nextLive.diretta_at!)}`">
 
         <div class="absolute inset-0">
@@ -95,15 +98,20 @@ function dismissCta() {
           <div v-else class="absolute inset-0" style="background: linear-gradient(to top, rgba(255,255,255,0.97) 35%, rgba(255,255,255,0.55) 100%)"></div>
         </div>
 
-        <div class="relative z-10 p-2.5">
-          <span class="flex items-center gap-1 w-fit text-[9px] font-bold text-white px-2 py-0.5 rounded-full" style="background:rgba(240,80,34,0.9)">
+        <div class="relative z-10 p-2 flex items-center justify-between gap-1">
+          <span class="text-[7px] font-bold tracking-wide uppercase px-1.5 py-0.5 rounded-full backdrop-blur-sm"
+            :class="isPlaceholder(nextLive) ? 'text-stone-500 border border-stone-300' : 'text-white/80 border border-white/20'">
+            scl<span style="color:#F05022">HEROES</span>
+          </span>
+          <span class="flex items-center gap-1 shrink-0 text-[7px] font-bold text-white px-1.5 py-0.5 rounded-full" style="background:rgba(240,80,34,0.9)">
             <span class="w-1 h-1 rounded-full bg-white animate-pulse"></span>
             LIVE
           </span>
         </div>
 
         <div class="relative z-10 mt-auto p-2.5">
-          <h3 class="font-bold text-xs leading-tight mb-0.5" :class="isPlaceholder(nextLive) ? 'text-stone-800' : 'text-white'">{{ nextLive.nome }}</h3>
+          <h3 class="font-bold text-xs leading-tight mb-1" :class="isPlaceholder(nextLive) ? 'text-stone-800' : 'text-white'">{{ nextLive.nome }}</h3>
+          <p class="text-[9px] font-medium mb-1.5" :class="isPlaceholder(nextLive) ? 'text-stone-500' : 'text-white/70'">{{ formatLive(nextLive.diretta_at!) }}</p>
           <p class="text-[10px] font-semibold" style="color:#F05022">Guarda la diretta →</p>
         </div>
       </a>
@@ -362,7 +370,6 @@ function dismissCta() {
 
                 <!-- Bottom content -->
                 <div class="relative z-10 mt-auto p-5">
-                  <p class="text-[10px] font-semibold tracking-widest uppercase mb-1" :class="isPlaceholder(hero) ? 'text-stone-400' : 'text-white/50'">La sua storia</p>
                   <h3 class="font-bold text-xl leading-tight mb-3" :class="isPlaceholder(hero) ? 'text-stone-800' : 'text-white'">{{ hero.nome }}</h3>
 
                   <!-- Diretta info -->
@@ -370,7 +377,7 @@ function dismissCta() {
                     <svg class="w-3.5 h-3.5 shrink-0" fill="currentColor" style="color:#F05022" viewBox="0 0 24 24">
                       <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/>
                     </svg>
-                    <span class="text-xs font-medium" :class="isPlaceholder(hero) ? 'text-stone-500' : 'text-white/70'">Diretta {{ formatLive(hero.diretta_at) }}</span>
+                    <span class="text-xs font-medium" :class="isPlaceholder(hero) ? 'text-stone-500' : 'text-white/70'">{{ formatLiveDate(hero.diretta_at) }}</span>
                   </div>
 
                   <!-- CTA -->
