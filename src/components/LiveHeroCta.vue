@@ -1,9 +1,30 @@
 <script setup lang="ts">
-import { ref, computed, watch } from 'vue'
+import { ref, computed, watch, onMounted, onUnmounted } from 'vue'
 import { useSclHeroes } from '../composables/useSclHeroes'
 import { formatLive, heroVideoUrl, LIVE_DURATION_MS } from '../data/sclheroes'
 
 const { publishedHeroes } = useSclHeroes()
+
+// Stays hidden while the page's hero section is in view, so it doesn't cover it on load
+const pastHero = ref(false)
+let heroObserver: IntersectionObserver | null = null
+function onScrollFallback() {
+  pastHero.value = window.scrollY > 200
+}
+onMounted(() => {
+  const heroEl = document.getElementById('hero')
+  if (heroEl) {
+    heroObserver = new IntersectionObserver(([entry]) => { pastHero.value = !entry.isIntersecting })
+    heroObserver.observe(heroEl)
+  } else {
+    window.addEventListener('scroll', onScrollFallback, { passive: true })
+    onScrollFallback()
+  }
+})
+onUnmounted(() => {
+  heroObserver?.disconnect()
+  window.removeEventListener('scroll', onScrollFallback)
+})
 
 // Hero whose live hasn't ended yet — automatically moves on to whichever hero
 // has the next diretta_at once the current one's window closes
@@ -32,7 +53,7 @@ function dismissCta() {
 </script>
 
 <template>
-  <div v-if="nextLive && !ctaDismissed" class="fixed bottom-24 right-6 z-40">
+  <div v-if="nextLive && !ctaDismissed && pastHero" class="fixed bottom-24 right-6 z-40">
     <button @click="dismissCta" aria-label="Chiudi"
       class="absolute -top-2 -right-2 z-10 w-5 h-5 rounded-full bg-stone-900 text-white flex items-center justify-center shadow hover:bg-stone-700 transition-colors">
       <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
