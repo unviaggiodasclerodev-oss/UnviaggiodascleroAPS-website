@@ -60,16 +60,18 @@ const nextLive = computed(() => {
 
     <!-- Floating CTA: jumps to the upcoming live's card -->
     <a v-if="nextLive" href="#wall-of-heroes"
-      class="fixed bottom-24 right-6 z-40 group flex items-center justify-center"
-      :aria-label="`Segui la diretta di ${nextLive.nome} su YouTube — ${formatLive(nextLive.diretta_at!)}`">
-      <span class="absolute inline-flex h-16 w-16 rounded-full animate-ping" style="background:#F05022; opacity:0.6"></span>
-      <span class="relative inline-flex items-center justify-center w-16 h-16 rounded-full shadow-lg text-white transition-transform group-hover:scale-110" style="background:#F05022">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
-        </svg>
+      class="fixed bottom-24 right-6 z-40 group flex flex-col items-center gap-2"
+      :aria-label="`Segui la diretta sclHEROES su YouTube — ${formatLive(nextLive.diretta_at!)}`">
+      <span class="relative flex items-center justify-center">
+        <span class="absolute inline-flex h-16 w-16 rounded-full animate-ping" style="background:#F05022; opacity:0.6"></span>
+        <span class="relative inline-flex items-center justify-center w-16 h-16 rounded-full shadow-lg text-white transition-transform group-hover:scale-110" style="background:#F05022">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+          </svg>
+        </span>
       </span>
-      <span class="absolute right-full mr-3 px-3 py-2 rounded-lg text-xs font-semibold text-white whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-lg" style="background:#1c1c1c">
-        Diretta {{ nextLive.nome }} — {{ formatLive(nextLive.diretta_at!) }}
+      <span class="px-3 py-1.5 rounded-full text-[11px] font-semibold text-white text-center leading-tight shadow-lg max-w-[8.5rem]" style="background:#1c1c1c">
+        Segui la diretta sclHEROES<br>{{ formatLive(nextLive.diretta_at!) }}
       </span>
     </a>
 
