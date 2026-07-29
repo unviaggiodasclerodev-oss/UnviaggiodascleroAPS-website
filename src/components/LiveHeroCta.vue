@@ -66,7 +66,7 @@ function dismissCta() {
       :aria-label="`Segui la diretta di ${nextLive.nome} su YouTube — ${formatLive(nextLive.diretta_at!)}`">
 
       <div class="absolute inset-0">
-        <img v-if="!isPlaceholder" :src="nextLive.foto_url!" :alt="nextLive.nome" class="w-full h-full object-cover object-top" @error="photoBroken = true" />
+        <img v-if="!isPlaceholder" :src="nextLive.foto_url!" :alt="nextLive.nome" class="w-full h-full object-contain" @error="photoBroken = true" />
         <div v-else class="w-full h-full bg-white flex items-center justify-center">
           <img src="/logo.png" alt="" class="w-14 h-14 object-contain" />
         </div>

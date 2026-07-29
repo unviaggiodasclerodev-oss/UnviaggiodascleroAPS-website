@@ -265,7 +265,7 @@ function isPlaceholder(hero: { foto_url: string | null; created_at: string }) {
                 <!-- Background: photo or logo placeholder -->
                 <div class="absolute inset-0">
                   <img v-if="!isPlaceholder(hero)" :src="hero.foto_url!" :alt="hero.nome"
-                    class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
+                    class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700 ease-out"
                     @error="handlePhotoError(hero.created_at)" />
                   <div v-else class="w-full h-full bg-white flex items-center justify-center">
                     <img src="/logo.png" alt="" class="w-32 h-32 object-contain group-hover:scale-105 transition-transform duration-700 ease-out" />
