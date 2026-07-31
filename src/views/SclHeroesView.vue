@@ -327,7 +327,7 @@ function isPlaceholder(hero: { foto_url: string | null; created_at: string }) {
         </section>
 
         <!-- Podcast CTA -->
-        <section class="section-pad">
+        <section class="section-pad pt-16 md:pt-24">
           <div class="max-w-3xl mx-auto">
             <div class="rounded-2xl p-8 md:p-10 text-center border border-stone-200/50 dark:border-white/10 bg-stone-50 dark:bg-stone-800 shadow-sm reveal">
               <div class="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-5" style="background:#1DB954">
