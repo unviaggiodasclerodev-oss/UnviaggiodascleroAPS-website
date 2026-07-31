@@ -4,7 +4,6 @@ import { useScrollReveal } from '../composables/useScrollReveal.js'
 import { useSclHeroes } from '../composables/useSclHeroes'
 import { useSclHeroesForm } from '../composables/useSclHeroesForm'
 import { useCityAutocomplete } from '../composables/useCityAutocomplete'
-import { useAccordionTransition } from '../composables/useAccordionTransition'
 import { JOURNEY_STEPS, formatLiveDate, heroVideoUrl } from '../data/sclheroes'
 import JourneyLine from '../components/JourneyLine.vue'
 import LiveHeroCta from '../components/LiveHeroCta.vue'
@@ -13,19 +12,8 @@ useScrollReveal()
 
 const { submissionCount, publishedHeroes, incrementCount } = useSclHeroes()
 
-const { onBeforeEnter, onEnter, onAfterEnter, onBeforeLeave, onLeave, onAfterLeave } = useAccordionTransition()
 const formOpen = ref(false)
-// Guards against rapid re-clicks landing mid-transition, which desyncs the
-// height animation and can leave the accordion stuck closed
-const formAnimating = ref(false)
-function toggleForm() {
-  if (formAnimating.value) return
-  formOpen.value = !formOpen.value
-}
-function onFormBeforeEnter(el: Element) { formAnimating.value = true; onBeforeEnter(el) }
-function onFormAfterEnter(el: Element) { formAnimating.value = false; onAfterEnter(el) }
-function onFormBeforeLeave(el: Element) { formAnimating.value = true; onBeforeLeave(el) }
-function onFormAfterLeave(el: Element) { formAnimating.value = false; onAfterLeave(el) }
+function toggleForm() { formOpen.value = !formOpen.value }
 
 const { form, photoPreview, status, errorMessage, handlePhotoChange, removePhoto, submitForm } = useSclHeroesForm(incrementCount)
 const { query: cityQuery, isOpen: cityDropdownOpen, containerRef: cityContainerRef, suggestions: citySuggestions, selectCity, handleInput: handleCityInput } = useCityAutocomplete((value) => { form.value.citta = value })
@@ -115,11 +103,9 @@ function isPlaceholder(hero: { foto_url: string | null; created_at: string }) {
                 </div>
               </button>
 
-              <Transition
-                @before-enter="onFormBeforeEnter" @enter="onEnter" @after-enter="onFormAfterEnter"
-                @before-leave="onFormBeforeLeave" @leave="onLeave" @after-leave="onFormAfterLeave"
-              >
-                <div v-if="formOpen" class="pt-6">
+              <div class="grid transition-[grid-template-rows] duration-300 ease-out" :class="formOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'">
+                <div class="overflow-hidden">
+                <div class="pt-6">
                   <Transition name="scl-fade" mode="out-in">
 
               <div v-if="status !== 'success'" class="bg-stone-50 dark:bg-stone-800 rounded-2xl p-8 shadow-sm border border-stone-200/50 dark:border-white/10 reveal">
@@ -278,8 +264,8 @@ function isPlaceholder(hero: { foto_url: string | null; created_at: string }) {
 
             </Transition>
                 </div>
-              </Transition>
-            </div>
+                </div>
+              </div>
 
           </div>
         </section>
