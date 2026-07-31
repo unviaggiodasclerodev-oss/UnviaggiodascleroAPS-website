@@ -12,9 +12,6 @@ useScrollReveal()
 
 const { submissionCount, publishedHeroes, incrementCount } = useSclHeroes()
 
-const formOpen = ref(false)
-function toggleForm() { formOpen.value = !formOpen.value }
-
 const { form, photoPreview, status, errorMessage, handlePhotoChange, removePhoto, submitForm } = useSclHeroesForm(incrementCount)
 const { query: cityQuery, isOpen: cityDropdownOpen, containerRef: cityContainerRef, suggestions: citySuggestions, selectCity, handleInput: handleCityInput } = useCityAutocomplete((value) => { form.value.citta = value })
 void cityContainerRef // template ref — populated by Vue at runtime
@@ -86,27 +83,8 @@ function isPlaceholder(hero: { foto_url: string | null; created_at: string }) {
               </div>
             </div>
 
-            <!-- Submission form accordion -->
-            <div class="mb-14 reveal">
-              <button type="button" @click="toggleForm"
-                class="w-full flex items-center justify-between gap-4 p-6 rounded-2xl border border-stone-200/50 dark:border-white/10 bg-stone-50 dark:bg-stone-800 shadow-sm text-left transition-colors hover:bg-stone-100 dark:hover:bg-stone-700/60 touch-manipulation">
-                <div>
-                  <h2 class="font-bold tx text-lg mb-1">Hai una storia con la sclerosi multipla?</h2>
-                  <p class="text-sm tx2">Raccontala: potresti essere il prossimo sclHERO.</p>
-                </div>
-                <div class="w-9 h-9 rounded-full border border-accent/30 flex items-center justify-center shrink-0 transition-all duration-300"
-                  :class="formOpen ? 'bg-accent border-accent rotate-180' : 'bg-accent/5'">
-                  <svg class="w-4 h-4 transition-colors" :class="formOpen ? 'text-white' : 'text-accent'"
-                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/>
-                  </svg>
-                </div>
-              </button>
-
-              <div class="grid transition-[grid-template-rows] duration-300 ease-out" :class="formOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'">
-                <div class="overflow-hidden">
-                <div class="pt-6">
-                  <Transition name="scl-fade" mode="out-in">
+            <!-- Submission form / success state -->
+            <Transition name="scl-fade" mode="out-in">
 
               <div v-if="status !== 'success'" class="bg-stone-50 dark:bg-stone-800 rounded-2xl p-8 shadow-sm border border-stone-200/50 dark:border-white/10 reveal">
                 <form @submit.prevent="submitForm" novalidate class="space-y-6">
@@ -263,9 +241,6 @@ function isPlaceholder(hero: { foto_url: string | null; created_at: string }) {
               </div>
 
             </Transition>
-                </div>
-                </div>
-              </div>
 
           </div>
         </section>
