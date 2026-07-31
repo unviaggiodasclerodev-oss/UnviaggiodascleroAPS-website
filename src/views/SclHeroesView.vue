@@ -15,7 +15,17 @@ const { submissionCount, publishedHeroes, incrementCount } = useSclHeroes()
 
 const { onBeforeEnter, onEnter, onAfterEnter, onBeforeLeave, onLeave, onAfterLeave } = useAccordionTransition()
 const formOpen = ref(false)
-function toggleForm() { formOpen.value = !formOpen.value }
+// Guards against rapid re-clicks landing mid-transition, which desyncs the
+// height animation and can leave the accordion stuck closed
+const formAnimating = ref(false)
+function toggleForm() {
+  if (formAnimating.value) return
+  formOpen.value = !formOpen.value
+}
+function onFormBeforeEnter(el: Element) { formAnimating.value = true; onBeforeEnter(el) }
+function onFormAfterEnter(el: Element) { formAnimating.value = false; onAfterEnter(el) }
+function onFormBeforeLeave(el: Element) { formAnimating.value = true; onBeforeLeave(el) }
+function onFormAfterLeave(el: Element) { formAnimating.value = false; onAfterLeave(el) }
 
 const { form, photoPreview, status, errorMessage, handlePhotoChange, removePhoto, submitForm } = useSclHeroesForm(incrementCount)
 const { query: cityQuery, isOpen: cityDropdownOpen, containerRef: cityContainerRef, suggestions: citySuggestions, selectCity, handleInput: handleCityInput } = useCityAutocomplete((value) => { form.value.citta = value })
@@ -91,7 +101,7 @@ function isPlaceholder(hero: { foto_url: string | null; created_at: string }) {
             <!-- Submission form accordion -->
             <div class="mb-14 reveal">
               <button type="button" @click="toggleForm"
-                class="w-full flex items-center justify-between gap-4 p-6 rounded-2xl border border-stone-200/50 dark:border-white/10 bg-stone-50 dark:bg-stone-800 shadow-sm text-left transition-colors hover:bg-stone-100 dark:hover:bg-stone-700/60">
+                class="w-full flex items-center justify-between gap-4 p-6 rounded-2xl border border-stone-200/50 dark:border-white/10 bg-stone-50 dark:bg-stone-800 shadow-sm text-left transition-colors hover:bg-stone-100 dark:hover:bg-stone-700/60 touch-manipulation">
                 <div>
                   <h2 class="font-bold tx text-lg mb-1">Hai una storia con la sclerosi multipla?</h2>
                   <p class="text-sm tx2">Raccontala: potresti essere il prossimo sclHERO.</p>
@@ -106,8 +116,8 @@ function isPlaceholder(hero: { foto_url: string | null; created_at: string }) {
               </button>
 
               <Transition
-                @before-enter="onBeforeEnter" @enter="onEnter" @after-enter="onAfterEnter"
-                @before-leave="onBeforeLeave" @leave="onLeave" @after-leave="onAfterLeave"
+                @before-enter="onFormBeforeEnter" @enter="onEnter" @after-enter="onFormAfterEnter"
+                @before-leave="onFormBeforeLeave" @leave="onLeave" @after-leave="onFormAfterLeave"
               >
                 <div v-if="formOpen" class="pt-6">
                   <Transition name="scl-fade" mode="out-in">
