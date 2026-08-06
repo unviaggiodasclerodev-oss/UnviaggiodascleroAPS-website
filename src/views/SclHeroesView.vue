@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, watch, onUnmounted } from 'vue'
 import { useScrollReveal } from '../composables/useScrollReveal.js'
 import { useSclHeroes } from '../composables/useSclHeroes'
 import { useSclHeroesForm } from '../composables/useSclHeroesForm'
@@ -13,6 +13,24 @@ useScrollReveal()
 const { submissionCount, publishedHeroes, incrementCount } = useSclHeroes()
 
 const { form, photoPreview, status, errorMessage, handlePhotoChange, removePhoto, submitForm } = useSclHeroesForm(incrementCount)
+
+// Success feedback as a modal instead of swapping the form out in place, so it's
+// visible regardless of how far down the (possibly long) form the user scrolled
+const showSuccessModal = ref(false)
+function closeSuccessModal() { showSuccessModal.value = false }
+function onModalKeydown(e: KeyboardEvent) {
+  if (e.key === 'Escape') closeSuccessModal()
+}
+watch(status, (s) => { if (s === 'success') showSuccessModal.value = true })
+watch(showSuccessModal, (open) => {
+  document.body.style.overflow = open ? 'hidden' : ''
+  if (open) window.addEventListener('keydown', onModalKeydown)
+  else window.removeEventListener('keydown', onModalKeydown)
+})
+onUnmounted(() => {
+  document.body.style.overflow = ''
+  window.removeEventListener('keydown', onModalKeydown)
+})
 const { query: cityQuery, isOpen: cityDropdownOpen, containerRef: cityContainerRef, suggestions: citySuggestions, selectCity, handleInput: handleCityInput } = useCityAutocomplete((value) => { form.value.citta = value })
 void cityContainerRef // template ref — populated by Vue at runtime
 
@@ -36,6 +54,37 @@ function isPlaceholder(hero: { foto_url: string | null; created_at: string }) {
     </div>
 
     <LiveHeroCta />
+
+    <!-- Success modal -->
+    <Teleport to="body">
+      <Transition name="scl-fade">
+        <div v-if="showSuccessModal" class="fixed inset-0 z-[200] flex items-center justify-center p-4">
+          <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" @click="closeSuccessModal"></div>
+          <div class="relative bg-white dark:bg-stone-800 rounded-2xl shadow-xl max-w-md w-full p-8 text-center">
+            <button @click="closeSuccessModal" aria-label="Chiudi"
+              class="absolute top-4 right-4 w-8 h-8 rounded-full flex items-center justify-center tx3 hover:bg-stone-100 dark:hover:bg-stone-700 transition-colors">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/>
+              </svg>
+            </button>
+            <div class="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl" style="background:#F05022">
+              <svg class="w-9 h-9 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
+              </svg>
+            </div>
+            <h2 class="text-2xl font-bold tx mb-3">Grazie, sei uno sclHERO!</h2>
+            <p class="tx2 leading-relaxed mb-8">
+              La tua storia è arrivata. La leggeremo con cura e ti contatteremo via email
+              se vorremo invitarti in diretta su YouTube.
+            </p>
+            <button @click="closeSuccessModal"
+              class="inline-flex items-center gap-2 text-sm font-semibold text-white px-6 py-3 rounded-full hover:opacity-90 transition-all" style="background:#F05022">
+              Continua
+            </button>
+          </div>
+        </div>
+      </Transition>
+    </Teleport>
 
     <main id="main-content" class="pt-32 pb-16">
       <div class="journey-host">
@@ -83,10 +132,8 @@ function isPlaceholder(hero: { foto_url: string | null; created_at: string }) {
               </div>
             </div>
 
-            <!-- Submission form / success state -->
-            <Transition name="scl-fade" mode="out-in">
-
-              <div v-if="status !== 'success'" class="bg-stone-50 dark:bg-stone-800 rounded-2xl p-8 shadow-sm border border-stone-200/50 dark:border-white/10 reveal">
+            <!-- Submission form -->
+            <div class="bg-stone-50 dark:bg-stone-800 rounded-2xl p-8 shadow-sm border border-stone-200/50 dark:border-white/10 reveal">
                 <form @submit.prevent="submitForm" novalidate class="space-y-6">
 
                   <!-- Full name -->
@@ -233,25 +280,6 @@ function isPlaceholder(hero: { foto_url: string | null; created_at: string }) {
 
                 </form>
               </div>
-
-              <!-- Success state -->
-              <div v-else class="text-center py-20">
-                <div class="w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-8 shadow-xl" style="background:#F05022">
-                  <svg class="w-11 h-11 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
-                  </svg>
-                </div>
-                <h2 class="text-3xl md:text-4xl font-bold tx mb-4">Grazie, sei uno sclHERO!</h2>
-                <p class="tx2 text-lg max-w-md mx-auto leading-relaxed mb-8">
-                  La tua storia è arrivata. La leggeremo con cura e ti contatteremo via email
-                  se vorremo invitarti in diretta su YouTube.
-                </p>
-                <router-link to="/" class="inline-flex items-center gap-2 text-sm font-semibold text-white px-6 py-3 rounded-full hover:opacity-90 transition-all" style="background:#F05022">
-                  Torna alla home
-                </router-link>
-              </div>
-
-            </Transition>
 
           </div>
         </section>

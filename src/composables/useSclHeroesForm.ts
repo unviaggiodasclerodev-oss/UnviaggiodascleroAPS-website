@@ -67,6 +67,8 @@ export function useSclHeroesForm(onSuccess: () => void) {
       if (insertError) throw insertError
 
       status.value = 'success'
+      form.value = { nome: '', email: '', telefono: '', instagram: '', citta: '', storia: '', consenso_privacy: false }
+      removePhoto()
       onSuccess()
     } catch (err: unknown) {
       console.error('[useSclHeroesForm] submit error:', err)
