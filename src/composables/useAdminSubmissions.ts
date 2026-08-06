@@ -8,6 +8,7 @@ export interface Submission {
   nome: string
   email: string
   telefono: string | null
+  instagram: string | null
   citta: string | null
   storia: string
   riassunto: string | null
@@ -29,7 +30,7 @@ export function useAdminSubmissions() {
     try {
       const { data, error } = await supabase
         .from('sclheroes_submissions')
-        .select('id, nome, email, telefono, citta, storia, riassunto, foto_url, diretta_at, stato, created_at')
+        .select('id, nome, email, telefono, instagram, citta, storia, riassunto, foto_url, diretta_at, stato, created_at')
         .order('created_at', { ascending: false })
       if (error) throw error
       submissions.value = (data as Submission[]) ?? []

@@ -116,12 +116,23 @@ function isPlaceholder(hero: { foto_url: string | null; created_at: string }) {
                   <!-- Phone -->
                   <div>
                     <label class="block text-sm font-semibold tx mb-1.5" for="telefono">
-                      Numero di telefono
-                      <span class="text-xs tx3 font-normal ml-1">(facoltativo)</span>
+                      Numero di telefono <span style="color:#F05022">*</span>
                     </label>
                     <input
-                      id="telefono" v-model="form.telefono" type="tel" autocomplete="tel"
+                      id="telefono" v-model="form.telefono" type="tel" required autocomplete="tel"
                       placeholder="+39 333 000 0000"
+                      class="w-full px-4 py-3 rounded-xl border border-stone-300 dark:border-stone-600 bg-white dark:bg-stone-900 tx text-sm focus:outline-none focus:ring-2 focus:ring-accent/50 transition"
+                    />
+                  </div>
+
+                  <!-- Instagram -->
+                  <div>
+                    <label class="block text-sm font-semibold tx mb-1.5" for="instagram">
+                      Profilo Instagram <span style="color:#F05022">*</span>
+                    </label>
+                    <input
+                      id="instagram" v-model="form.instagram" type="text" required autocomplete="off"
+                      placeholder="@iltuoprofilo"
                       class="w-full px-4 py-3 rounded-xl border border-stone-300 dark:border-stone-600 bg-white dark:bg-stone-900 tx text-sm focus:outline-none focus:ring-2 focus:ring-accent/50 transition"
                     />
                   </div>
