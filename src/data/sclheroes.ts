@@ -39,6 +39,7 @@ export function formatLiveDate(iso: string) {
 export const HERO_VIDEO_LINKS: Record<string, string> = {
   'Matteo Boseglio': 'https://www.youtube.com/watch?v=h5O2vBzeXjM',
   'Laura Nasello': 'https://www.youtube.com/watch?v=iTQJkxj9HEI',
+  'Danilo Bazzano': 'https://www.youtube.com/watch?v=fKowG9DhQew',
 }
 export function heroVideoUrl(hero: { nome: string }) {
   return HERO_VIDEO_LINKS[hero.nome] ?? 'https://www.youtube.com/@unviaggiodasclero'
