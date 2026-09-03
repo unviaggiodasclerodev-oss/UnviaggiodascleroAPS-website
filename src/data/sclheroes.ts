@@ -40,6 +40,7 @@ export const HERO_VIDEO_LINKS: Record<string, string> = {
   'Matteo Boseglio': 'https://www.youtube.com/watch?v=h5O2vBzeXjM',
   'Laura Nasello': 'https://www.youtube.com/watch?v=iTQJkxj9HEI',
   'Danilo Bazzano': 'https://www.youtube.com/watch?v=fKowG9DhQew',
+  'Giada Cerpolloni': 'https://www.youtube.com/watch?v=2L-VZHUZ_1Y',
 }
 export function heroVideoUrl(hero: { nome: string }) {
   return HERO_VIDEO_LINKS[hero.nome] ?? 'https://www.youtube.com/@unviaggiodasclero'
