@@ -2,6 +2,7 @@
 import { useScrollReveal } from '../composables/useScrollReveal.js'
 import HeroSection from '../components/HeroSection.vue'
 import MediaLogos from '../components/MediaLogos.vue'
+import Patrocini from '../components/Patrocini.vue'
 import ChiSiamo from '../components/ChiSiamo.vue'
 import Viaggio2027 from '../components/Viaggio2027.vue'
 import AssociazioneTeaser from '../components/AssociazioneTeaser.vue'
@@ -20,6 +21,7 @@ useScrollReveal()
     <LiveHeroCta />
     <HeroSection />
     <MediaLogos />
+    <Patrocini />
     <main id="main-content">
       <div class="journey-host">
         <JourneyLine />

@@ -8,6 +8,7 @@ import ContattiView from './views/ContattiView.vue'
 import RassegnaStampaView from './views/RassegnaStampaView.vue'
 import SosteniView from './views/SosteniView.vue'
 import SclHeroesView from './views/SclHeroesView.vue'
+import PatrociniView from './views/PatrociniView.vue'
 import CookiePolicyView from './views/CookiePolicyView.vue'
 import AdminView from './views/AdminView.vue'
 import AdminLoginView from './views/AdminLoginView.vue'
@@ -32,6 +33,7 @@ const routes: RouteRecordRaw[] = [
   { path: '/media',          name: 'media',            component: RassegnaStampaView,meta: { title: 'Media - Un Viaggio da Sclero APS' } },
   { path: '/sostieni',       name: 'sostieni',         component: SosteniView,       meta: { title: 'Sostieni - Un Viaggio da Sclero APS' } },
   { path: '/sclheroes',      name: 'sclheroes',        component: SclHeroesView,     meta: { title: 'sclHEROES - Un Viaggio da Sclero APS' } },
+  { path: '/patrocini',      name: 'patrocini',        component: PatrociniView,     meta: { title: 'Patrocini & Partnership - Un Viaggio da Sclero APS' } },
   { path: '/cookie-policy',  name: 'cookie-policy',   component: CookiePolicyView,  meta: { title: 'Cookie Policy - Un Viaggio da Sclero APS' } },
 
   // Admin — requires authenticated session
