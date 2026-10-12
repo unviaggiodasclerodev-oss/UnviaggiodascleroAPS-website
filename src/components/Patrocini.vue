@@ -40,7 +40,7 @@ const partnership = []
           <a v-for="p in patrociniIstituzionali" :key="p.nome"
             :href="p.link" target="_blank" rel="noopener"
             class="group flex flex-col items-center gap-3 text-center w-32">
-            <img :src="p.logo" :alt="p.nome" class="media-logo h-16 md:h-20 w-auto object-contain" />
+            <img :src="p.logo" :alt="p.nome" class="patrocinio-logo h-16 md:h-20 w-auto object-contain" />
             <span class="text-xs tx3 group-hover:text-accent transition-colors leading-tight">{{ p.nome }}</span>
           </a>
         </div>
@@ -56,7 +56,7 @@ const partnership = []
           <a v-for="p in partnership" :key="p.nome"
             :href="p.link" target="_blank" rel="noopener"
             class="group flex flex-col items-center gap-3 text-center w-32">
-            <img :src="p.logo" :alt="p.nome" class="media-logo h-16 md:h-20 w-auto object-contain" />
+            <img :src="p.logo" :alt="p.nome" class="patrocinio-logo h-16 md:h-20 w-auto object-contain" />
             <span class="text-xs tx3 group-hover:text-accent transition-colors leading-tight">{{ p.nome }}</span>
           </a>
         </div>
@@ -66,3 +66,17 @@ const partnership = []
     </div>
   </section>
 </template>
+
+<style scoped>
+/* True grayscale instead of brightness(0) — keeps the shading/detail on
+   illustrated crests (e.g. Regione Veneto) instead of flattening them
+   into a solid black blob. Regains full color on hover. */
+.patrocinio-logo {
+  filter: grayscale(1) opacity(0.65);
+  transition: filter 0.3s ease, opacity 0.3s ease;
+}
+a:hover .patrocinio-logo {
+  filter: none;
+  opacity: 1;
+}
+</style>
