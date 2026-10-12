@@ -68,15 +68,17 @@ const partnership = []
 </template>
 
 <style scoped>
-/* True grayscale instead of brightness(0) — keeps the shading/detail on
-   illustrated crests (e.g. Regione Veneto) instead of flattening them
-   into a solid black blob. Regains full color on hover. */
-.patrocinio-logo {
-  filter: grayscale(1) opacity(0.65);
-  transition: filter 0.3s ease, opacity 0.3s ease;
-}
-a:hover .patrocinio-logo {
-  filter: none;
-  opacity: 1;
+/* Grayscale-with-color-on-hover only where hover actually means something
+   (mouse pointer). On touch devices there's no hover, so the logos just
+   show in full color from the start instead of staying permanently dim. */
+@media (hover: hover) and (pointer: fine) {
+  .patrocinio-logo {
+    filter: grayscale(1) opacity(0.65);
+    transition: filter 0.3s ease, opacity 0.3s ease;
+  }
+  a:hover .patrocinio-logo {
+    filter: none;
+    opacity: 1;
+  }
 }
 </style>
