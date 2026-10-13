@@ -5,6 +5,9 @@ const patrociniIstituzionali = [
     nome: 'Regione del Veneto',
     logo: '/patrocini/regione-veneto.png',
     link: 'https://www.regione.veneto.it',
+    // Official monochrome mark (protocollo di concessione patrocinio 45539/2026) —
+    // must be used exactly as supplied, not recolored on hover like the others.
+    fixedMono: true,
   },
   {
     nome: 'Comune di Valdobbiadene',
@@ -40,7 +43,8 @@ const partnership = []
           <a v-for="p in patrociniIstituzionali" :key="p.nome"
             :href="p.link" target="_blank" rel="noopener"
             class="group flex flex-col items-center gap-3 text-center w-32">
-            <img :src="p.logo" :alt="p.nome" class="patrocinio-logo h-16 md:h-20 w-auto object-contain" />
+            <img :src="p.logo" :alt="p.nome"
+              :class="['h-16 md:h-20 w-auto object-contain', p.fixedMono ? '' : 'patrocinio-logo']" />
             <span class="text-xs tx3 group-hover:text-accent transition-colors leading-tight">{{ p.nome }}</span>
           </a>
         </div>
@@ -56,7 +60,8 @@ const partnership = []
           <a v-for="p in partnership" :key="p.nome"
             :href="p.link" target="_blank" rel="noopener"
             class="group flex flex-col items-center gap-3 text-center w-32">
-            <img :src="p.logo" :alt="p.nome" class="patrocinio-logo h-16 md:h-20 w-auto object-contain" />
+            <img :src="p.logo" :alt="p.nome"
+              :class="['h-16 md:h-20 w-auto object-contain', p.fixedMono ? '' : 'patrocinio-logo']" />
             <span class="text-xs tx3 group-hover:text-accent transition-colors leading-tight">{{ p.nome }}</span>
           </a>
         </div>
