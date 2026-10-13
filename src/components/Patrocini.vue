@@ -13,6 +13,7 @@ const patrociniIstituzionali = [
     nome: 'Comune di Valdobbiadene',
     logo: '/patrocini/Stemma-di-Valdobbiadene.webp',
     link: 'https://comune.valdobbiadene.tv.it',
+    showLabel: true,
   },
   {
     nome: 'Colline del Prosecco di Conegliano e Valdobbiadene',
@@ -45,7 +46,7 @@ const partnership = []
             class="group flex flex-col items-center gap-3 text-center w-32">
             <img :src="p.logo" :alt="p.nome"
               :class="['h-16 md:h-20 w-auto object-contain', p.fixedMono ? '' : 'patrocinio-logo']" />
-            <span class="text-xs tx3 group-hover:text-accent transition-colors leading-tight">{{ p.nome }}</span>
+            <span v-if="p.showLabel" class="text-xs tx3 group-hover:text-accent transition-colors leading-tight">{{ p.nome }}</span>
           </a>
         </div>
       </div>
@@ -62,7 +63,7 @@ const partnership = []
             class="group flex flex-col items-center gap-3 text-center w-32">
             <img :src="p.logo" :alt="p.nome"
               :class="['h-16 md:h-20 w-auto object-contain', p.fixedMono ? '' : 'patrocinio-logo']" />
-            <span class="text-xs tx3 group-hover:text-accent transition-colors leading-tight">{{ p.nome }}</span>
+            <span v-if="p.showLabel" class="text-xs tx3 group-hover:text-accent transition-colors leading-tight">{{ p.nome }}</span>
           </a>
         </div>
         <p v-else class="text-center text-sm tx3">In fase di definizione</p>
