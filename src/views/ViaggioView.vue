@@ -6,7 +6,7 @@ import VideoSection from '../components/VideoSection.vue'
 import VideoIntroModal from '../components/VideoIntroModal.vue'
 import Viaggio2027 from '../components/Viaggio2027.vue'
 import NumeriChiave from '../components/NumeriChiave.vue'
-import SponsorPatrocini from '../components/SponsorPatrocini.vue'
+import Patrocini from '../components/Patrocini.vue'
 import CtaBanner from '../components/CtaBanner.vue'
 import JourneyLine from '../components/JourneyLine.vue'
 
@@ -39,7 +39,7 @@ onUnmounted(() => {
         <VideoSection />
         <Viaggio2027 />
         <NumeriChiave :show-numeri="false" />
-        <SponsorPatrocini />
+        <Patrocini />
 
         <CtaBanner
           title="Vuoi far parte del viaggio?"
