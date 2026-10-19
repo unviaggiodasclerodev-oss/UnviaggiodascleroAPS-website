@@ -3,10 +3,11 @@
 const patrociniIstituzionali = [
   {
     // Official monochrome mark (protocollo di concessione patrocinio 45539/2026) —
-    // must be used exactly as supplied, not recolored.
+    // must be used exactly as supplied, not recolored on hover like the others.
     nome: 'Regione del Veneto',
     logo: '/patrocini/regione-veneto.png',
     link: 'https://www.regione.veneto.it',
+    fixedMono: true,
   },
   {
     nome: 'Comune di Valdobbiadene',
@@ -43,7 +44,8 @@ const partnership = []
           <a v-for="p in patrociniIstituzionali" :key="p.nome"
             :href="p.link" target="_blank" rel="noopener"
             class="group flex flex-col items-center gap-3 text-center w-32">
-            <img :src="p.logo" :alt="p.nome" class="patrocinio-logo h-16 md:h-20 w-auto object-contain" />
+            <img :src="p.logo" :alt="p.nome"
+              :class="['h-16 md:h-20 w-auto object-contain', p.fixedMono ? '' : 'patrocinio-logo']" />
             <span v-if="p.showLabel" class="text-xs tx3 group-hover:text-accent transition-colors leading-tight">{{ p.nome }}</span>
           </a>
         </div>
@@ -59,7 +61,8 @@ const partnership = []
           <a v-for="p in partnership" :key="p.nome"
             :href="p.link" target="_blank" rel="noopener"
             class="group flex flex-col items-center gap-3 text-center w-32">
-            <img :src="p.logo" :alt="p.nome" class="patrocinio-logo h-16 md:h-20 w-auto object-contain" />
+            <img :src="p.logo" :alt="p.nome"
+              :class="['h-16 md:h-20 w-auto object-contain', p.fixedMono ? '' : 'patrocinio-logo']" />
             <span v-if="p.showLabel" class="text-xs tx3 group-hover:text-accent transition-colors leading-tight">{{ p.nome }}</span>
           </a>
         </div>
@@ -71,9 +74,19 @@ const partnership = []
 </template>
 
 <style scoped>
-/* All patrocini logos shown in the same flat black treatment as the
-   official Regione Veneto mark — fixed, no color reveal on hover. */
-.patrocinio-logo {
-  filter: grayscale(1) brightness(0) opacity(0.85);
+/* Desaturated (not flattened to black) with color revealed on hover —
+   but only where hover means something (a real mouse). On touch devices
+   there's no hover, so these logos just show in full color from the
+   start instead of staying stuck dim. The official Regione Veneto mark
+   skips this entirely (see fixedMono) and stays exactly as supplied. */
+@media (hover: hover) and (pointer: fine) {
+  .patrocinio-logo {
+    filter: grayscale(1) opacity(0.7);
+    transition: filter 0.3s ease, opacity 0.3s ease;
+  }
+  a:hover .patrocinio-logo {
+    filter: none;
+    opacity: 1;
+  }
 }
 </style>
