@@ -74,19 +74,17 @@ const partnership = []
 </template>
 
 <style scoped>
-/* Desaturated (not flattened to black) with color revealed on hover —
-   but only where hover means something (a real mouse). On touch devices
-   there's no hover, so these logos just show in full color from the
-   start instead of staying stuck dim. The official Regione Veneto mark
-   skips this entirely (see fixedMono) and stays exactly as supplied. */
-@media (hover: hover) and (pointer: fine) {
-  .patrocinio-logo {
-    filter: grayscale(1) opacity(0.7);
-    transition: filter 0.3s ease, opacity 0.3s ease;
-  }
-  a:hover .patrocinio-logo {
-    filter: none;
-    opacity: 1;
-  }
+/* Desaturated (not flattened to black) everywhere, including touch
+   devices — color is revealed on hover where hover exists (desktop);
+   on touch there's simply no way to trigger it, so they stay desaturated.
+   The official Regione Veneto mark skips this entirely (see fixedMono)
+   and stays exactly as supplied. */
+.patrocinio-logo {
+  filter: grayscale(1) opacity(0.7);
+  transition: filter 0.3s ease, opacity 0.3s ease;
+}
+a:hover .patrocinio-logo {
+  filter: none;
+  opacity: 1;
 }
 </style>
