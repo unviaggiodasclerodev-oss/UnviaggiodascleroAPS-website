@@ -2,12 +2,9 @@
 // Patrocini istituzionali (gratuiti — Comuni, enti pubblici, enti patrocinanti)
 const patrociniIstituzionali = [
   {
-    // Official monochrome mark (protocollo di concessione patrocinio 45539/2026) —
-    // must be used exactly as supplied, not recolored on hover like the others.
     nome: 'Regione del Veneto',
-    logo: '/patrocini/regione-veneto.png',
+    logo: '/patrocini/regione-veneto-colore.png',
     link: 'https://www.regione.veneto.it',
-    fixedMono: true,
   },
   {
     nome: 'Comune di Valdobbiadene',
@@ -44,8 +41,7 @@ const partnership = []
           <a v-for="p in patrociniIstituzionali" :key="p.nome"
             :href="p.link" target="_blank" rel="noopener"
             class="group flex flex-col items-center gap-3 text-center w-32">
-            <img :src="p.logo" :alt="p.nome"
-              :class="['h-16 md:h-20 w-auto object-contain', p.fixedMono ? '' : 'patrocinio-logo']" />
+            <img :src="p.logo" :alt="p.nome" class="h-16 md:h-20 w-auto object-contain" />
             <span v-if="p.showLabel" class="text-xs tx3 group-hover:text-accent transition-colors leading-tight">{{ p.nome }}</span>
           </a>
         </div>
@@ -61,8 +57,7 @@ const partnership = []
           <a v-for="p in partnership" :key="p.nome"
             :href="p.link" target="_blank" rel="noopener"
             class="group flex flex-col items-center gap-3 text-center w-32">
-            <img :src="p.logo" :alt="p.nome"
-              :class="['h-16 md:h-20 w-auto object-contain', p.fixedMono ? '' : 'patrocinio-logo']" />
+            <img :src="p.logo" :alt="p.nome" class="h-16 md:h-20 w-auto object-contain" />
             <span v-if="p.showLabel" class="text-xs tx3 group-hover:text-accent transition-colors leading-tight">{{ p.nome }}</span>
           </a>
         </div>
@@ -72,19 +67,3 @@ const partnership = []
     </div>
   </section>
 </template>
-
-<style scoped>
-/* Desaturated (not flattened to black) everywhere, including touch
-   devices — color is revealed on hover where hover exists (desktop);
-   on touch there's simply no way to trigger it, so they stay desaturated.
-   The official Regione Veneto mark skips this entirely (see fixedMono)
-   and stays exactly as supplied. */
-.patrocinio-logo {
-  filter: grayscale(1) opacity(0.7);
-  transition: filter 0.3s ease, opacity 0.3s ease;
-}
-a:hover .patrocinio-logo {
-  filter: none;
-  opacity: 1;
-}
-</style>
