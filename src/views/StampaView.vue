@@ -202,7 +202,7 @@ const faqs = [
         <div class="grid lg:grid-cols-[220px_1fr] gap-10 lg:gap-16 py-10 md:py-16">
 
           <!-- Indice laterale — vere tab: cliccando una voce cambia il pannello a destra -->
-          <nav aria-label="Indice Area Stampa" class="lg:sticky lg:top-24 lg:self-start">
+          <nav aria-label="Indice Area Stampa" class="min-w-0 lg:sticky lg:top-24 lg:self-start">
             <p class="text-xs font-semibold tracking-widest uppercase tx3 mb-3">Indice</p>
             <ul role="tablist" aria-orientation="vertical"
               class="flex lg:flex-col gap-x-2 gap-y-1 overflow-x-auto lg:overflow-visible snap-x snap-mandatory lg:snap-none text-sm pb-2 lg:pb-0 -mx-4 px-4 sm:-mx-1 sm:px-1 lg:mx-0 lg:px-0">
