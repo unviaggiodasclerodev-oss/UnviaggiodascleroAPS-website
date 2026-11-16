@@ -53,7 +53,7 @@ const schedaSintetica = [
   { label: 'Anno di fondazione',   value: 'Progetto/cammino: 2022 · Costituzione dell’APS: 2026' },
   { label: 'Forma giuridica',      value: 'Associazione di Promozione Sociale (APS), iscritta al RUNTS' },
   { label: 'C.F. / P.IVA',         value: '05613580264' },
-  { label: 'Sede legale',          value: 'Valdobbiadene (TV), Veneto — [DA COMPILARE: indirizzo completo]' },
+  { label: 'Sede legale',          value: 'Comune di Valdobbiadene (TV), Veneto — indirizzo esatto registrato al RUNTS (art. 1 dello Statuto)' },
   { label: 'Sedi operative',       value: '[DA COMPILARE: eventuali altre sedi]' },
   { label: 'Ambito di attività',   value: 'Terzo Settore — cammino, disabilità invisibile (sclerosi multipla), inclusione sociale' },
   { label: 'Soci / volontari',     value: '[DA COMPILARE: numero aggiornato]' },
