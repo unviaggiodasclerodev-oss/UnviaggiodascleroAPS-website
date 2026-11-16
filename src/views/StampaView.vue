@@ -46,8 +46,11 @@ const indice = [
 // dall'indice a sinistra — non un lungo scroll con ancore.
 const activeSection = ref(indice[0].id)
 function selezionaSezione(id) {
+  // Nessuno scroll automatico: la pagina resta esattamente alla stessa
+  // posizione, solo il pannello a destra cambia. Un pannello più corto di
+  // quello precedente può far "risalire" la pagina — è il browser che
+  // riduce lo scroll massimo disponibile, non qualcosa che imponiamo noi.
   activeSection.value = id
-  document.getElementById('stampa-contenuto')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
 }
 
 // ---------------------------------------------------------------------
