@@ -67,7 +67,6 @@ const schedaSintetica = [
   { label: 'Sede legale',          value: 'Comune di Valdobbiadene (TV), Veneto — indirizzo esatto registrato al RUNTS (art. 1 dello Statuto)' },
   { label: 'Sedi operative',       value: '[DA COMPILARE: eventuali altre sedi]' },
   { label: 'Ambito di attività',   value: 'Terzo Settore — cammino, disabilità invisibile (sclerosi multipla), inclusione sociale' },
-  { label: 'Soci / volontari',     value: '[DA COMPILARE: numero aggiornato]' },
   { label: 'Area geografica',      value: 'Italia — cammino nazionale, tappe in circa 100 comuni nell’edizione 2027' },
   { label: 'Sito web',             value: 'unviaggiodascleroaps.org' },
   { label: 'Social',               value: 'Instagram @unviaggiodascleroaps · Facebook · LinkedIn' },
@@ -430,7 +429,7 @@ const faqs = [
               <h2 class="text-2xl font-bold tx mb-4">Contatti stampa</h2>
               <p class="tx3 text-sm mb-4">Per ulteriori informazioni, contatta l'ufficio stampa ai recapiti qui sotto.</p>
               <div class="card-solid p-6 md:p-8 space-y-3 tx2 text-sm leading-relaxed">
-                <p><span class="tx3 font-semibold">Referente:</span> [DA COMPILARE: nome del referente stampa dedicato — in attesa, le richieste vengono gestite all'indirizzo sotto]</p>
+                <p><span class="tx3 font-semibold">Referente:</span> Ufficio stampa — Un Viaggio da Sclero APS</p>
                 <p><span class="tx3 font-semibold">Email:</span> <a href="mailto:info@unviaggiodascleroaps.org" class="text-accent hover:underline">info@unviaggiodascleroaps.org</a></p>
                 <p><span class="tx3 font-semibold">Telefono / WhatsApp:</span> <a href="https://wa.me/393793668397" target="_blank" rel="noopener" class="text-accent hover:underline">+39 379 366 8397</a></p>
                 <p><span class="tx3 font-semibold">Orari di disponibilità:</span> [DA COMPILARE]</p>
