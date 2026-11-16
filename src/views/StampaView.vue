@@ -204,15 +204,16 @@ const faqs = [
           <!-- Indice laterale — vere tab: cliccando una voce cambia il pannello a destra -->
           <nav aria-label="Indice Area Stampa" class="lg:sticky lg:top-24 lg:self-start">
             <p class="text-xs font-semibold tracking-widest uppercase tx3 mb-3">Indice</p>
-            <ul role="tablist" aria-orientation="vertical" class="flex lg:flex-col gap-x-2 gap-y-1 overflow-x-auto lg:overflow-visible text-sm pb-2 lg:pb-0 -mx-1 px-1 lg:mx-0 lg:px-0">
-              <li v-for="item in indice" :key="item.id" class="shrink-0">
+            <ul role="tablist" aria-orientation="vertical"
+              class="flex lg:flex-col gap-x-2 gap-y-1 overflow-x-auto lg:overflow-visible snap-x snap-mandatory lg:snap-none text-sm pb-2 lg:pb-0 -mx-4 px-4 sm:-mx-1 sm:px-1 lg:mx-0 lg:px-0">
+              <li v-for="item in indice" :key="item.id" class="shrink-0 snap-start">
                 <button
                   role="tab"
                   :id="'navtab-' + item.id"
                   :aria-selected="activeSection === item.id"
                   :aria-controls="'tab-' + item.id"
                   @click="selezionaSezione(item.id)"
-                  class="w-full text-left px-3 py-2 rounded-lg transition-colors whitespace-nowrap lg:whitespace-normal text-sm"
+                  class="w-full text-left px-3.5 py-2.5 rounded-lg transition-colors whitespace-nowrap lg:whitespace-normal text-sm min-h-[44px]"
                   :class="activeSection === item.id ? 'bg-accent/10 text-accent font-semibold' : 'tx2 hover:bg-muted'"
                 >{{ item.label }}</button>
               </li>
@@ -315,7 +316,7 @@ const faqs = [
               <h2 class="text-2xl font-bold tx mb-4">Citazioni pronte all'uso</h2>
               <p class="tx3 text-xs mb-4">Citabili con attribuzione, come indicato per ciascuna.</p>
               <div class="space-y-3">
-                <div v-for="(c, i) in citazioni" :key="i" class="card-solid p-5 flex items-start justify-between gap-4">
+                <div v-for="(c, i) in citazioni" :key="i" class="card-solid p-5 flex flex-col sm:flex-row items-start justify-between gap-4">
                   <blockquote class="tx font-display text-lg leading-snug">
                     &ldquo;{{ c.testo }}&rdquo;
                     <footer class="tx3 text-xs font-sans not-italic mt-2">— {{ c.autore }}</footer>
