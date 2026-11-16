@@ -42,6 +42,14 @@ const indice = [
   { id: 'contatti-stampa',  label: 'Contatti stampa' },
 ]
 
+// Vero comportamento a tab: un solo pannello visibile per volta, selezionato
+// dall'indice a sinistra — non un lungo scroll con ancore.
+const activeSection = ref(indice[0].id)
+function selezionaSezione(id) {
+  activeSection.value = id
+  document.getElementById('stampa-contenuto')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+}
+
 // ---------------------------------------------------------------------
 // Contenuti — sourced from the public site where possible; placeholders
 // are marked explicitly rather than invented.
@@ -193,21 +201,29 @@ const faqs = [
 
         <div class="grid lg:grid-cols-[220px_1fr] gap-10 lg:gap-16 py-10 md:py-16">
 
-          <!-- Indice laterale -->
+          <!-- Indice laterale — vere tab: cliccando una voce cambia il pannello a destra -->
           <nav aria-label="Indice Area Stampa" class="lg:sticky lg:top-24 lg:self-start">
             <p class="text-xs font-semibold tracking-widest uppercase tx3 mb-3">Indice</p>
-            <ul class="flex lg:flex-col gap-x-4 gap-y-2 overflow-x-auto lg:overflow-visible text-sm pb-2 lg:pb-0 -mx-1 px-1 lg:mx-0 lg:px-0">
+            <ul role="tablist" aria-orientation="vertical" class="flex lg:flex-col gap-x-2 gap-y-1 overflow-x-auto lg:overflow-visible text-sm pb-2 lg:pb-0 -mx-1 px-1 lg:mx-0 lg:px-0">
               <li v-for="item in indice" :key="item.id" class="shrink-0">
-                <a :href="`#${item.id}`" class="tx2 hover:text-accent transition-colors whitespace-nowrap lg:whitespace-normal">{{ item.label }}</a>
+                <button
+                  role="tab"
+                  :id="'navtab-' + item.id"
+                  :aria-selected="activeSection === item.id"
+                  :aria-controls="'tab-' + item.id"
+                  @click="selezionaSezione(item.id)"
+                  class="w-full text-left px-3 py-2 rounded-lg transition-colors whitespace-nowrap lg:whitespace-normal text-sm"
+                  :class="activeSection === item.id ? 'bg-accent/10 text-accent font-semibold' : 'tx2 hover:bg-muted'"
+                >{{ item.label }}</button>
               </li>
             </ul>
           </nav>
 
-          <!-- Contenuto -->
-          <div class="space-y-16 min-w-0">
+          <!-- Contenuto: un solo pannello visibile per volta -->
+          <div id="stampa-contenuto" class="min-w-0 scroll-mt-24">
 
             <!-- 2. Chi siamo in breve -->
-            <section id="chi-siamo-breve" class="scroll-mt-24">
+            <section v-show="activeSection === 'chi-siamo-breve'" :id="'tab-' + 'chi-siamo-breve'" role="tabpanel" :aria-labelledby="'navtab-' + 'chi-siamo-breve'">
               <h2 class="text-2xl font-bold tx mb-4">Chi siamo, in breve</h2>
               <div class="card-solid p-6 md:p-8">
                 <p class="tx2 leading-relaxed mb-5">{{ boilerplate }}</p>
@@ -219,7 +235,7 @@ const faqs = [
             </section>
 
             <!-- 3. Scheda sintetica -->
-            <section id="scheda" class="scroll-mt-24">
+            <section v-show="activeSection === 'scheda'" :id="'tab-' + 'scheda'" role="tabpanel" :aria-labelledby="'navtab-' + 'scheda'">
               <h2 class="text-2xl font-bold tx mb-4">Scheda sintetica</h2>
               <dl class="card-solid divide-y edge">
                 <div v-for="row in schedaSintetica" :key="row.label" class="grid sm:grid-cols-[180px_1fr] gap-1 sm:gap-4 p-4 sm:p-5">
@@ -230,7 +246,7 @@ const faqs = [
             </section>
 
             <!-- 4. Mission e valori -->
-            <section id="mission" class="scroll-mt-24">
+            <section v-show="activeSection === 'mission'" :id="'tab-' + 'mission'" role="tabpanel" :aria-labelledby="'navtab-' + 'mission'">
               <h2 class="text-2xl font-bold tx mb-4">Mission e valori</h2>
               <p class="card-solid p-6 md:p-8 tx font-semibold text-lg leading-relaxed mb-6">
                 Trasformare un cammino personale con la sclerosi multipla in un progetto collettivo di
@@ -245,7 +261,7 @@ const faqs = [
             </section>
 
             <!-- 5. Storia e tappe -->
-            <section id="storia" class="scroll-mt-24">
+            <section v-show="activeSection === 'storia'" :id="'tab-' + 'storia'" role="tabpanel" :aria-labelledby="'navtab-' + 'storia'">
               <h2 class="text-2xl font-bold tx mb-4">Storia e tappe principali</h2>
               <ol class="card-solid divide-y edge">
                 <li v-for="t in tappe" :key="t.anno" class="grid sm:grid-cols-[100px_1fr] gap-1 sm:gap-4 p-4 sm:p-5">
@@ -256,7 +272,7 @@ const faqs = [
             </section>
 
             <!-- 6. Cosa facciamo -->
-            <section id="cosa-facciamo" class="scroll-mt-24">
+            <section v-show="activeSection === 'cosa-facciamo'" :id="'tab-' + 'cosa-facciamo'" role="tabpanel" :aria-labelledby="'navtab-' + 'cosa-facciamo'">
               <h2 class="text-2xl font-bold tx mb-4">Cosa facciamo</h2>
               <div class="grid md:grid-cols-3 gap-4">
                 <div v-for="p in progetti" :key="p.title" class="card-solid p-6 flex flex-col">
@@ -268,7 +284,7 @@ const faqs = [
             </section>
 
             <!-- 7. I numeri -->
-            <section id="numeri" class="scroll-mt-24">
+            <section v-show="activeSection === 'numeri'" :id="'tab-' + 'numeri'" role="tabpanel" :aria-labelledby="'navtab-' + 'numeri'">
               <h2 class="text-2xl font-bold tx mb-4">I numeri</h2>
               <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
                 <div v-for="n in numeri" :key="n.label" class="card-solid p-5">
@@ -280,7 +296,7 @@ const faqs = [
             </section>
 
             <!-- 8. Persone di riferimento -->
-            <section id="persone" class="scroll-mt-24">
+            <section v-show="activeSection === 'persone'" :id="'tab-' + 'persone'" role="tabpanel" :aria-labelledby="'navtab-' + 'persone'">
               <h2 class="text-2xl font-bold tx mb-4">Persone di riferimento</h2>
               <div v-for="p in persone" :key="p.nome" class="card-solid p-6 md:p-8 flex flex-col sm:flex-row gap-6">
                 <img :src="p.foto" :alt="p.nome" class="w-28 h-28 rounded-xl object-cover shrink-0" />
@@ -295,7 +311,7 @@ const faqs = [
             </section>
 
             <!-- 9. Citazioni pronte all'uso -->
-            <section id="citazioni" class="scroll-mt-24">
+            <section v-show="activeSection === 'citazioni'" :id="'tab-' + 'citazioni'" role="tabpanel" :aria-labelledby="'navtab-' + 'citazioni'">
               <h2 class="text-2xl font-bold tx mb-4">Citazioni pronte all'uso</h2>
               <p class="tx3 text-xs mb-4">Citabili con attribuzione, come indicato per ciascuna.</p>
               <div class="space-y-3">
@@ -313,7 +329,7 @@ const faqs = [
             </section>
 
             <!-- 10. Comunicati stampa e rassegna stampa -->
-            <section id="comunicati" class="scroll-mt-24">
+            <section v-show="activeSection === 'comunicati'" :id="'tab-' + 'comunicati'" role="tabpanel" :aria-labelledby="'navtab-' + 'comunicati'">
               <h2 class="text-2xl font-bold tx mb-4">Comunicati stampa</h2>
               <div v-if="comunicati.length === 0" class="card-solid p-6 text-center tx3 text-sm mb-10">
                 Prossimamente.
@@ -332,7 +348,7 @@ const faqs = [
             </section>
 
             <!-- 11. Materiali scaricabili -->
-            <section id="materiali" class="scroll-mt-24">
+            <section v-show="activeSection === 'materiali'" :id="'tab-' + 'materiali'" role="tabpanel" :aria-labelledby="'navtab-' + 'materiali'">
               <div class="flex items-center justify-between flex-wrap gap-3 mb-4">
                 <h2 class="text-2xl font-bold tx">Materiali scaricabili</h2>
                 <button @click="scaricaTutto"
@@ -373,7 +389,7 @@ const faqs = [
             </section>
 
             <!-- 12. Linee guida d'uso -->
-            <section id="linee-guida" class="scroll-mt-24">
+            <section v-show="activeSection === 'linee-guida'" :id="'tab-' + 'linee-guida'" role="tabpanel" :aria-labelledby="'navtab-' + 'linee-guida'">
               <h2 class="text-2xl font-bold tx mb-4">Linee guida d'uso</h2>
               <div class="card-solid p-6 md:p-8 space-y-5 tx2 text-sm leading-relaxed">
                 <div>
@@ -392,7 +408,7 @@ const faqs = [
             </section>
 
             <!-- 13. FAQ -->
-            <section id="faq" class="scroll-mt-24">
+            <section v-show="activeSection === 'faq'" :id="'tab-' + 'faq'" role="tabpanel" :aria-labelledby="'navtab-' + 'faq'">
               <h2 class="text-2xl font-bold tx mb-4">FAQ per i giornalisti</h2>
               <div class="space-y-3">
                 <details v-for="(f, i) in faqs" :key="i" class="card-solid p-5 group">
@@ -406,7 +422,7 @@ const faqs = [
             </section>
 
             <!-- 14. Contatti stampa -->
-            <section id="contatti-stampa" class="scroll-mt-24">
+            <section v-show="activeSection === 'contatti-stampa'" :id="'tab-' + 'contatti-stampa'" role="tabpanel" :aria-labelledby="'navtab-' + 'contatti-stampa'">
               <h2 class="text-2xl font-bold tx mb-4">Contatti stampa</h2>
               <p class="tx3 text-sm mb-4">Per ulteriori informazioni, contatta l'ufficio stampa ai recapiti qui sotto.</p>
               <div class="card-solid p-6 md:p-8 space-y-3 tx2 text-sm leading-relaxed">
