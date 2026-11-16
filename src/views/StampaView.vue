@@ -185,14 +185,10 @@ const faqs = [
         <header class="py-12 md:py-16 border-b edge">
           <p class="text-xs font-semibold tracking-widest uppercase mb-3" style="color:#F05022">Media kit</p>
           <h1 class="text-4xl md:text-5xl font-bold tx mb-4">Area Stampa</h1>
-          <p class="tx2 text-lg max-w-2xl leading-relaxed mb-6">
+          <p class="tx2 text-lg max-w-2xl leading-relaxed">
             Tutto ciò che serve per scrivere un articolo su Un Viaggio da Sclero APS: dati, numeri,
             materiali e contatti diretti — senza bisogno di chiederci nulla.
           </p>
-          <a href="#contatti-stampa"
-            class="inline-flex items-center gap-2 bg-accent text-white font-semibold px-6 py-3 rounded-full hover:bg-[#cf5e0e] transition-all text-sm">
-            Contatta l'ufficio stampa
-          </a>
         </header>
 
         <div class="grid lg:grid-cols-[220px_1fr] gap-10 lg:gap-16 py-10 md:py-16">
@@ -412,6 +408,7 @@ const faqs = [
             <!-- 14. Contatti stampa -->
             <section id="contatti-stampa" class="scroll-mt-24">
               <h2 class="text-2xl font-bold tx mb-4">Contatti stampa</h2>
+              <p class="tx3 text-sm mb-4">Per ulteriori informazioni, contatta l'ufficio stampa ai recapiti qui sotto.</p>
               <div class="card-solid p-6 md:p-8 space-y-3 tx2 text-sm leading-relaxed">
                 <p><span class="tx3 font-semibold">Referente:</span> [DA COMPILARE: nome del referente stampa dedicato — in attesa, le richieste vengono gestite all'indirizzo sotto]</p>
                 <p><span class="tx3 font-semibold">Email:</span> <a href="mailto:info@unviaggiodascleroaps.org" class="text-accent hover:underline">info@unviaggiodascleroaps.org</a></p>
