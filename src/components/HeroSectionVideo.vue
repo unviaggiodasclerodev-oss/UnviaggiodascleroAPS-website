@@ -28,7 +28,7 @@ function toggleAudio() {
       <video
         ref="videoEl"
         class="w-full h-full object-cover object-center"
-        src="/hero-intro.mp4"
+        src="/trailer.mp4"
         poster="/images/michele.JPG"
         autoplay
         muted
